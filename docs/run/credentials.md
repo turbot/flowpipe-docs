@@ -44,7 +44,7 @@ credential "slack" "default" {
 ```
 
 ### Default credentials
-Flowpipe also creates a single **implicit default** credential for each credential type.  The credential is named `default`, eg `credential.aws.default`, `credential.github.default`, etc.  The intent of the default credential is that flowpipe can "just work" with your existing setup, and is similar to the default connection that Steampipe creates for each plugin.  For example, the AWS default credential will use the standard AWS SDK credential resolution mechanism to create a Flowpipe credential that will use the same credential that the `aws` CLI would use. 
+Flowpipe also creates a single **implicit default** credential for each credential type.  The credential is named `default`, eg `credential.aws.default`, `credential.github.default`, etc.  The intent of the default credential is that Flowpipe can "just work" with your existing setup, and is similar to the default connection that Steampipe creates for each plugin.  For example, the AWS default credential will use the standard AWS SDK credential resolution mechanism to create a Flowpipe credential that will use the same credential that the `aws` CLI would use. 
 
 You can override the default by simply creating a credential for that type that is named `default`:
 

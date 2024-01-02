@@ -5,7 +5,7 @@ sidebar_label: Run Pipelines
 
 # Run Pipelines
 
-A Flowpipe [pipeline](/docs/flowpipe-hcl/step/pipeline) is a sequence of steps to do work.  Pipelines are distributed in [mods](/docs/build/index).  To run a pipeline, change to the mod directory and the run `flowpipe pipeline run {pipeline name}` command:
+A Flowpipe [pipeline](/docs/flowpipe-hcl/step/pipeline) is a sequence of steps to do work.  Pipelines are distributed in [mods](/docs/build/index).  To run a pipeline, change to the mod directory and run `flowpipe pipeline run {pipeline name}`:
 
 ```bash
 cd ~/src/flowpipe-samples/networking/ip_profiler
@@ -36,7 +36,7 @@ flowpipe pipeline run abuseipdb.pipeline.list_blacklisted_ip_addresses --workspa
 ```
 
 
-You can see what pipelines are available to run in the mod with the `flowpipe pipeline list` command:
+You can see what pipelines are available to run in the mod:
 
 ```bash
 flowpipe pipeline list
@@ -66,28 +66,32 @@ flowpipe pipeline run ip_profiler.pipeline.ip_profiler --arg ip_addresses='["4.2
 ```
 
 You may pass multiple `--arg` arguments as needed:
+
 ```bash
 flowpipe pipeline run ip_profiler.pipeline.ip_profiler --arg ip_addresses='["4.2.2.1","4.2.2.2","4.2.2.3"]' --arg abuseipdb_max_age_in_days=90
 ```
 
 Likewise, you can pass [variables](/docs/build/mod-variables) with one or more `--var` arguments:
+
 ```bash
 flowpipe pipeline run aws.pipeline.describe_ec2_instances --var region=us-east-1 
 ```
 
 
-To see the details of current and prior pipeline runs, you can use the `flowpipe process` commands.  You can list the processes:
+Use `flowpipe process list` to see the details of current and prior pipeline runs:
 
 ```bash
 flowpipe process list
 ```
 
-Or the status of a single process, by its ID:
+Or use `flowpipe process show` to see the status of a single process, by its ID:
+
 ```bash
 flowpipe process show exec_clppphbjtojfa9mh0tb0
 ```
 
-If you started a pipeline run in a `flowpipe server` instance, you can even tail it the details of the pipeline process as it runs:
+If you started a pipeline run in a `flowpipe server` instance, you can even tail the details of the pipeline process as it runs:
+
 ```bash
 flowpipe pipeline tail exec_cls9gp3jtoje6h9om3e0  --host local 
 ```

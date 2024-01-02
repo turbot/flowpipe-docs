@@ -9,11 +9,11 @@ sidebar_label: Flowpipe HCL
 
 | Type | Description
 |-|-
-| [locals](flowpipe-hcl/locals) | Locals are internal, module level variables.
-| [mod](flowpipe-hcl/mod)     | The mod block contains metadata, documentation, and dependency data for the mod.
-| [pipeline](flowpipe-hcl/pipeline) | A pipeline is a set of steps that do work.
-| [trigger](flowpipe-hcl/trigger) | Triggers are used to execute a pipeline when an event occurs.
-| [variable](flowpipe-hcl/variable) | Variables are module-level objects that essentially act as parameters for a module.
+| [locals](flowpipe-hcl/locals)         | Locals are internal, module level variables.
+| [mod](flowpipe-hcl/mod)               | The mod block contains metadata, documentation, and dependency data for the mod.
+| [pipeline](flowpipe-hcl/pipeline)     | A pipeline is a set of steps that do work.
+| [trigger](flowpipe-hcl/trigger/index) | Triggers are used to execute a pipeline when an event occurs.
+| [variable](flowpipe-hcl/variable)     | Variables are module-level objects that essentially act as parameters for a module.
 
 
 ## Step Primitives

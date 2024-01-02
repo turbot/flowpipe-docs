@@ -47,4 +47,4 @@ mod "my_mod" {
 }
 ```
 
-Your mod is initialized!  You can add [pipelines](/docs/build/write-pipelines/index) and [triggers](/docs/build/triggers) to your mod using [Flowpipe HCL](docs/reference/flowpipe-hcl/index).  You can even [use resources from other mods](/docs/build/mod-dependencies); explore the available mods on the [Flowpipe Hub](https://hub.flowpipe.io/mods)!
+Your mod is initialized!  You can add [pipelines](/docs/build/write-pipelines/index) and [triggers](/docs/build/triggers) to your mod using [Flowpipe HCL](/docs/flowpipe-hcl/index).  You can even [use resources from other mods](/docs/build/mod-dependencies); explore the available mods on the [Flowpipe Hub](https://hub.flowpipe.io/)!

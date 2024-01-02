@@ -21,6 +21,16 @@ pipeline "my_job" {
 }
 ```
 
+A parameter may be optional:
+
+```hcl
+  param "unfurl_links" {
+    type        = bool
+    description = "Pass true to enable unfurling of primarily text-based content."
+    optional    = true
+  }
+```
+
 Mods can also define variables, and they are often used to set `param` defaults:
 
 ```hcl
@@ -42,7 +52,8 @@ pipeline "my_job" {
 ```
 
 
-If a param has no default you MUST pass it a value to run the pipeline:
+If a param is not optional and has no default, you MUST pass it a value to run the pipeline:
+
 ```bash
 flowpipe run pipeline.my_job --arg "url=https://example.com/mypath"
 ```

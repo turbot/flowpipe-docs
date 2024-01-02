@@ -6,7 +6,7 @@ sidebar_label: flowpipe mod
 # flowpipe mod
 Flowpipe mod management.
 
-Mods provide an easy way to share Flowpipe pipelines.  Find mods using the public registry at [hub.flowpipe.io](https://hub.flowpipe.io/mods).
+Mods provide an easy way to share Flowpipe pipelines.  Find mods using the public registry at [hub.flowpipe.io](https://hub.flowpipe.io/).
 
 
 ## Usage

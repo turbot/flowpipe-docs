@@ -46,4 +46,3 @@ pipeline "my_job" {
 ```
 
 Triggers, like steps, require 2 labels - a type and a name.  There are multiple trigger types -  `interval`, `http`, `cron`, `query`, etc.
-\
