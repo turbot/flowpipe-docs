@@ -7,14 +7,14 @@ slug: /
 
 # Learn Flowpipe
 
-Flowpipe allows you to create "pipelines as code", defining workflows and other tasks that are performed in a sequence.
+Flowpipe allows you to create "pipelines as code" to define workflows and other tasks that run in a sequence.
 
 ## Creating your first pipeline
 
 Getting started is easy!  If you haven't already done so, [download and install Flowpipe](/downloads).
 
-
 Flowpipe pipelines and triggers are packaged into [mods](/docs/build/index), and Flowpipe requires a mod to run.  Let's create a new directory for our mod, and then run `flowpipe mod init` to initialize it:
+
 ```bash
 mkdir learn_flowpipe
 cd learn_flowpipe
@@ -53,26 +53,19 @@ Let's run it!
 flowpipe pipeline run learn_flowpipe
 ```
 
-```bash
-[flowpipe] Execution ID: exec_clia89jjtoje2jue3eq0
-[learn_flowpipe] Starting pipeline
-[learn_flowpipe.get_ipv4] Starting http: GET https://api.ipify.org?format=json
-[learn_flowpipe.get_ipv4] Complete: 200 166ms
-[learn_flowpipe] Output ip_address = 74.125.224.72 
-[learn_flowpipe] Complete 186ms exec_clia89jjtoje2jue3eq0
-```
+![](/images/learn/get-ipv4.png)
 
 Flowpipe runs the pipeline and prints information about the currently executing steps. When the pipeline run completes, Flowpipe prints the pipeline's outputs. 
 
 
 ## Using mods
 
-
 Flowpipe's modular design allows you to build pipelines from other pipelines.  Let's install the `reallyfreegeoip` mod:
 
 ```bash
-flowpipe mod install https://github.com/turbot/flowpipe-mod-reallyfreegeoip
+flowpipe mod install github.com/turbot/flowpipe-mod-reallyfreegeoip
 ```
+
 ```bash
 Installed 1 mod:
 
@@ -96,26 +89,10 @@ You can run pipelines from the dependency mod on the command line:
 ```bash
 flowpipe pipeline run reallyfreegeoip.pipeline.get_ip_geolocation --arg ip_address=35.236.238.30
 ```
-```bash
-[flowpipe] Execution ID: exec_clmt595o402fipd4s2lg
-[get_ip_geolocation] Starting pipeline
-[get_ip_geolocation.get_ip_geolocation] Starting http: GET https://reallyfreegeoip.org/json/35.236.238.30
-[get_ip_geolocation.get_ip_geolocation] Complete: 200 1s
-[get_ip_geolocation] Output geolocation = {
-  "city": "",
-  "country_code": "US",
-  "country_name": "United States",
-  "ip": "35.236.238.30",
-  "latitude": 38.6583,
-  "longitude": -77.2481,
-  "metro_code": 0,
-  "region_code": "VA",
-  "region_name": "Virginia",
-  "time_zone": "America/New_York",
-  "zip_code": ""
-}
-[get_ip_geolocation] Complete 1s exec_clmt595o402fipd4s2lg
-```
+
+![](/images/learn/reallyfreegeoip.png)
+
+## Composing with pipelines
 
 While running the dependency pipelines directly in the CLI is useful, the real power is the ability to compose pipelines from other pipelines.  Let's add a [pipeline step](/docs/flowpipe-hcl/step/pipeline) to take our ip address and look up our geo-location information.
 
@@ -194,6 +171,14 @@ pipeline "learn_flowpipe" {
     ])
   }
 
+  step "pipeline" "send_to_slack" {
+    pipeline = slack.pipeline.post_message
+    args = {
+      text = step.transform.friendly_forecast.value
+      channel = "random"
+    }
+  }
+
   output "ip_address" {
     value = step.http.get_ipv4.response_body.ip
   }
@@ -212,8 +197,53 @@ pipeline "learn_flowpipe" {
 }
 ```
 
+![](/images/learn/weather-report.png)
 
-<!--
-***TO DO:   SEND IT VIA SLACK***
-[wait for `credential` implementation]
--->
+## Send to Slack
+
+Now let's send the forecast to Slack. First, we'll install the `slack` mod.
+
+```bash
+flowpipe mod install github.com/turbot/flowpipe-mod-slack
+flowpipe mod list
+```
+
+```bash
+local
+├── github.com/turbot/flowpipe-mod-reallyfreegeoip@v0.1.0
+└── github.com/turbot/flowpipe-mod-slack@v0.1.0
+```
+
+The [documentation](https://hub.flowpipe.io/mods/turbot/slack#credentials) for the `slack` mod shows you two ways to authenticate: with the `SLACK_TOKEN` environment variable, or with a Flowpipe [credential](/docs/run/credentials) in the file `~/.flowpipe.config/slack.fpc`. Here we'll use the former.
+
+```bash
+export SLACK_TOKEN="xoxb-562...ESg7"
+```
+
+Before using the mod in our pipeline, verify that the token you generated for your Slack app has the necessary scopes. In this case, the token needs `chat:write`. To verify that the `slack` mod can successfully post to a channel, we can use the CLI.
+
+```bash
+ flowpipe pipeline run slack.pipeline.post_message --arg text=ok --arg channel=random
+```
+
+Now add this step to the `learn_flowpipe` pipeline.
+
+```hcl
+  step "pipeline" "send_to_slack" {
+    pipeline = slack.pipeline.post_message
+    args = {
+      text = step.transform.friendly_forecast.value
+      channel = "random"
+    }
+  }
+```
+
+And run that pipeline again.
+
+```bash
+flowpipe pipeline run learn_flowpipe
+```
+
+In addition to the console output we've already seen, you should see a message like this in Slack.
+
+![](/images/learn/slack-weather-report.png)
