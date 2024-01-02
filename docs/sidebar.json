@@ -147,6 +147,7 @@
               "reference/config-files/credential/ip2locationio",
               "reference/config-files/credential/ipstack",
               "reference/config-files/credential/jira",
+              "reference/config-files/credential/jumpcloud",
               "reference/config-files/credential/mastodon",
               "reference/config-files/credential/okta",
               "reference/config-files/credential/openai",
