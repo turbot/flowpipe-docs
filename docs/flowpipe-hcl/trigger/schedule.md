@@ -23,7 +23,7 @@ or a custom `cron` schedule:
 
 ```hcl
 trigger "schedule" "my_cron_trigger" {
-    schedule = "5 * * * * *"
+    schedule = "5 * * * *"
 
     pipeline = pipeline.twitter_mentions_to_slack
     args = {
