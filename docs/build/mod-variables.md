@@ -12,7 +12,7 @@ sidebar_label: Using Variables
 ##  Input Variables
 
 ### Defining Input Variables
-Flowpipe mods support input variables that are similar to [terraform input variables](https://www.terraform.io/docs/language/values/variables.html):
+Flowpipe mods support input variables that are similar to [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html):
 
 You declare them with a `variable` block:
 ```hcl
@@ -104,7 +104,7 @@ You may also set variable values via environment variables.  Simply prefix the F
 export FP_VAR_mandatory_tags='["Owner","Application", "Environment"]' 
 ```
 
-If you run Flowpipe from a mod that defines input variables, and they are not set anywhere (no default, not set in a `.fpvars` file, not set with `--var` argument, not set via an environment variable) then Flowpipe will prompt you for them before running the control/benchmark.
+If you run Flowpipe from a mod that defines input variables, and they are not set anywhere (no default, not set in a `.fpvars` file, not set with `--var` argument, not set via an environment variable) then Flowpipe will prompt you for them before running the pipeline.
 
 Flowpipe loads variables in the following order, with later sources taking precedence over earlier ones:
 1. Environment variables

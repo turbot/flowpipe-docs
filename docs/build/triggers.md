@@ -31,7 +31,20 @@ trigger "http" "my_webhook" {
 }
 ```
 
-Flowpipe will create a webhook endpoint for each `http` trigger.  You can run `flowpipe trigger show` to get the URL.
+Flowpipe will create a webhook endpoint for each `http` trigger.
+
+You can run `flowpipe trigger list` to get the URL:
+
+```bash
+ flowpipe trigger list --host local
+```
+
+```bash
+NAME                             TYPE    PIPELINE                         DESCRIPTION    URL                                                                                                                SCHEDULE
+local.trigger.http.my_webhook    http    local.pipeline.learn_flowpipe                   /api/latest/hook/local.trigger.http.my_webhook/9fae7a652e2fe11059c8232a0a669f02f357e6bb626f11603e315141e14d6ed6
+```
+
+Or `flowpipe trigger show`:
 
 ```bash
 flowpipe trigger show local.trigger.http.my_webhook --host local
@@ -40,7 +53,7 @@ flowpipe trigger show local.trigger.http.my_webhook --host local
 Name:     local.trigger.http.my_webhook
 Pipeline: local.pipeline.learn_flowpipe
 Type:     http
-Url:      /api/latest/hook/local.trigger.http.my_webhook/93beff14d043e4db69ad28f992e48aa7fb58c17657f6fadfa3f084ba6bbee0a0
+Url:      /api/latest/hook/local.trigger.http.my_webhook/9fae7a652e2fe11059c8232a0a669f02f357e6bb626f11603e315141e14d6ed6
 ```
 
 

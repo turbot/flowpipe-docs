@@ -68,7 +68,7 @@ To simplify common error handling cases, Flowpipe provides some helper functions
 #### Handling Errors
 What condition constitutes an error is dependent on the type of action being performed.  As a result, each step type (`http`, `query`, etc) will decide when to raise an error.
 
-By default, all errors are fatal and are not retried - When a step encounters an error, it causes the step the fail.  A failed step results in a failed pipeline - Any step instances that are already running will complete (but will not be retried) but then the pipeline will stop with a failed status. 
+By default, all errors are fatal and are not retried — when a step encounters an error, it causes the step the fail.  A failed step results in a failed pipeline. Any step instances that are already running will complete (but will not be retried), and the pipeline will stop with a failed status.
 
 ##### error
 You can override the default error behavior with an `error` block on the step. 
