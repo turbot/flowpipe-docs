@@ -13,7 +13,7 @@ Note that plugins may also support environment variables, but these are plugin-s
 
 | Command | Default | Description
 |-|-|-
-| [FLOWPIPE_CONFIG_PATH](reference/env-vars/flowpipe_config_path)  | `.:$FLOWPIPE_INSTALL_DIR/config` | Sets the search path for [configuration files](/docs/reference/config-files/index).  `FLOWPIPE_CONFIG_PATH` accepts a colon-separated list of directories.  
+| [FLOWPIPE_CONFIG_PATH](reference/env-vars/flowpipe_config_path)  | `.:$FLOWPIPE_INSTALL_DIR/config` | Sets the search path for [configuration files](/docs/reference/config-files).  `FLOWPIPE_CONFIG_PATH` accepts a colon-separated list of directories.  
 | [FLOWPIPE_HOST](reference/env-vars/flowpipe_host)  | none | Set the remote Flowpipe API host to connect to.  This allows you to run Flowpipe commands against a flowpipe host instead of the current working directory / mod location.
 | [FLOWPIPE_INSTALL_DIR](reference/env-vars/flowpipe_install_dir)  | `~/.flowpipe` | Set the installation directory for flowpipe. Internal flowpipe files will be written to this path.
 | [FLOWPIPE_LISTEN](reference/env-vars/flowpipe_listen)  | `network` | Specifies the IP addresses on which `flowpipe server` will listen for connections from clients. Currently supported values are `local` (localhost only) or `network` (all IP addresses).

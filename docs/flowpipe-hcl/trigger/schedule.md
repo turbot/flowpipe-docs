@@ -32,7 +32,7 @@ trigger "schedule" "my_cron_trigger" {
 }
 ```
 
-##### Arguments
+## Arguments
 
 | Argument        | Type    | Optional?  | Description
 |-----------------|---------|------------|-----------------

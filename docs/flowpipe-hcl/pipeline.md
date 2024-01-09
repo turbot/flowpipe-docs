@@ -6,11 +6,11 @@ sidebar_label: pipeline
 # pipeline
 
 A `pipeline` is a sequence of steps to do work. Pipelines may define:
-- [Steps](/docs/flowpipe-hcl/step/index) (`step`) to perform specific actions, such as running a query, making an http request, or running another pipeline. By default, steps will run in parallel but Flowpipe will automatically serialize steps based on implicit (HCL reference) or explicit (depends_on) dependencies.
+- [Steps](/docs/flowpipe-hcl/step) (`step`) to perform specific actions, such as running a query, making an http request, or running another pipeline. By default, steps will run in parallel but Flowpipe will automatically serialize steps based on implicit (HCL reference) or explicit (depends_on) dependencies.
 - [Parameters](#parameters) (`param`) to allow you to pass arguments explicitly or from a `trigger`.
 - [Outputs](#outputs) (`output`) to return data or status.
 
-You can [run a pipeline manually](/docs/reference/cli/pipeline) from the command line or define a [trigger](/docs/flowpipe-hcl/trigger/index) that will start the pipeline in response to an event when running [`flowpipe server`](/docs/run/server). 
+You can [run a pipeline manually](/docs/reference/cli/pipeline) from the command line or define a [trigger](/docs/flowpipe-hcl/trigger) that will start the pipeline in response to an event when running [`flowpipe server`](/docs/run/server). 
 
 
 ```hcl

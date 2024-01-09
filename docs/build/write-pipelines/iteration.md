@@ -234,12 +234,12 @@ There is a special attribute called `loop`  with a single attribute `index` whic
 ```hcl
 pipeline "simple_loop" {
 
-    step "echo" "repeat" {
+    step "transform" "repeat" {
         text  = "iteration ${loop.index}"
 
 
         loop {
-            if = loop.index < 3
+            until = loop.index >= 3
         }
     }
 }
