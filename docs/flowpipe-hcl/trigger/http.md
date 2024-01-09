@@ -19,7 +19,7 @@ trigger "http" "my_webhook" {
 It is common to pass in the `request_body` and/or `request_header` trigger attributes as arguments to the pipeline using `self` to reference the trigger instance.  
 
 
-##### Arguments
+## Arguments
 
 
 | Argument        | Type    | Optional?  | Description
@@ -38,7 +38,7 @@ It is common to pass in the `request_body` and/or `request_header` trigger attri
 
 -->
 
-##### Attributes (Read-Only)
+## Attributes (Read-Only)
 
 | Attribute       | Type    |  Description
 |-----------------|---------|-----------------

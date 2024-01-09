@@ -75,6 +75,7 @@
         "link": "flowpipe-hcl/trigger/index",
         "items": [    
           "flowpipe-hcl/trigger/http",
+          "flowpipe-hcl/trigger/query",
           "flowpipe-hcl/trigger/schedule"
         ]
       },
