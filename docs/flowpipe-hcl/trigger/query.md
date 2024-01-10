@@ -9,6 +9,10 @@ The query trigger will execute a SQL query on a schedule and can pass row change
 
 ```hcl
 trigger "query" "expired_access_keys" {
+  connection_string = "postgres://steampipe@localhost:9193/steampipe"
+  primary_key       = "access_key_id"
+  schedule          = "daily"
+
   sql = <<EOQ
       select
           access_key_id,
@@ -21,7 +25,6 @@ trigger "query" "expired_access_keys" {
           create_date < now() - interval '90 days'
   EOQ
 
-  primary_key = "access_key_id"
 
   capture "insert" {
     pipeline = pipeline.delete_expired_access_keys
@@ -34,7 +37,7 @@ trigger "query" "expired_access_keys" {
 
 ```
 
-You may define a [capture block](#capture) for each type of change that you wish to handle. The block label must match the CRUD operation name that you wish to handle (`insert`, `update`, or `delete`).  When the query runs, if there are any new, updated, or missing rows it will trigger a pipeline run for the relevant `capture` operations.  The `inserted_rows`, `updated_rows`, and `deleted_keys` attributes will contain the details about which rows were added, updated, or deleted since the last query run, and you will usually want to pass them as arguments to the pipeline.  You must define at least one `capture` block in a query trigger.
+You may define a [capture block](#capture) for each type of change that you wish to handle. The block label must match the CRUD operation name that you wish to handle (`insert`, `update`, or `delete`).  When the query runs, if there are any new, updated, or missing rows it will trigger a pipeline run for the relevant `capture` operations.  The `inserted_rows`, `updated_rows`, and `deleted_rows` attributes will contain the details about which rows were added, updated, or deleted since the last query run, and you will usually want to pass them as arguments to the pipeline.  You must define at least one `capture` block in a query trigger.
 
 Flowpipe saves the data from the query trigger in a SQLite database so that it can determine which items are new, changed, or deleted.
 
@@ -69,7 +72,6 @@ On subsequent query trigger runs:
 | `updated_rows`  | List    | A list of rows that were updated since the last time the trigger ran.  `updated_rows` contains the *new* row data (after it was updated).
 
 
-
 ---
 
 ## capture
@@ -96,6 +98,9 @@ The query trigger does not explicitly support composite keys, however you can co
 
 ```hcl
 trigger "query" "dns_changes" {
+  connection_string = "postgres://steampipe@localhost:9193/steampipe"
+  primary_key       = "composite_key"
+
   sql = <<EOQ
       select
         concat(domain, '_', type, '_', ip, '_', target) as composite_key,
@@ -109,8 +114,6 @@ trigger "query" "dns_changes" {
       where
         domain = 'flowpipe.io'
   EOQ
-
-  primary_key = "composite_key"
 
   capture "insert" {
     pipeline = pipeline.notify_new_dns_record
@@ -129,6 +132,9 @@ You may run a different pipeline for each capture block:
 
 ```hcl
 trigger "query" "my_query_trigger" {
+  connection_string = "postgres://steampipe@localhost:9193/steampipe"
+  primary_key       = "arn"
+
   sql = <<EOQ
       select
         arn,
@@ -140,8 +146,6 @@ trigger "query" "my_query_trigger" {
       from
         aws_ec2_instance;
   EOQ
-
-  primary_key = "arn"
 
   capture "insert" {
     pipeline = pipeline.instance_added
@@ -174,6 +178,9 @@ trigger "query" "my_query_trigger" {
 Alternatively, you may call the same pipeline from multiple capture blocks:
 ```hcl
 trigger "query" "my_query_trigger" {
+  connection_string = "postgres://steampipe@localhost:9193/steampipe"
+  primary_key       = "arn"
+
   sql = <<EOQ
       select
         arn,
@@ -185,8 +192,6 @@ trigger "query" "my_query_trigger" {
       from
         aws_ec2_instance;
   EOQ
-
-  primary_key = "arn"
 
   capture "insert" {
     pipeline = pipeline.instance_add_change_delete
