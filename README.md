@@ -1,4 +1,4 @@
-![image](https://flowpipe.io/images/flowpipe-social-preview-4.png)
+![image](https://flowpipe.io/images/open_graph_preview.png)
 
 <!-- # Flowpipe docs format & structure -->
 
