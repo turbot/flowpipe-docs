@@ -5,11 +5,8 @@ sidebar_label: query
 
 # query
 
-A query step runs a database query against a database.  Currently, [Postgres](#postgres-query), [SQLite](#sqlite-query), and [DuckDB](#duckdb-query) databases are supported, but we plan to support more database platforms in the future.
+A query step runs a database query against a database.  [Postgres](#postgres-query), [MySQL](#mysql-query), [SQLite](#sqlite-query), and [DuckDB](#duckdb-query) databases are currently supported.
 
-<!--
-A query step runs a database query against any database supported by the [Golang `sql` and `sql/driver` packages](https://github.com/golang/go/wiki/SQLDrivers)
--->
 
 ```hcl
 pipeline "enabled_regions" {
@@ -211,3 +208,25 @@ pipeline "duckdb_query" {
 ```
 
 
+### MySQL Query
+
+```hcl
+pipeline "mysql_query" {
+
+  step "query" "step_1" {
+    connection_string = "mysql://root:my_pass@tcp(localhost)/mysql"
+
+    sql = <<EOQ
+      select
+        host,
+        user
+      from
+        user;
+    EOQ
+  }
+
+  output "results" {
+    value = step.query.step_1.rows
+  }
+}
+```
