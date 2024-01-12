@@ -5,10 +5,12 @@ sidebar_label: query
 
 # query
 
-A query step runs a database query against a database.  Currently, only Postgres is supported, but we plan to support more database platforms in the future.
+A query step runs a database query against a database.  Currently, [Postgres](#postgres-query), [SQLite](#sqlite-query), and [DuckDB](#duckdb-query) databases are supported, but we plan to support more database platforms in the future.
+
 <!--
 A query step runs a database query against any database supported by the [Golang `sql` and `sql/driver` packages](https://github.com/golang/go/wiki/SQLDrivers)
 -->
+
 ```hcl
 pipeline "enabled_regions" {
 
@@ -37,7 +39,7 @@ pipeline "enabled_regions" {
 
 | Argument        | Type    | Optional?  | Description
 |-----------------|---------|------------|-----------------
-| `connection_string` | String | Required | A connection string used to connect to the database
+| `connection_string` | String | Required | A connection string used to connect to the database.
 | `sql`           | String | Required | A SQL query string. 
 | `args`	        | Map	    | Optional	  | A map of arguments to pass to the query.
 
@@ -136,4 +138,76 @@ to extract data.
   ]
 }
 ```
+
+##  More Examples
+
+### Postgres Query
+
+```hcl
+pipeline "enabled_regions" {
+
+  step "query" "get_enabled_regions" {
+    connection_string = "postgres://steampipe@localhost:9193/steampipe"
+    sql = <<-EOQ
+      select 
+        name,
+        account_id,
+        opt_in_status 
+      from 
+        aws_region 
+      where
+        opt_in_status <> 'not-opted-in'
+    EOQ
+
+  }
+
+  output "enabled_regions" {
+    value = step.query.get_enabled_regions.rows
+  }
+}
+```
+
+### SQLite query
+
+```hcl
+pipeline "sqlite_query" {
+  step "query" "step_1" {
+    connection_string = "sqlite://./my_sqlite_db.db"
+
+    sql = <<EOQ
+      select
+        *
+      from
+        my_sqlite_table;
+    EOQ
+  }
+
+  output "results" {
+    value = step.query.step_1.rows
+  }
+}
+```
+
+
+### DuckDB query
+
+```hcl
+pipeline "duckdb_query" {
+  step "query" "step_1" {
+    connection_string = "duckdb://./my_ducks.db"
+
+    sql = <<EOQ
+      select
+        *
+      from
+        my_duckdb_table;
+    EOQ
+  }
+
+  output "results" {
+    value = step.query.step_1.rows
+  }
+}
+```
+
 

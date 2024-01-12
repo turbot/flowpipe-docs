@@ -5,7 +5,7 @@ sidebar_label: query
 
 # query
 
-The query trigger will execute a SQL query on a schedule and can pass row changes as an input to the defined pipeline.
+The query trigger will execute a SQL query on a schedule and can pass row changes as an input to the defined pipeline.  The query trigger supports the same database engines as the [query step](/docs/flowpipe-hcl/step/query).
 
 ```hcl
 trigger "query" "expired_access_keys" {
