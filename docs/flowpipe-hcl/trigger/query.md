@@ -58,9 +58,8 @@ On subsequent query trigger runs:
 | `sql`           | String  | Required   | A SQL query string.
 | `description`   | String  | Optional   | A description of the trigger.
 | `primary_key`   | String  | Optional   | Primary key to use for update vs insert detection.  If no primary key is defined, a hash of the row will be used as the key.
-| `schedule`      | String  | Optional   | Schedule to run the query. This may be a named interval (`hourly`, `daily`, `weekly`) or a custom schedule in cron syntax  The default is `hourly`.
+| `schedule`      | String  | Optional   | [Schedule](/docs/flowpipe-hcl/trigger/schedule#more-examples) to run the query. This may be a named interval (`hourly`, `daily`, `weekly`), a custom schedule in cron syntax, or a duration string.  The default is `15m` (every 15 minutes).
 | `title`         | String  | Optional   | Display title for the trigger.
-
 
 
 ## Attributes (Read-Only)
