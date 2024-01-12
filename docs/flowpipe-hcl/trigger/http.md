@@ -27,6 +27,7 @@ It is common to pass in the `request_body` and/or `request_header` trigger attri
 | `args`	        | Map	    | Optional	 | A map of arguments to pass to the pipeline.
 | `description`   |  String | Optional   | A string containing a short description of the step. 
 | `documentation` | String (Markdown)| Optional | A markdown string containing a long form description, used as documentation for the mod on hub.flowpipe.io. 
+| `enabled`       | Boolean | Optional   | Enable or disable the trigger.  A disabled trigger will not fire, but it will retain its history and configuration.  Default is `true`.
 | `execution_mode` | String  | Optional   | Specifies whether the trigger should wait for the pipeline to complete and return its results in the response body (`synchronous`), or return immediately.  The default is `asynchronous`,
 | `pipeline`      | Pipeline Reference | Optional | A reference to a `pipeline` resource to start when this trigger runs.  
 | `tags` | Map | Optional | A map of key:value metadata for the mod, used to categorize, search, and filter.   

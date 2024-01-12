@@ -29,6 +29,7 @@ trigger "schedule" "my_hourly_trigger" {
 | `args`	      | Map	    | Optional	  | A map of arguments to pass to the pipeline.
 | `description`   |  String | Optional   | A string containing a short description of the step. 
 | `documentation` | String | Optional | A markdown string containing a long form description, used as documentation for the mod on hub.flowpipe.io. 
+| `enabled`       | Boolean | Optional   | Enable or disable the trigger.  A disabled trigger will not fire, but it will retain its history and configuration.  Default is `true`.
 | `tags` | Map | Optional | A map of key:value metadata for the mod, used to categorize, search, and filter.   
 | `title`         | String  | Optional | Display title for the step.
 
