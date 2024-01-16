@@ -4,15 +4,14 @@
     "id": "learn",
     "label": "Learn Flowpipe",
     "link": "learn",
-    "items": [
-    ]
+    "items": []
   },
 
   {
     "type": "category",
     "id": "Run",
     "label": "Run Flowpipe",
-    "link": "run/index",
+    "link": "run",
     "items": [
       "run/pipelines",
       "run/server",
@@ -24,13 +23,13 @@
     "type": "category",
     "id": "working-with-mods",
     "label": "Build Mods",
-    "link": "build/index",
+    "link": "build",
     "items": [
       {
         "type": "category",
         "id": "build/write-pipelines",
         "label": "Learn Flowpipe",
-        "link": "build/write-pipelines/index",
+        "link": "build/write-pipelines",
         "items": [
           "build/write-pipelines/control-flow",
           "build/write-pipelines/inputs-outputs",
@@ -48,16 +47,16 @@
   {
     "type": "category",
     "id": "flowpipe-hcl",
-    "link": "flowpipe-hcl/index",
+    "link": "flowpipe-hcl",
     "items": [
       "flowpipe-hcl/functions",
       "flowpipe-hcl/locals",
       "flowpipe-hcl/mod",
       "flowpipe-hcl/pipeline",
-      {     
+      {
         "type": "category",
         "id": "steps",
-        "link": "flowpipe-hcl/step/index",
+        "link": "flowpipe-hcl/step",
         "items": [
           "flowpipe-hcl/step/container",
           "flowpipe-hcl/step/email",
@@ -69,30 +68,27 @@
           "flowpipe-hcl/step/transform"
         ]
       },
-      {     
+      {
         "type": "category",
         "id": "triggers",
-        "link": "flowpipe-hcl/trigger/index",
-        "items": [    
-          "flowpipe-hcl/trigger/http",
-          "flowpipe-hcl/trigger/schedule"
-        ]
+        "link": "flowpipe-hcl/trigger",
+        "items": ["flowpipe-hcl/trigger/http", "flowpipe-hcl/trigger/schedule"]
       },
       "flowpipe-hcl/variable"
-      ]       
+    ]
   },
-  
+
   {
     "type": "category",
     "id": "reference",
     "label": "Reference",
-    "link": "reference/index",
+    "link": "reference",
     "items": [
       {
         "type": "category",
         "id": "cli",
         "label": "Command Line Arguments",
-        "link": "reference/cli/index",
+        "link": "reference/cli",
         "items": [
           "reference/cli/help",
           "reference/cli/server",
@@ -102,12 +98,12 @@
           "reference/cli/trigger"
         ]
       },
-      
+
       {
         "type": "category",
         "id": "env-vars",
         "label": "Environment Variables",
-        "link": "reference/env-vars/index",
+        "link": "reference/env-vars",
         "items": [
           "reference/env-vars/flowpipe_config_path",
           "reference/env-vars/flowpipe_host",
@@ -127,12 +123,12 @@
         "type": "category",
         "id": "config-files",
         "label": "Configuration Files",
-        "link": "reference/config-files/index",
+        "link": "reference/config-files",
         "items": [
           {
             "type": "category",
             "id": "credential",
-            "link": "reference/config-files/credential/index",
+            "link": "reference/config-files/credential",
             "items": [
               "reference/config-files/credential/abuseipdb",
               "reference/config-files/credential/aws",
