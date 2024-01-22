@@ -9,11 +9,11 @@ Flowpipe allows you to write "pipelines as code", defining workflows and other t
 
 Flowpipe resources include:
 - **[Triggers](/docs/build/triggers)** - A way to initiate a pipeline (e.g. cron, webhook, etc).
-- **[Pipelines](/docs/build/write-pipelines/index)** - A sequence of steps to do work.
+- **[Pipelines](/docs/build/write-pipelines)** - A sequence of steps to do work.
 - **[Variables, locals](/docs/build/mod-variables)** and standard HCL functions.
 
 
-A Flowpipe **mod** is a portable, versioned collection of Flowpipe [pipelines](/docs/build/write-pipelines/index) and [triggers](/docs/build/triggers). Flowpipe mods and mod resources are defined in HCL, and distributed as simple text files.  Modules can be found on the [Flowpipe Hub](https://hub.flowpipe.io) and may be shared with others from any public git repository. 
+A Flowpipe **mod** is a portable, versioned collection of Flowpipe [pipelines](/docs/build/write-pipelines) and [triggers](/docs/build/triggers). Flowpipe mods and mod resources are defined in HCL, and distributed as simple text files.  Modules can be found on the [Flowpipe Hub](https://hub.flowpipe.io) and may be shared with others from any public git repository. 
 
 Flowpipe mods are written in HCL. When Flowpipe runs, it will load the mod from the working directory and will read all files with the .fp extension from the directory and its subdirectories recursively.  
 
@@ -47,4 +47,4 @@ mod "my_mod" {
 }
 ```
 
-Your mod is initialized!  You can add [pipelines](/docs/build/write-pipelines/index) and [triggers](/docs/build/triggers) to your mod using [Flowpipe HCL](/docs/flowpipe-hcl/index).  You can even [use resources from other mods](/docs/build/mod-dependencies); explore the available mods on the [Flowpipe Hub](https://hub.flowpipe.io/)!
+Your mod is initialized!  You can add [pipelines](/docs/build/write-pipelines) and [triggers](/docs/build/triggers) to your mod using [Flowpipe HCL](/docs/flowpipe-hcl).  You can even [use resources from other mods](/docs/build/mod-dependencies); explore the available mods on the [Flowpipe Hub](https://hub.flowpipe.io/)!

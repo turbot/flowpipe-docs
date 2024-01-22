@@ -33,7 +33,7 @@ pipeline "simple_pipe" {
 | `handler`       | String	  | Optional	  | Function entry point in your code, in the format `filename.functionname`.  If not specified default handler for the runtime is used (`index.handler` for nodejs, `lambda_function.lambda_handler` for python, etc.)
 | `runtime`       | String	  | Optional	  | Identifier of the function's runtime. Valid Values are `nodejs:18`, `python:3.10`.
 
-This step also supports the [common step arguments](/docs/flowpipe-hcl/step/index#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step/index#common-step-attributes-read-only).
+This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
 <!--
 | `memory`        | Number	  | Optional	  | Amount of memory in MB your Lambda Function can use at runtime. Defaults to 128.

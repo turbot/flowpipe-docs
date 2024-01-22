@@ -18,7 +18,7 @@ flowpipe process [command] [flags]
 | Command | Description
 |-|-
 | `list` | List processes.
-| `tail` | Display events for a processes running in [server mode](/docs/run/index#operating-modes). If the process is still running, Flowpipe will tail the process until it completes.  You may only use `--output json` or `--output yaml` for processes that are stopped.
+| `tail` | Display events for a processes running in [server mode](/docs/run#operating-modes). If the process is still running, Flowpipe will tail the process until it completes.  You may only use `--output json` or `--output yaml` for processes that are stopped.
 | `show` | Show details for a single process. 
 
 <!--

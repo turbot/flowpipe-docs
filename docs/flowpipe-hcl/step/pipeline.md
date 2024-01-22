@@ -28,7 +28,7 @@ pipeline "my_pipeline" {
 | `pipeline`      | Pipeline Reference | Required | A reference to a `pipeline` resource to run in this step.  
 | `args`	        | Map	    | Optional	  | A map of arguments to pass to the pipeline.
 
-This step also supports the [common step arguments](/docs/flowpipe-hcl/step/index#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step/index#common-step-attributes-read-only).
+This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
 
 ## Attributes (Read-Only)

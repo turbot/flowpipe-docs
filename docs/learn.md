@@ -13,7 +13,7 @@ Flowpipe allows you to create "pipelines as code" to define workflows and other 
 
 Getting started is easy! If you haven't already done so, [download and install Flowpipe](/downloads).
 
-Flowpipe pipelines and triggers are packaged into [mods](/docs/build/index), and Flowpipe requires a mod to run. Let's create a new directory for our mod, and then run `flowpipe mod init` to initialize it:
+Flowpipe pipelines and triggers are packaged into [mods](/docs/build), and Flowpipe requires a mod to run. Let's create a new directory for our mod, and then run `flowpipe mod init` to initialize it:
 
 ```bash
 mkdir learn_flowpipe
