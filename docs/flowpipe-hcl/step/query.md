@@ -169,7 +169,7 @@ pipeline "enabled_regions" {
 ```hcl
 pipeline "sqlite_query" {
   step "query" "step_1" {
-    connection_string = "sqlite://./my_sqlite_db.db"
+    connection_string = "sqlite:./my_sqlite_db.db"
 
     sql = <<EOQ
       select
@@ -191,7 +191,7 @@ pipeline "sqlite_query" {
 ```hcl
 pipeline "duckdb_query" {
   step "query" "step_1" {
-    connection_string = "duckdb://./my_ducks.db"
+    connection_string = "duckdb:./my_ducks.db"
 
     sql = <<EOQ
       select
