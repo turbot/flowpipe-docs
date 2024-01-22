@@ -29,15 +29,11 @@ It is common to pass in the `request_body` and/or `request_header` trigger attri
 | `documentation` | String (Markdown)| Optional | A markdown string containing a long form description, used as documentation for the mod on hub.flowpipe.io. 
 | `enabled`       | Boolean | Optional   | Enable or disable the trigger.  A disabled trigger will not fire, but it will retain its history and configuration.  Default is `true`.
 | `execution_mode` | String  | Optional   | Specifies whether the trigger should wait for the pipeline to complete and return its results in the response body (`synchronous`), or return immediately.  The default is `asynchronous`,
+| `method`        | [method](#http-methods) block   | Optional | A supported HTTP [http-methods](#method) block.  The block label must be one of `get`, `post`.  Note that if no `post` method block appears, only `post` is supported, and the top-level `pipeline`, `args`, and `execution_mode` apply. 
 | `pipeline`      | Pipeline Reference | Optional | A reference to a `pipeline` resource to start when this trigger runs.  
 | `tags` | Map | Optional | A map of key:value metadata for the mod, used to categorize, search, and filter.   
 | `title` | String | Optional | Display title for the step.
 
-
-<!--
-| `method`        | [method](#http-methods) block   | Optional | A supported HTTP [http-methods](#method) block.  The block label must be one of `get`, `post`.  Note that if no `post` method block appears, only `post` is supported, and the top-level `pipeline`, `args`, and `execution_mode` apply. 
-
--->
 
 ## Attributes (Read-Only)
 
@@ -49,14 +45,12 @@ It is common to pass in the `request_body` and/or `request_header` trigger attri
 | `url`	          | String	| The webhook URL.
 
 
-<!--
 
 ## HTTP Methods
 
 By default, the http trigger will only fire on `POST` events. You can use `method` blocks to trigger different pipelines for different HTTP methods.  The block label must be the method name (`get` or `post`).
 
 Note that if no method blocks appear, only `post` is supported, and the top-level `pipeline`, `args`, and `execution_mode` apply.
-
 
 ```hcl
 trigger "http" "my_webhook" {
@@ -83,11 +77,10 @@ trigger "http" "my_webhook" {
 
 | Argument        | Type    | Optional?  | Description
 |-----------------|---------|------------|-----------------
+| `pipeline`      | Pipeline Reference | Required | A reference to a `pipeline` resource to start when this trigger runs.  
 | `args`	        | Map	    | Optional	 | A map of arguments to pass to the pipeline.
 | `execution_mode`| String  | Optional   | Specifies whether the trigger should wait for the pipeline to complete and return its results in the response body (`synchronous`), or return immediately (`asynchronous`).  The default is `asynchronous`,
-| `pipeline`      | Pipeline Reference | Optional | A reference to a `pipeline` resource to start when this trigger runs.  
 
--->
 
 
 ## Webhook Endpoint URL
