@@ -25,7 +25,7 @@ trigger "schedule" "my_hourly_trigger" {
 | Argument        | Type    | Optional?  | Description
 |-----------------|---------|------------|-----------------
 | `pipeline`      | Pipeline Reference | Required | A reference to a `pipeline` resource to start when this trigger runs.  
-| `schedule`      | String  | Required   | [Schedule](#more-examples) to run the query. This may be a named interval (`hourly`, `daily`, `weekly`), a custom schedule in cron syntax, or a duration string. 
+| `schedule`      | String  | Required   | [Schedule](#more-examples) to run the query. This may be a named interval (`hourly`, `daily`, `weekly`, `5m`, `10m`, `15m`, `30m`, `60m`, `1h`, `2h`, `4h`, `6h`, `12h`, `24h`) or a custom schedule in cron syntax. 
 | `args`	      | Map	    | Optional	  | A map of arguments to pass to the pipeline.
 | `description`   |  String | Optional   | A string containing a short description of the step. 
 | `documentation` | String | Optional | A markdown string containing a long form description, used as documentation for the mod on hub.flowpipe.io. 
@@ -35,10 +35,9 @@ trigger "schedule" "my_hourly_trigger" {
 
 
 
-
 ## More examples
 
-The `schedule` argument may be a named interval (`hourly`, `daily`, `weekly`)
+The `schedule` argument may be a named interval (`hourly`, `daily`, `weekly`, `5m`, `10m`, `15m`, `30m`, `60m`, `1h`, `2h`, `4h`, `6h`, `12h`, `24h`):
 
 ```hcl
 trigger "schedule" "my_hourly_trigger" {
@@ -51,26 +50,6 @@ or  a custom schedule in cron syntax:
 ```hcl
 trigger "schedule" "my_hourly_trigger" {
     schedule = "*/30 * * * *"
-    pipeline = pipeline.my_pipe
-}
-```
-
-
-or a [Go duration string](https://pkg.go.dev/time#Duration). The duration string specifies the number and type of units. Valid time units are s, m, h:
-
-
-```hcl
-trigger "schedule" "my_hourly_trigger" {
-    schedule = "2h"
-    pipeline = pipeline.my_pipe
-}
-```
-
-and you can combine units:
-
-```hcl
-trigger "schedule" "my_hourly_trigger" {
-    schedule = "2h30m"
     pipeline = pipeline.my_pipe
 }
 ```
