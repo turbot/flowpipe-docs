@@ -140,6 +140,11 @@ to extract data.
 
 ### Postgres Query
 
+Postgres `connection_string` follows the standard URI syntax supported by `psql` and `pgcli`:
+```bash
+postgresql://[user[:password]@][host][:port][/dbname][?param1=value1&...]
+```
+
 ```hcl
 pipeline "enabled_regions" {
 
@@ -166,6 +171,19 @@ pipeline "enabled_regions" {
 
 ### SQLite query
 
+The SQLite `connection_string` is the path to a SQLite database file:
+```bash
+sqlite:path/to/file
+```
+
+The path is relative to the [mod location](/docs/run#mod-location), and `//` is optional after the scheme, thus the following are equivalent:
+```hcl
+connection_string = "sqlite:./my_sqlite_db.db"
+connection_string = "sqlite://./my_sqlite_db.db"
+connection_string = "sqlite://my_sqlite_db.db"
+```
+
+
 ```hcl
 pipeline "sqlite_query" {
   step "query" "step_1" {
@@ -188,6 +206,18 @@ pipeline "sqlite_query" {
 
 ### DuckDB query
 
+The DuckDB `connection_string` is the path to a DuckDB database file:
+```bash
+duckdb:path/to/file
+```
+
+The path is relative to the [mod location](/docs/run#mod-location), and `//` is optional after the scheme, thus the following are equivalent:
+```hcl
+connection_string = "duckdb:./my_ducks.db"
+connection_string = "duckdb://./my_ducks.db"
+connection_string = "duckdb://my_ducks.db"
+```
+
 ```hcl
 pipeline "duckdb_query" {
   step "query" "step_1" {
@@ -209,6 +239,18 @@ pipeline "duckdb_query" {
 
 
 ### MySQL Query
+
+<!--
+MySQL `connection_string` follows the standard URI syntax supported by `mysql` shell:
+```bash
+mysql://[user[:password]@][host][:port][/dbname][?param1=value1&...]
+
+[scheme://][user[:[password]]@]host[:port][/schema][?attribute1=value1&attribute2=value2...
+
+
+```
+
+-->
 
 ```hcl
 pipeline "mysql_query" {

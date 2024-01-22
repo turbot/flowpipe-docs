@@ -37,7 +37,7 @@ trigger "schedule" "my_hourly_trigger" {
 
 ## More examples
 
-The `schedule` argument may be a named interval (`hourly`, `daily`, `weekly`, `5m`, `10m`, `15m`, `30m`, `60m`, `1h`, `2h`, `4h`, `6h`, `12h`, `24h`):
+The `schedule` argument may be a named interval (`hourly`, `daily`, `weekly`, `5m`, `10m`, `15m`, `30m`, `60m`, `1h`, `2h`, `4h`, `6h`, `12h`, `24h`).  When using a named interval, Flowpipe will automatically jitter the time within the interval, which helps avoid resource contention.
 
 ```hcl
 trigger "schedule" "my_hourly_trigger" {
@@ -45,7 +45,8 @@ trigger "schedule" "my_hourly_trigger" {
     pipeline = pipeline.my_pipe
 }
 ```
-or  a custom schedule in cron syntax:
+
+The `schedule` argument may be a custom schedule in cron syntax.  No jitter is added to cron schedules; they will run at the time specified.
 
 ```hcl
 trigger "schedule" "my_hourly_trigger" {
