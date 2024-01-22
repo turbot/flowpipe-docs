@@ -21,8 +21,9 @@ flowpipe server
 | `--listen string`   | Accept connections from `local` (localhost only) or `network` (all interfaces / IP addresses) (default `network`).
 | `--port int`        | Web server port (default `7103`).
 | `--var string=string` | Specify the value of a variable.  Multiple `--var` arguments may be passed. 
-| `--var-file string`| Specify a `.fpvar` file containing variable values.
-| `--watch`             | Watch mod files for changes when running `flowpipe server` (default `true`).
+| `--var-file string` | Specify a `.fpvar` file containing variable values.
+| `--verbose`         | View detailed event information, including all trigger executions.
+| `--watch`           | Watch mod files for changes when running `flowpipe server` (default `true`).
 
 ## Examples
 
