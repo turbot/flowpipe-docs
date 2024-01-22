@@ -5,7 +5,7 @@ sidebar_label: variable
 
 # variable
 
-[Variables](build/mod-variables#input-variables), are module-level objects that essentially act as parameters for the module.  When running Flowpipe, you can pass values on the command line, from a `.fpvars` file, or from environment variables, and you will be prompted for any variables that have no values.
+[Variables](/docs/build/mod-variables#input-variables), are module-level objects that essentially act as parameters for the module.  When running Flowpipe, you can pass values on the command line, from a `.fpvars` file, or from environment variables, and you will be prompted for any variables that have no values.
 
 You can reference variable values as `var.<NAME>`
 

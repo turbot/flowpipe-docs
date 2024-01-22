@@ -5,7 +5,7 @@ sidebar_label: Run Pipelines
 
 # Run Pipelines
 
-A Flowpipe [pipeline](/docs/flowpipe-hcl/step/pipeline) is a sequence of steps to do work.  Pipelines are distributed in [mods](/docs/build/index).  To run a pipeline, change to the mod directory and run `flowpipe pipeline run {pipeline name}`:
+A Flowpipe [pipeline](/docs/flowpipe-hcl/step/pipeline) is a sequence of steps to do work.  Pipelines are distributed in [mods](/docs/build).  To run a pipeline, change to the mod directory and run `flowpipe pipeline run {pipeline name}`:
 
 ```bash
 cd ~/src/flowpipe-samples/networking/ip_profiler

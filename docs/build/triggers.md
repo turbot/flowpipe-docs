@@ -7,7 +7,7 @@ sidebar_label: Use Triggers
 
 Triggers are used to execute a pipeline when an event occurs. They are defined in the mod and are based on a schedule, webhook or other event.
 
-Triggers are only instantiated when Flowpipe is running in [server mode](/docs/run/index#operating-modes) - you must start the server with `flowpipe server` for triggers to run.
+Triggers are only instantiated when Flowpipe is running in [server mode](/docs/run#operating-modes) - you must start the server with `flowpipe server` for triggers to run.
 
 Only triggers defined in the top-level mod are created, not dependencies.
 

@@ -7,7 +7,7 @@ sidebar_label: Flowpipe Server
 
 By default, most Flowpipe commands run in client-only mode.  For example, `flowpipe pipeline run` will parse and load a mod from the current directory (or `--mod-location`), run the pipeline, print the results, and then exit. This makes it easy to run pipelines on an ad hoc basis - just run the command.
 
-But what if you want to run a pipeline at regular intervals, or in response to an event?  Flowpipe [triggers](/docs/flowpipe-hcl/trigger/trigger) provide that capability.  To use triggers, you must run Flowpipe in server mode.  The `flowpipe server` command runs Flowpipe in server mode in the foreground: 
+But what if you want to run a pipeline at regular intervals, or in response to an event?  Flowpipe [triggers](/docs/flowpipe-hcl/trigger) provide that capability.  To use triggers, you must run Flowpipe in server mode.  The `flowpipe server` command runs Flowpipe in server mode in the foreground: 
 
 ```bash
 flowpipe server

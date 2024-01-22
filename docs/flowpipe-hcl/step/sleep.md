@@ -24,7 +24,7 @@ step "sleep" "sleep_10_seconds" {
 | `duration`      | String or Number | Required | The amount of time to sleep as an integer or a [duration string](#duration-strings).  If the duration is an integer, it is interpreted as the number of milliseconds.  
 
 
-This step also supports the [common step arguments](/docs/flowpipe-hcl/step/index#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step/index#common-step-attributes-read-only).
+This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
 
 ## Duration Strings
