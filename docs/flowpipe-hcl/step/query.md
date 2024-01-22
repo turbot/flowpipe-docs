@@ -240,17 +240,12 @@ pipeline "duckdb_query" {
 
 ### MySQL Query
 
-<!--
-MySQL `connection_string` follows the standard URI syntax supported by `mysql` shell:
+The MySQL connection string supports the syntax of the [GO SQL driver for MySQL](https://github.com/go-sql-driver/mysql?tab=readme-ov-file#examples):
+
 ```bash
-mysql://[user[:password]@][host][:port][/dbname][?param1=value1&...]
-
-[scheme://][user[:[password]]@]host[:port][/schema][?attribute1=value1&attribute2=value2...
-
-
+mysql://[user[:password]@]network-location[:port][/dbname][?param1=value1&...]
 ```
 
--->
 
 ```hcl
 pipeline "mysql_query" {
