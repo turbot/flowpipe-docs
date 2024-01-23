@@ -27,14 +27,14 @@ Each step has a type and a name, and the arguments are dependent on the type.  T
 
 You can run a pipeline manually from the command line:
 ```bash
-flowpipe pipeline start pipeline.my_job
+flowpipe pipeline run my_job
 ```
 
 You can also define a trigger that will start the pipeline in response to an event.  For example, you can run it on a schedule with an `interval` trigger:
 
 ```hcl
-trigger "interval" "my_hourly_trigger" {
-    interval = "hourly"
+trigger "schedule" "my_hourly_trigger" {
+    schedule = "hourly"
     pipeline = pipeline.my_job
 }
 
@@ -45,4 +45,4 @@ pipeline "my_job" {
 }
 ```
 
-Triggers, like steps, require 2 labels - a type and a name.  There are multiple trigger types -  `interval`, `http`, `cron`, `query`, etc.
+Triggers, like steps, require 2 labels - a type and a name.  There are multiple trigger types -  `http`, `schedule`, `query`, etc.

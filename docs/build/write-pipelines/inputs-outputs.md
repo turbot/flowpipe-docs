@@ -60,8 +60,8 @@ flowpipe run pipeline.my_job --arg "url=https://example.com/mypath"
 
 From a trigger or step, you can pass a value for that param using `args`:
 ```hcl
-trigger "interval" "my_hourly_trigger" {
-    interval = "hourly"
+trigger "schedule" "my_hourly_trigger" {
+    schedule = "hourly"
     pipeline = pipeline.my_job
 
     args = {
