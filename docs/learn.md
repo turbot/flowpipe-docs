@@ -84,8 +84,8 @@ flowpipe pipeline list
 
 ```bash
 MOD                    NAME                                           DESCRIPTION
-mod.local              local.pipeline.learn_flowpipe
-mod.reallyfreegeoip    reallyfreegeoip.pipeline.get_ip_geolocation    Get geolocation data for an IPv4 or IPv6 address.
+local                  learn_flowpipe
+reallyfreegeoip        reallyfreegeoip.pipeline.get_ip_geolocation    Get geolocation data for an IPv4 or IPv6 address.
 ```
 
 You can run pipelines from the dependency mod on the command line:
