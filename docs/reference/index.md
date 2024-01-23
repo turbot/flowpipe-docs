@@ -7,6 +7,6 @@ sidebar_label: Reference
 
 When all else fails, read the manual...
 
-- **[Command line reference →](reference/cli)**
-- **[Config File reference →](reference/config-files)**
-- **[Environment Variables reference →](reference/env-vars)**
+- **[Command line reference →](/docs/reference/cli)**
+- **[Config File reference →](/docs/reference/config-files)**
+- **[Environment Variables reference →](/docs/reference/env-vars)**

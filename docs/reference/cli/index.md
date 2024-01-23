@@ -9,22 +9,22 @@ sidebar_label: Flowpipe CLI
 
 | Command | Description
 |-|-
-| [flowpipe help](reference/cli/help)      | Help about any command
-| [flowpipe mod](reference/cli/mod)        | Flowpipe mod management
-| [flowpipe pipeline](reference/cli/pipeline) | List, view, and run Flowpipe pipelines
-| [flowpipe process](reference/cli/process) | List and view Flowpipe processes
-| [flowpipe server](reference/cli/server)  | Run Flowpipe server, including triggers and integrations
-| [flowpipe trigger](reference/cli/pipeline) | List and view Flowpipe triggers
+| [flowpipe help](/docs/reference/cli/help)      | Help about any command
+| [flowpipe mod](/docs/reference/cli/mod)        | Flowpipe mod management
+| [flowpipe pipeline](/docs/reference/cli/pipeline) | List, view, and run Flowpipe pipelines
+| [flowpipe process](/docs/reference/cli/process) | List and view Flowpipe processes
+| [flowpipe server](/docs/reference/cli/server)  | Run Flowpipe server, including triggers and integrations
+| [flowpipe trigger](/docs/reference/cli/pipeline) | List and view Flowpipe triggers
 
 
 
 <!--
 
-| [flowpipe variable](reference/cli/variable)| Flowpipe variable management
+| [flowpipe variable](/docs/reference/cli/variable)| Flowpipe variable management
 
-| [flowpipe login](reference/cli/login)    | Log in to Flowpipe CLoud
+| [flowpipe login](/docs/reference/cli/login)    | Log in to Flowpipe CLoud
 
-| [flowpipe completion](reference/cli/completion)| Generate the autocompletion script for the specified shell
+| [flowpipe completion](/docs/reference/cli/completion)| Generate the autocompletion script for the specified shell
 
 -->
 ## Global Flags

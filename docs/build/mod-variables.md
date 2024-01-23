@@ -5,9 +5,9 @@ sidebar_label: Using Variables
 
 # Using Variables
 
-[Variables](flowpipe-hcl/variable) are module-level objects that allow you to pass values to your module at runtime.  When running Flowpipe, you can pass values on the command line or from a `.fpvars` file, and you will be prompted for any variables that have no values.
+[Variables](/docs/flowpipe-hcl/variable) are module-level objects that allow you to pass values to your module at runtime.  When running Flowpipe, you can pass values on the command line or from a `.fpvars` file, and you will be prompted for any variables that have no values.
 
-[Locals](flowpipe-hcl/locals) are internal, private variables used only *within* your mod - you cannot pass values in at runtime.
+[Locals](/docs/flowpipe-hcl/locals) are internal, private variables used only *within* your mod - you cannot pass values in at runtime.
 
 ##  Input Variables
 
