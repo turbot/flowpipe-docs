@@ -175,14 +175,6 @@ pipeline "learn_flowpipe" {
     ])
   }
 
-  step "pipeline" "send_to_slack" {
-    pipeline = slack.pipeline.post_message
-    args = {
-      text = step.transform.friendly_forecast.value
-      channel = "random"
-    }
-  }
-
   output "ip_address" {
     value = step.http.get_ipv4.response_body.ip
   }
