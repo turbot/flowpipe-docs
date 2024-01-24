@@ -84,8 +84,8 @@ flowpipe pipeline list
 
 ```bash
 MOD                    NAME                                           DESCRIPTION
-mod.local              local.pipeline.learn_flowpipe
-mod.reallyfreegeoip    reallyfreegeoip.pipeline.get_ip_geolocation    Get geolocation data for an IPv4 or IPv6 address.
+local                  learn_flowpipe
+reallyfreegeoip        reallyfreegeoip.pipeline.get_ip_geolocation    Get geolocation data for an IPv4 or IPv6 address.
 ```
 
 You can run pipelines from the dependency mod on the command line:
@@ -173,14 +173,6 @@ pipeline "learn_flowpipe" {
       step.http.get_weather.response_body.daily_units.precipitation_probability_mean,
       " chance of precipitation."
     ])
-  }
-
-  step "pipeline" "send_to_slack" {
-    pipeline = slack.pipeline.post_message
-    args = {
-      text = step.transform.friendly_forecast.value
-      channel = "random"
-    }
   }
 
   output "ip_address" {

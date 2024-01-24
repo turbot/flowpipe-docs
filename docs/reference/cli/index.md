@@ -53,8 +53,8 @@ sidebar_label: Flowpipe CLI
   </tr>
 
   <tr> 
-    <td nowrap="true">  <inlineCode>--insecure</inlineCode> </td> 
-    <td> Ignore any TLS certificate errors and warnings when connecting to a Flowpipe API host. </td> 
+    <td nowrap="true">  <inlineCode>--input</inlineCode> </td>
+    <td> Enable interactive prompts (default <inlineCode>true</inlineCode>). </td>
   </tr>
 
 
@@ -78,11 +78,6 @@ sidebar_label: Flowpipe CLI
     <td nowrap="true"> <inlineCode>--workspace	</inlineCode>  </td> 
     <td>  Sets the Flowpipe workspace profile. If not specified, the default workspace will be used if it exists. See <a href="/docs/reference/env-vars/flowpipe_workspace">FLOWPIPE_WORKSPACE</a> for details. </td> 
   </tr>
-
-
-  
-
-
 
 </table>
 

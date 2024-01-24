@@ -38,7 +38,8 @@ pipeline "another_pipe" {
 
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
-| `image`         | String	  | Required    | The docker image to use, eg `turbot/steampipe:latest`.  
+| `image`         | String	  | Optional*	  | The docker image to use, eg `turbot/steampipe:latest`.  [You must specify `image` or `source` but not both](#source-vs-image).
+| `source`        | String	  | Optional*	  | The path to a folder that contains the `dockerfile` or `containerfile` to build the container.  [You must specify `image` or `source` but not both](#source-vs-image).
 | `cmd`           | List of String| Optional  |	The cmd to use to start the container. 
 | `cpu_shares`    | Number    | Optional    | CPU shares (relative weight) for the container.
 | `entrypoint`    | List of String | Optional  | Overwrite the default `ENTRYPOINT` of the image. The entrypoint allows you to configure a container to run an executable. 
@@ -142,10 +143,61 @@ pipeline "simple_pipe" {
 }
 ```
 
-<!--
+
 ## Source v/s Image
 You must specify either an `image` or a `source` but not both.   The `image` will be pulled via standard docker client commands - The image must be publicly accessible or you must `docker login` to access a private repo.  You may instead specify a `source` in which case a custom image will be built before the step is run.  The image will be updated when anything in the `source` directory changes, and it will be deleted if the step is deleted. 
--->
+
+
+### Container Step using an Image
+
+When using `image`, the image is pulled from a registry via standard docker client commands:
+
+
+```hcl
+pipeline "another_pipe" {
+
+  step "container" "aws_s3_ls" {
+     image = "public.ecr.aws/aws-cli/aws-cli"
+     cmd   = ["s3", "ls"]
+
+     env = {
+      AWS_ACCESS_KEY_ID     = "AKIAFAKEKEY25WNAQKRC"
+      AWS_SECRET_ACCESS_KEY = "+bOnLljsFEZfakekeyJWQq7kkQaOsh5JbkTQH5YR"
+     }
+  }  
+
+  output "buckets" {
+    value = step.container.aws_s3_ls.stdout
+  }
+}
+
+```
+
+
+
+### Container Step using Source
+When using `source`, the path is relative to the [mod location](/docs/run#mod-location):
+
+```hcl
+pipeline "another_pipe" {
+
+  step "container" "aws_s3_ls" {
+     source = "./my_aws"
+     cmd    = ["s3", "ls"]
+
+     env = {
+      AWS_ACCESS_KEY_ID     = "AKIAFAKEKEY25WNAQKRC"
+      AWS_SECRET_ACCESS_KEY = "+bOnLljsFEZfakekeyJWQq7kkQaOsh5JbkTQH5YR"
+     }
+  }  
+
+  output "buckets" {
+    value = step.container.aws_s3_ls.stdout
+  }
+}
+
+```
+
 
 ## Labels
 Docker labels are automatically added to images, containers, volumes, etc using the [standard format](https://docs.docker.com/config/labels-custom-metadata/), including the standard `org.opencontainers` labels as well as Flowpipe-specific labels prefixed with `io.flowpipe`.

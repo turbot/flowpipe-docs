@@ -72,7 +72,11 @@
         "type": "category",
         "id": "triggers",
         "link": "flowpipe-hcl/trigger",
-        "items": ["flowpipe-hcl/trigger/http", "flowpipe-hcl/trigger/schedule"]
+        "items": [
+          "flowpipe-hcl/trigger/http",
+          "flowpipe-hcl/trigger/query",
+          "flowpipe-hcl/trigger/schedule"
+        ]
       },
       "flowpipe-hcl/variable"
     ]
