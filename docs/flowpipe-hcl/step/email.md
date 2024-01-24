@@ -50,4 +50,4 @@ pipeline "another_pipe" {
 | `smtp_username` | String      | Optional   | Username to log in to the SMTP server.
 | `subject`       | String      | Optional   | The message subject.
 
-This step also supports the [common step arguments](/docs/flowpipe-hcl/step/index#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step/index#common-step-attributes-read-only).
+This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).

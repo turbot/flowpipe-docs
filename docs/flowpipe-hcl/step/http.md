@@ -36,7 +36,7 @@ pipeline "get_astronauts" {
 | `request_headers` | Map   | Optional   | A map of request header field names and values.
 
 
-This step also supports the [common step arguments](/docs/flowpipe-hcl/step/index#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step/index#common-step-attributes-read-only).
+This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
 ## Attributes (Read-Only)
 

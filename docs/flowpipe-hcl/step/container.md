@@ -52,8 +52,14 @@ pipeline "another_pipe" {
 | `user`          | String  | Optional | User to run the container as (format: `<name\|uid>[:<group\|gid>]`)
 | `workdir`       | String    | Optional | The working directory for commands to run in.
 
+<!-- Pulled for 0.1.0
 
-This step also supports the [common step arguments](/docs/flowpipe-hcl/step/index#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step/index#common-step-attributes-read-only).
+| `image`         | String	  | Optional*	  | The docker image to use, eg `turbot/steampipe:latest`.  You must specify `image` or `source` but not both.
+| `source`        | String	  | Optional*	  | The path to a folder that contains the `dockerfile` or `containerfile` to build the container.  You must specify `image` or `source` but not both.
+
+-->
+
+This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
 
 
