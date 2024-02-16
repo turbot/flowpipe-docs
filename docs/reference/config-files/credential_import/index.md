@@ -4,13 +4,7 @@ sidebar_label: credential_import
 ---
 
 
-# COMING SOON!
-> This feature is not yet available for general release and is subject to change.
-
-<hr />
-
-
-# credential_import
+# Credential Import
 
 
 The `credential_import` resource allows you to bulk import credentials from other systems & formats. `credential_import` is a top-level block defined in config files (`*.fpc`) like `credential` and `workspace`.
@@ -23,7 +17,7 @@ credential_import "steampipe" {
 } 
 ```
 
-Imported credentials are converted to the native flowpipe credential type - Steampipe `aws` connections become `aws` credentials, `slack` connections are `slack` credentials, etc.  
+Imported credentials are converted to the native Flowpipe credential type - Steampipe `aws` connections become `aws` credentials, `slack` connections are `slack` credentials, etc.  
 
 The imported credentials are merged into the map of all credentials, like any other credential, and are referenced the same way.  For example, if you have connections defined as:
 
@@ -108,4 +102,8 @@ credential.slack.sp1_slack
 
 If there is a name conflict for any credentials, Flowpipe will throw an error when loading.
 
-At this time, you may only use a single `import_credential` block of a given type, though we may revisit this restriction in the future.
+At this time, you may only use a single `import_credential` block.
+
+<!--
+ of a given type, though we may revisit this restriction in the future.
+-->

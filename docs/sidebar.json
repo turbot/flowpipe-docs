@@ -109,6 +109,7 @@
         "label": "Environment Variables",
         "link": "reference/env-vars",
         "items": [
+          "reference/env-vars/flowpipe_base_url",
           "reference/env-vars/flowpipe_config_path",
           "reference/env-vars/flowpipe_host",
           "reference/env-vars/flowpipe_install_dir",
@@ -119,7 +120,10 @@
           "reference/env-vars/flowpipe_port",
           "reference/env-vars/flowpipe_telemetry",
           "reference/env-vars/flowpipe_update_check",
-          "reference/env-vars/flowpipe_workspace"
+          "reference/env-vars/flowpipe_workspace",
+          "reference/env-vars/pipes_host",
+          "reference/env-vars/pipes_install_dir",
+          "reference/env-vars/pipes_token"          
         ]
       },
 
@@ -166,6 +170,31 @@
               "reference/config-files/credential/zendesk"
             ]
           },
+          {
+            "type": "category",
+            "id": "credential_import",
+            "link": "reference/config-files/credential_import",
+            "items": [
+              "reference/config-files/credential_import/steampipe"
+            ]
+          },
+          {
+            "type": "category",
+            "id": "integration",
+            "link": "reference/config-files/integration",
+            "items": [
+              "reference/config-files/integration/email",
+              "reference/config-files/integration/slack",
+              "reference/config-files/integration/web"
+            ]
+          },
+          {
+            "type": "category",
+            "id": "notifier",
+            "link": "reference/config-files/notifier",
+            "items": [ ]
+          },
+          
           "reference/config-files/workspace"
         ]
       }

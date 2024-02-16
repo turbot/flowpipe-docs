@@ -4,13 +4,9 @@ sidebar_label: steampipe
 ---
 
 
-# COMING SOON!
-> This feature is not yet available for general release and is subject to change.
-
-<hr />
-
-
 # steampipe
+
+The `steampipe` credential import resource allows you to bulk import credentials from Steampipe connections.  This allows you to import the plugin credentials from your Steampipe installation into Flowpipe.
 
 ```hcl
 credential_import "steampipe" {
