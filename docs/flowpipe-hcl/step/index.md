@@ -18,7 +18,8 @@ Each step type has its own distinct set of attributes, though there are some [co
 | [email](/docs/flowpipe-hcl/step/email)            | Send an email.
 | [function](/docs/flowpipe-hcl/step/function)      | Run an AWS Lambda-compatible function.
 | [http](/docs/flowpipe-hcl/step/http)              | Make an HTTP request.
-| [pipeline](/docs/flowpipe-hcl/step/pipeline) | Run another Flowpipe pipeline.
+| [input](/docs/flowpipe-hcl/step/input)            | Prompt a user for input.
+| [pipeline](/docs/flowpipe-hcl/step/pipeline)      | Run another Flowpipe pipeline.
 | [query](/docs/flowpipe-hcl/step/query)            | Run a SQL query.
 | [sleep](/docs/flowpipe-hcl/step/sleep)            | Wait for a defined time period.
 | [transform](/docs/flowpipe-hcl/step/transform)    | Use HCL functions to transform data .

@@ -12,7 +12,7 @@ integration "email" "my_email_app" {
   smtp_host     = "smtp.gmail.com"
   from          =  "flowpipe@bluth.com"
   smtp_username = "flowpipe@bluth.com"
-  smtp_password = "Shfkjds87y98324509i"  
+  smtp_password = "Shfakes87y98324509i"  
 }
 ```
 

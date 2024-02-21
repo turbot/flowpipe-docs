@@ -7,19 +7,17 @@ sidebar_label: input
 
 
 ## Overview
-Flowpipe allows you to optimize and automate your operational and business processes, but there are times when human interaction is required.  For example, a manager may be required to approve a privilege escalation request.  Furthermore, we live in an era of constant communication in a multiple channels.  People prefer to use specific tools for communication and expect these interactions to occur in their tool.  The Flowpipe `input` step primitive provides the ability to prompt for human input via multiple channels (slack, email, teams, etc) and wait for a response.  
+<!-- 
+Flowpipe allows you to optimize and automate your operational and business processes, but there are times when human interaction is required.  For example, a manager may be required to approve a privilege escalation request.  Furthermore, we live in an era of constant communication across multiple channels.  People prefer to use specific tools for communication and expect these interactions to occur in their tools.  The Flowpipe `input` step primitive provides the ability to prompt for human input via multiple channels (slack, email, teams, etc) and wait for a response.  
 
-<!--
-Because human interaction tends to be slow, flowpipe will quiesce the pipeline until the input is received and then resume at the point that it left off.
 
--->
 
 To facilitate interacting with multiple delivery mechanisms, flowpipe also includes an `integration` configuration resource.  This allows you to configure flowpipe for 2-way communication with your tool (slack, email, etc).  `integration` is a configuration resource (defined in `.fpc` files) like `credential`, thus the configuration is installation level, not mod level; you can define the integrations for your installation once and refer to them from any mods.
 
 Sending notifications is a common pattern, and often users will want to route a request to more than one user, group, or channel, and via more than one delivery mechanism.  For instance, you may want to request approval via slack AND email.  The `notifier` resource allows you to define a list notification integrations to send notifications to.  
 
+-->
 
------
 
 
 
@@ -69,8 +67,8 @@ pipeline "my_step" {
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
 | `notifier`      | Notifier Reference | Required    | The [notifier](#notifiers) to send the request to.
-| `cc`            | list<String> | Optional    | The emails addresses to send to. This only applies to  notifiers that uses `email` integrations.
-| `bcc`           | list<String> | Optional    | The emails addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `cc`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `bcc`           | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
 | `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  notifiers that uses `slack` integrations.
 | `depends_on`    | List of Steps | Optional | A list of steps that this step depends on
 | `description`   | String    | Optional    | A description of the step.
@@ -79,10 +77,10 @@ pipeline "my_step" {
 | `option`        | Block     | Optional    | The available [options](#options) to present to the user as `option` blocks.  You may either specify one or ore `option` blocks or a single `options` list, but not both.
 | `options`       | List      | Optional    | The available [options](#options) to present to the user as a list of objects.  You may either specify one or more `option` blocks or a single `options` list, but not both.
 | `prompt`        | String    | Optional    | The text to present to the user as a prompt
-| `subject`       | String | Optional     | A brief overview statement used by notifiers,  For `email` integrations, this will be used as the email subject. For Slack integrations and web format, this a message title.
+| `subject`       | String    | Optional     | A brief overview statement used by notifiers,  For `email` integrations, this will be used as the email subject. For Slack integrations and web format, this a message title.
 | `title`         | String    | Optional    | Display title for the step.
 | `timeout`       | Number	  | Optional	  | Amount of time your container has to run in seconds. Defaults to `60`.
-| `to`            | list<String> | Optional    | The emails addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `to`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
 | `type`          | String    | Required     | The [input type](#input-types) to present to the user
 
 
@@ -219,7 +217,7 @@ pipeline "my_pipe" {
 
 #### multiselect or multicombo - simple
 
-(multi-select combo has same format)
+(multi-select combo has the same format)
 
 ```hcl
 pipeline "my_pipe" {

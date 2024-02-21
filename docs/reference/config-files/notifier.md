@@ -68,13 +68,13 @@ notifier "hr" {
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
 | `integration`   | Integration Reference | Required    | The [integration](#integrations) to send the request to.
-| `cc`            | list<String> | Optional    | The emails addresses to send to. This only applies to  notifiers that uses `email` integrations.
-| `bcc`           | list<String> | Optional    | The emails addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `cc`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `bcc`           | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
 | `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  notifiers that uses `slack` integrations.
 | `description`   | String    | Optional    | A description of the notifier.
 | `subject`       | String | Optional     | A brief overview statement used by notifiers,  For `email` integrations, this will be used as the email subject. For Slack integrations and web format, this a message title.
 | `title`         | String    | Optional    | Display title for the notifier.
-| `to`            | list<String> | Optional    | The emails addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `to`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
 
 
 ### Overriding arguments
