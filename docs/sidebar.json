@@ -39,6 +39,7 @@
         ]
       },
       "build/triggers",
+      "build/input",
       "build/mod-variables",
       "build/mod-dependencies"
     ]
@@ -62,6 +63,7 @@
           "flowpipe-hcl/step/email",
           "flowpipe-hcl/step/function",
           "flowpipe-hcl/step/http",
+          "flowpipe-hcl/step/input",
           "flowpipe-hcl/step/pipeline",
           "flowpipe-hcl/step/query",
           "flowpipe-hcl/step/sleep",
@@ -121,9 +123,7 @@
           "reference/env-vars/flowpipe_telemetry",
           "reference/env-vars/flowpipe_update_check",
           "reference/env-vars/flowpipe_workspace",
-          "reference/env-vars/pipes_host",
-          "reference/env-vars/pipes_install_dir",
-          "reference/env-vars/pipes_token"          
+          "reference/env-vars/pipes_install_dir"
         ]
       },
 
@@ -188,13 +188,7 @@
               "reference/config-files/integration/web"
             ]
           },
-          {
-            "type": "category",
-            "id": "notifier",
-            "link": "reference/config-files/notifier",
-            "items": [ ]
-          },
-          
+          "reference/config-files/notifier",
           "reference/config-files/workspace"
         ]
       }

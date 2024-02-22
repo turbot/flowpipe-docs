@@ -80,7 +80,7 @@ integration "slack" "my_slack_app" {
     - Optionally set the `signing_secret` with the value for the Slack app.
     ```hcl
     integration "slack" "default" {
-      token           = "xoxp-111111"
+      token           = "xoxb-111111"
       channel         = "#infosec"
       signing_secret  = "Q#$$#@#$$#W"
     }
