@@ -20,13 +20,14 @@ credential "jira" "jira_creds" {
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
 | `api_token`     |  String | Optional | API access token  
-| `base_url`      |  String | Optional | The Base Url of your Jira API instance 
+| `base_url`      |  String | Optional | The Base Url of your Jira API instance
 | `username`      |  String | Optional | The user name to access the Jira cloud instance
 
 All arguments are optional, and a `jira` credential with no arguments will behave the same as the [default credential](#default-credential).  
 
 ## Default Credential
-The `jira` credential type includes an implicit, default credential (`credential.jira.default`) that will be configured using the environment variables `JIRA_API_TOKEN`, `JIRA_URL`, and `JIRA_USER`.
+
+The `jira` credential type includes an implicit, default credential (`credential.jira.default`) that will be configured using the environment variables `JIRA_API_TOKEN` (or `JIRA_TOKEN`), `JIRA_URL`, and `JIRA_USER`.
 
 ```hcl
 credential "jira" "default" {
