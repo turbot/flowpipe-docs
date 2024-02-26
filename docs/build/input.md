@@ -39,8 +39,8 @@ pipeline "input_step_example_01" {
 }
 ```
 
-This input will prompt the user for approval using `Yes` and `No` buttons, but there are other [input step types](/docs/flowpipe-hcl/step/input#input-types), such as `text`, `select`, and `multiselect`.
-After the user clicks a button, the pipeline will continue, and we will return the selected button value in the `choice` output.  This is a trivial example.  Usually, you will use the input's `value` in a subsequent step.
+This pipeline will prompt the user for approval using `Yes` and `No` buttons (there are other [input step types](/docs/flowpipe-hcl/step/input#input-types), such as `text`, `select`, and `multiselect`).
+After the user clicks a button, the pipeline will continue, and we will return the selected button value in the `choice` output.  This is a trivial example, of course; usually, you will use the input's `value` in a subsequent step.
 
 The `input` step routes the request to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [webform integration](/docs/reference/config-files/integration/web) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it. 
 
@@ -49,7 +49,7 @@ Integrations are only loaded in [server mode](/docs/run/server), so let's start 
 flowpipe server
 ```
 
-In another terminal, let's run the pipeline:
+In another terminal, run the pipeline:
 ```bash
 flowpipe pipeline run input_step_example_01  --host local 
 ```
@@ -63,7 +63,7 @@ Flowpipe runs the pipeline.  When it gets to the input step, it prints the URL f
 
 Open the URL in your browser.  The form appears.  
 
-![](/images/build/input_webform_approval.png)
+![](/images/docs/build/input_webform_approval.png)
 
 
 Click one of the buttons, then return to the terminal where you are running the pipeline.  You will see that the pipeline is now finished, and your choice was returned in the output:
@@ -89,6 +89,7 @@ The `integration` block allows you to define configuration information for commu
 
 Let's set up a Slack integration.
 
+### Create the Slack App
 First, we'll need to [create an app in Slack](https://api.slack.com/start/quickstart) for Flowpipe.
 
 - Go to the [Slack Apps page](https://api.slack.com/apps/) and click the **Create New App** button.
@@ -99,6 +100,8 @@ First, we'll need to [create an app in Slack](https://api.slack.com/start/quicks
 - On the **OAuth & Permissions** page, in the **OAuth Tokens for Your Workspace**, copy the **Bot User OAuth Token**.  This will be the `token` that you use to configure the `integration` in Flowpipe.
 - Go back to the **Basic Information** page.  In the **App Credentials** section, copy the **Signing Secret**.   This will be the `signing_secret` that you use to configure the `integration` in Flowpipe.
 
+
+### Create the Flowpipe Integration
 
 Now that the app is created, we will create a new Slack integration in Flowpipe.  If you don't already have one, create a `flowpipe.fpc` in your config directory (usually `~/.flowpipe/config/`).  Create a [Slack Integration](/docs/reference/config-files/integration/slack).  Set the `token` and `signing_secret` to the values for your slack app, and set the channel to whichever slack channel you would like to use as the default channel.
 
@@ -135,6 +138,8 @@ Type:        slack
 Request URL: https://0000-1111-2222-ee0-16b0-91dd-fdc0-3333-4444.ngrok-free.app/api/latest/hook/integration.slack.default/0000000000000a565c4b466152f660b3bf873b83cd83e27c011c8000000000000
 ```
 
+### Enable Interactivity in the Slack App
+
 Now we need to enable your Slack app for interactivity and complete the Slack setup
 - In a browser, go to the [Slack app configuration](https://api.slack.com/apps) page for the app that you created earlier.
 - In the settings for the app, go to **Interactivity & Shortcuts**.  Enable **Interactivity**, and set the **Request URL** to the integration's `Request URL`.  Click **Save Changes**.
@@ -159,8 +164,10 @@ notifier "default" {
 }
 ```
 
+
 The pipeline that we created earlier already routes the input request to the default notifier, and we have now added our Slack integration to that default notifier.  We can run the pipeline again, and now our input request will route to both the webform and our Slack channel!
 
 
+![](/images/docs/build/input_slack_approval.png)
 
 
