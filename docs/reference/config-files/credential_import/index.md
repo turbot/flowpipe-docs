@@ -13,13 +13,13 @@ The `credential_import` resource allows you to bulk import credentials from othe
 credential_import "steampipe" {
   source      = "~/.steampipe/config/*.spc"
   connections = ["*"]
-  prefix      = "sp1_" # prefix is optional
+  prefix      = "sp1_"
 } 
 ```
 
 Imported credentials are converted to the native Flowpipe credential type - Steampipe `aws` connections become `aws` credentials, `slack` connections are `slack` credentials, etc.  
 
-The imported credentials are merged into the map of all credentials, like any other credential, and are referenced the same way.  For example, if you have connections defined as:
+The imported credentials are merged into the map of all credentials like any other credential, and they are referenced the same way.  For example, if you have connections defined as:
 
 ```hcl
 connection "gcp_dev_aaa" {

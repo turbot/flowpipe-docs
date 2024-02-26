@@ -98,10 +98,12 @@
         "link": "reference/cli",
         "items": [
           "reference/cli/help",
-          "reference/cli/server",
+          "reference/cli/integration",
+          "reference/cli/notifier",
           "reference/cli/mod",
           "reference/cli/pipeline",
           "reference/cli/process",
+          "reference/cli/server",
           "reference/cli/trigger"
         ]
       },

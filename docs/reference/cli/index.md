@@ -10,7 +10,9 @@ sidebar_label: Flowpipe CLI
 | Command | Description
 |-|-
 | [flowpipe help](/docs/reference/cli/help)      | Help about any command
+| [flowpipe integration](/docs/reference/cli/integration)   | List and view integrations
 | [flowpipe mod](/docs/reference/cli/mod)        | Flowpipe mod management
+| [flowpipe notifier](/docs/reference/cli/notifier)   | List and view notifiers
 | [flowpipe pipeline](/docs/reference/cli/pipeline) | List, view, and run Flowpipe pipelines
 | [flowpipe process](/docs/reference/cli/process) | List and view Flowpipe processes
 | [flowpipe server](/docs/reference/cli/server)  | Run Flowpipe server, including triggers and integrations

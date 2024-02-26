@@ -46,7 +46,6 @@ credential_import "steampipe" {
 
 ### Import specific Steampipe connections only
 
-
 ```hcl
 credential_import "steampipe" {
   source      = "~/.steampipe/config/aws.spc"
