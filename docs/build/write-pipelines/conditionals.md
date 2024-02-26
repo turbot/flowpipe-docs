@@ -9,8 +9,8 @@ You can conditionally execute a step using the `if` argument:
 ```hcl
 pipeline "notify_unencrypted" {
   step "query" "unencrypted_vols" {
-    connection_string = "postgres://steampipe@localhost:9193/steampipe"
-    sql               = "select arn from aws_ebs_volume where not encrypted"
+    database = "postgres://steampipe@localhost:9193/steampipe"
+    sql      = "select arn from aws_ebs_volume where not encrypted"
   }
 
   step "http" "notify_slack" {
@@ -30,8 +30,8 @@ Flowpipe does not provide `else` or `case` arguments to `step`, but you can mimi
 ```hcl
 pipeline "notify_unencrypted" {
   step "query" "unencrypted_vols" {
-    connection_string = "postgres://steampipe@localhost:9193/steampipe"
-    sql               = "select arn from aws_ebs_volume where not encrypted"
+    database = "postgres://steampipe@localhost:9193/steampipe"
+    sql      = "select arn from aws_ebs_volume where not encrypted"
   }
 
   step "http" "notify_slack" {
@@ -58,12 +58,11 @@ pipeline "notify_unencrypted" {
 
 In this instance, you could accomplish the same thing using [conditional expressions](https://developer.hashicorp.com/terraform/language/expressions/conditionals):
 
-
 ```hcl
 pipeline "notify_unencrypted" {
   step "query" "unencrypted_vols" {
-    connection_string = "postgres://steampipe@localhost:9193/steampipe"
-    sql               = "select arn from aws_ebs_volume where not encrypted"
+    database = "postgres://steampipe@localhost:9193/steampipe"
+    sql      = "select arn from aws_ebs_volume where not encrypted"
   }
 
   step "http" "notify_slack" {
@@ -80,12 +79,11 @@ pipeline "notify_unencrypted" {
 
 or string [directives](https://developer.hashicorp.com/terraform/language/expressions/strings#directives):
 
-
 ```hcl
 pipeline "notify_unencrypted" {
   step "query" "unencrypted_vols" {
-    connection_string = "postgres://steampipe@localhost:9193/steampipe"
-    sql               = "select arn from aws_ebs_volume where not encrypted"
+    database = "postgres://steampipe@localhost:9193/steampipe"
+    sql      = "select arn from aws_ebs_volume where not encrypted"
   }
 
   step "http" "notify_slack" {
