@@ -64,6 +64,7 @@
           "flowpipe-hcl/step/function",
           "flowpipe-hcl/step/http",
           "flowpipe-hcl/step/input",
+          "flowpipe-hcl/step/message",
           "flowpipe-hcl/step/pipeline",
           "flowpipe-hcl/step/query",
           "flowpipe-hcl/step/sleep",
@@ -185,8 +186,8 @@
             "link": "reference/config-files/integration",
             "items": [
               "reference/config-files/integration/email",
-              "reference/config-files/integration/slack",
-              "reference/config-files/integration/web"
+              "reference/config-files/integration/http",
+              "reference/config-files/integration/slack"
             ]
           },
           "reference/config-files/notifier",

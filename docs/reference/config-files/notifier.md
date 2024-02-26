@@ -6,16 +6,16 @@ sidebar_label: notifier
 
 # Notifiers
 
-Notifiers allow you to create a named list of notification targets, linking `input` steps to `integrations`.  Like `integration`, `notifier` blocks are installation-level configuration items, defined in `.fpc` files.
+Notifiers allow you to create a named list of notification targets, linking `message` and `input` steps to `integrations`.  Like `integration`, `notifier` blocks are installation-level configuration items, defined in `.fpc` files (typically, in `~/.flowpipe/config/flowpipe.spc`).
 
-Each notifier contains a list of integrations and related settings used to send and receive data to one or more `integration` when an `input` step executes.
+Each notifier contains a list of integrations and related settings used to send and receive data to one or more integrations when an `input` step executes.
 
 ```hcl
 notifier "admins" {
 
   notify {
     integration = integration.slack.default 
-    channel = "#admins"
+    channel     = "#admins"
   }
   notify {
     integration = integration.email.default 
@@ -24,14 +24,14 @@ notifier "admins" {
 }
 ```
 
-You can have many named `notifier` instances that use the same `integration` but override specific values, to route `input` requests to different people:
+You can have many named `notifier` instances that use the same `integration` but override specific values, to route `input` requests to different people or channels:
 
 ```hcl
 notifier "admins" {
 
   notify {
     integration = integration.slack.default 
-    channel = "#admins"
+    channel     = "#admins"
   }
   notify {
     integration = integration.email.default 
@@ -53,7 +53,7 @@ notifier "hr" {
 ```
 
 
-### Arguments
+## Arguments
 
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
@@ -61,27 +61,27 @@ notifier "hr" {
 
 
 
-#### Notify Block
+## Notify Block
 
-##### Arguments
+### Arguments
 
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
 | `integration`   | Integration Reference | Required    | The [integration](#integrations) to send the request to.
-| `cc`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
-| `bcc`           | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
-| `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  notifiers that uses `slack` integrations.
+| `cc`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to  `email` integrations.
+| `bcc`           | List&ltString&gt | Optional    | The email addresses to send to. This only applies to  `email` integrations.
+| `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  `slack` integrations.
 | `description`   | String    | Optional    | A description of the notifier.
-| `subject`       | String | Optional     | A brief overview statement used by notifiers,  For `email` integrations, this will be used as the email subject. For Slack integrations and web format, this a message title.
+| `subject`       | String | Optional     | The email subject. This only applies to  `email` integrations.
 | `title`         | String    | Optional    | Display title for the notifier.
-| `to`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `to`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to  `email` integrations.
 
 
 ### Overriding arguments
 
-There are some settings that, such as `channel`, `to`, `subject`, etc,  That can be set in `integration`, the `notifier`, or the `input` step.  These have the following priority:
-1. The argument passed to the step is highest priority
-2. The argument passed to the integration is the lowest priority.
+There are some settings that, such as `channel`, `to`, `cc`, `bcc`, and `subject` that can be set in `integration`, the `notifier`, or the `input` or `message` step:
+1. The argument passed to the step has the highest priority
+2. The argument passed to the integration has the lowest priority.
 
 This allows you to set default message routing parameters in the `integration` but override them in the `notifier` and `step`.  Consider the following example:
 
@@ -119,21 +119,19 @@ When the `change_request` pipeline is run, the `input` will send the approval em
 
 ### Default Notifier
  
-By default,  Flowpipe will include a default `notifier` group that only includes the webform and thus works out-of-the-box:
+By default,  Flowpipe will include a default `notifier` group that only includes the http integration and thus works out-of-the-box.  It is equivalent to:
 
-In `~/.flowpipe/config/integrations.spc`:
 ```hcl
-integration "webform" "default" {}
-```
+integration "http" "default" {}
 
-In `~/.flowpipe/config/notifiers.spc`:
-```hcl
 notifier "default" {
   notify {
-    integration = integration.webform.default  
+    integration = integration.http.default  
   }
 }
 ```
+
+Note that you can override the default notifier by creating a notifier named `default`.  This allows you to route messages and inputs to Slack, email, etc by default.  
 
 
 ### Using Notifiers in Mods
@@ -153,7 +151,7 @@ step "input" "my_step" {
 }
 ```
 
-Generally though, Mods that use `inputs` should allow passing a notifier as a parameter, but default to the [default notifier](#default-notifier):
+Generally though, Mods that use `input` and `message` steps should allow passing a notifier name as a parameter, but default to the [default notifier](#default-notifier):
 
 ```hcl
 

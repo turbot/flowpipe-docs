@@ -42,7 +42,7 @@ pipeline "input_step_example_01" {
 This pipeline will prompt the user for approval using `Yes` and `No` buttons (there are other [input step types](/docs/flowpipe-hcl/step/input#input-types), such as `text`, `select`, and `multiselect`).
 After the user clicks a button, the pipeline will continue, and we will return the selected button value in the `choice` output.  This is a trivial example, of course; usually, you will use the input's `value` in a subsequent step.
 
-The `input` step routes the request to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [webform integration](/docs/reference/config-files/integration/web) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it. 
+The `input` step routes the request to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [http integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it. 
 
 Integrations are only loaded in [server mode](/docs/run/server), so let's start the Flowpipe server:
 ```bash
@@ -54,7 +54,7 @@ In another terminal, run the pipeline:
 flowpipe pipeline run input_step_example_01  --host local 
 ```
 
-Flowpipe runs the pipeline.  When it gets to the input step, it prints the URL for the webform and waits:
+Flowpipe runs the pipeline.  When it gets to the input step, it prints the URL for the form and waits:
 ```bash
 [flowpipe] Execution ID: exec_cnb4aobjtojdrgh3gakg
 [input_step_example_01] Starting pipeline
@@ -81,24 +81,29 @@ Click one of the buttons, then return to the terminal where you are running the 
 
 ## Creating an Integration
 
-While the default webform integration is useful for testing pipelines, you probably want to send input requests to other people via other mechanisms, like [Email](/docs/reference/config-files/integration/email) or [Slack](/docs/reference/config-files/integration/slack).  
+While the default `http` integration is useful for testing pipelines, you probably want to send input requests to other people via other mechanisms, like [Email](/docs/reference/config-files/integration/email) or [Slack](/docs/reference/config-files/integration/slack).  
 
-The `integration` block allows you to define configuration information for communicating with an external system such as Slack or Email.  `integration` blocks are *configuration* resources - they are defined in configuration files (`.fpc`), not mod files(`.fp`).  The reason for this is twofold:
+The `integration` block allows you to define configuration information for communicating with an external system such as Slack or Email.  `integration` blocks are *configuration* resources - they are defined in configuration files (`.fpc`), not mod files(`.fp`).
+
+<!--
+  The reason for this is twofold:
 - The settings are installation-specific and may contain secrets.
 - The settings are usually the same for *all* mods in a given installation.
+-->
+
 
 Let's set up a Slack integration.
 
 ### Create the Slack App
 First, we'll need to [create an app in Slack](https://api.slack.com/start/quickstart) for Flowpipe.
 
-- Go to the [Slack Apps page](https://api.slack.com/apps/) and click the **Create New App** button.
-- In the **Create an app** dialog, choose **From scratch**.
-- The **Name app & choose workspace** dialog appears.  Enter a name for your app and select the workspace in which to create it.  Click **Create App**.
-- Your app is created and you are sent to the **Basic Information** page for the app.  From the left-hand hand menu, select **OAuth & Permissions**.  In the **Scopes** section, under **Bot Token Scopes**, click **Add an OAuth Scope** and add the `chat:write` scope.
-- Scroll back to the top of the page and in the **OAuth Tokens for Your Workspace** section, click the **Install to Workspace** button.  You will be prompted to allow access.  Click **Allow**.
-- On the **OAuth & Permissions** page, in the **OAuth Tokens for Your Workspace**, copy the **Bot User OAuth Token**.  This will be the `token` that you use to configure the `integration` in Flowpipe.
-- Go back to the **Basic Information** page.  In the **App Credentials** section, copy the **Signing Secret**.   This will be the `signing_secret` that you use to configure the `integration` in Flowpipe.
+1. Go to the [Slack Apps page](https://api.slack.com/apps/) and click the **Create New App** button.
+1. In the **Create an app** dialog, choose **From scratch**.
+1. The **Name app & choose workspace** dialog appears.  Enter a name for your app and select the workspace in which to create it.  Click **Create App**.
+1. Your app is created and you are sent to the **Basic Information** page for the app.  From the left-hand hand menu, select **OAuth & Permissions**.  In the **Scopes** section, under **Bot Token Scopes**, click **Add an OAuth Scope** and add the `chat:write` scope.
+1. Scroll back to the top of the page and in the **OAuth Tokens for Your Workspace** section, click the **Install to Workspace** button.  You will be prompted to allow access.  Click **Allow**.
+1. On the **OAuth & Permissions** page, in the **OAuth Tokens for Your Workspace**, copy the **Bot User OAuth Token**.  This will be the `token` that you use to configure the `integration` in Flowpipe.
+1. Go back to the **Basic Information** page.  In the **App Credentials** section, copy the **Signing Secret**.   This will be the `signing_secret` that you use to configure the `integration` in Flowpipe.
 
 
 ### Create the Flowpipe Integration
@@ -141,9 +146,9 @@ Request URL: https://0000-1111-2222-ee0-16b0-91dd-fdc0-3333-4444.ngrok-free.app/
 ### Enable Interactivity in the Slack App
 
 Now we need to enable your Slack app for interactivity and complete the Slack setup
-- In a browser, go to the [Slack app configuration](https://api.slack.com/apps) page for the app that you created earlier.
-- In the settings for the app, go to **Interactivity & Shortcuts**.  Enable **Interactivity**, and set the **Request URL** to the integration's `Request URL`.  Click **Save Changes**.
-- Re-install the app in the workspace.  From the menu on the left, select **Install App**, then click **Reinstall to Workspace**.
+1. In a browser, go to the [Slack app configuration](https://api.slack.com/apps) page for the app that you created earlier.
+1. In the settings for the app, go to **Interactivity & Shortcuts**.  Enable **Interactivity**, and set the **Request URL** to the integration's `Request URL`.  Click **Save Changes**.
+1. Re-install the app in the workspace.  From the menu on the left, select **Install App**, then click **Reinstall to Workspace**.
 
 
 The Slack app is now configured.  **Note that you must also invite the bot user to any channel that you want to post messages to!**  You can go the the channel in Slack and invite the integration by name: `/invite @Flowpipe Integration`.
@@ -155,7 +160,7 @@ Now that the app is set up and installed in your Slack workspace and the `integr
 ```hcl
 notifier "default" {
   notify {
-    integration = integration.webform.default  
+    integration = integration.http.default  
   }
 
   notify {
@@ -165,7 +170,7 @@ notifier "default" {
 ```
 
 
-The pipeline that we created earlier already routes the input request to the default notifier, and we have now added our Slack integration to that default notifier.  We can run the pipeline again, and now our input request will route to both the webform and our Slack channel!
+The pipeline that we created earlier already routes the input request to the default notifier, and we have now added our Slack integration to that default notifier.  We can run the pipeline again, and now our input request will route to both the HTTP integration and our Slack channel!
 
 
 ![](/images/docs/build/input_slack_approval.png)

@@ -38,6 +38,10 @@ To learn more, see **[Managing Workspaces →](/docs/run/workspaces)**
 | `input`             | `true`                       | Enable/Disable interactive prompts for missing variables.  To disable prompts and fail on missing variables, set it to `false`. This is useful when running from scripts.   <br /> <br /> CLI: `--input`
 | `listen`            | `network`                    | Specifies the IP addresses on which `flowpipe server` will listen for connections from clients. Currently supported values are `local` (localhost only) or `network` (all IP addresses).
 | `log_level`         | off                          | Set the logging output level
+| `max_concurrency_container` | `25` | Set the maximum number of `container` step instances that can execute concurrently across all pipeline instances.
+| `max_concurrency_function`  | `50` | Set the maximum number of `function` step instances that can execute concurrently across all pipeline instances.
+| `max_concurrency_http`      | `500` | Set the maximum number of `http` step instances that can execute concurrently across all pipeline instances.
+| `max_concurrency_query`    | `50` | Set the maximum number of `query` step instances that can execute concurrently across all pipeline instances.
 | `memory_max_mb`     | `1024`                       | Set a memory soft limit for the flowpipe process. Set to 0 to disable the memory limit. This can also be set via the FLOWPIPE_MEMORY_MAX_MB environment variable.
 | `output`            | `pretty`                     | Set the console output format: `pretty`, `plain`, `yaml` or `json`.
 | `port`              | `7103`                       | Specifies the TCP port on which `flowpipe server` will listen for connections from clients. 
@@ -55,10 +59,6 @@ To learn more, see **[Managing Workspaces →](/docs/run/workspaces)**
 | `event_store`       | `$PWD/.flowpipe/flowpipe.db` | The path the the event store file. If the file does not exist, it will be created.
 | `insecure`          | `false`                      | When set to `true`, ignore any TLS certificate errors and warnings when connecting to a Flowpipe API host. 
 
-
-
-
-| `max_parallel` | `10` | an integer| Set the maximum number of parallel executions. When running pipelines, Flowpipe will attempt to run up to this many steps in parallel. This can also be set via the  `FLOWPIPE_MAX_PARALLEL` environment variable.
 
 | `query_timeout`     | `240` for controls, unlimited otherwise       | The maximum time (in seconds) a query is allowed to run before it times out.
 
@@ -89,6 +89,10 @@ except using an underscore in place of a dash:
 | `input`            |                         | `--input` 
 | `listen`           | `FLOWPIPE_LISTEN`       | `--listen` 
 | `log_level`        | `FLOWPIPE_LOG_LEVEL`    |
+| `max_concurrency_container` | `FLOWPIPE_MAX_CONCURRENCY_CONTAINER` |  `--max-concurrency-container`
+| `max_concurrency_function` | `FLOWPIPE_MAX_CONCURRENCY_FUNCTION` |  `--max-concurrency-function`
+| `max_concurrency_http` | `FLOWPIPE_MAX_CONCURRENCY_HTTP` |  `--max-concurrency-http`
+| `max_concurrency_query` | `FLOWPIPE_MAX_CONCURRENCY_QUERY` |  `--max-concurrency-query`
 | `memory_max_mb`    | `FLOWPIPE_MEMORY_MAX_MB`|
 | `output`           |                         | `--output`
 | `port`             | `FLOWPIPE_PORT`         | `--port`
@@ -136,23 +140,27 @@ workspace "server" {
 }
 
 workspace "local_01" {
-  output        = "pretty"
-  watch         = true
-  input         = true
-  host          = "http://localhost:7103"
-  port          = 7103
-  listen        = local
-  update_check  = true
-  telemetry     = "info"
-  log_level     = "info"
-  memory_max_mb = 1024
-  base_url      = "https://84c5df474.ngrok-free.dev"
+  output                    = "pretty"
+  watch                     = true
+  input                     = true
+  host                      = "http://localhost:7103"
+  port                      = 7103
+  listen                    = local
+  update_check              = true
+  telemetry                 = "info"
+  log_level                 = "info"
+  memory_max_mb             = 1024
+  base_url                  = "https://84c5df474.ngrok-free.dev"
+  max_concurrency_container = 50
+  max_concurrency_function  = 50
+  max_concurrency_http      = 250
+  max_concurrency_query     = 50
 }
 
 workspace "dev_server" {
-  base          = workspace.server
-  log_level     = "debug"
-  port          = 7104
-  base_url      = "https://84c5df474.ngrok-free.dev"
+  base      = workspace.server
+  log_level = "debug"
+  port      = 7104
+  base_url  = "https://84c5df474.ngrok-free.dev"
 }
 ```

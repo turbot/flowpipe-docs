@@ -58,6 +58,24 @@ sidebar_label: Flowpipe CLI
   </tr>
 
 
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-container int</inlineCode> </td>
+    <td>Set the maximum number of <inlineCode>container</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>25</inlineCode>). </td>
+  </tr>
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-function int</inlineCode> </td>
+    <td> Set the maximum number of <inlineCode>function</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>50</inlineCode>). </td>
+  </tr>
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-http int</inlineCode> </td>
+    <td> Set the maximum number of <inlineCode>http</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>500</inlineCode>). </td>
+  </tr>
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-query int</inlineCode> </td>
+    <td> Set the maximum number of <inlineCode>query</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>50</inlineCode>). </td>
+  </tr>
+
+
 
   <tr> 
     <td nowrap="true"> <inlineCode>--mod-location</inlineCode>  </td> 

@@ -3,7 +3,6 @@ title: step
 sidebar_label: step
 ---
 
-
 # step
 
 A pipeline is composed of one or more steps. Each step has a type and a name, and the arguments are dependent on the type. The step types are sometimes referred to as "primitives". 
@@ -18,16 +17,13 @@ Each step type has its own distinct set of attributes, though there are some [co
 | [email](/docs/flowpipe-hcl/step/email)            | Send an email.
 | [function](/docs/flowpipe-hcl/step/function)      | Run an AWS Lambda-compatible function.
 | [http](/docs/flowpipe-hcl/step/http)              | Make an HTTP request.
-| [input](/docs/flowpipe-hcl/step/input)            | Prompt a user for input.
+| [input](/docs/flowpipe-hcl/step/input)            | Prompt a user for input
+| [message](/docs/flowpipe-hcl/step/messsage)       | Send a message to an integration.
 | [pipeline](/docs/flowpipe-hcl/step/pipeline)      | Run another Flowpipe pipeline.
 | [query](/docs/flowpipe-hcl/step/query)            | Run a SQL query.
 | [sleep](/docs/flowpipe-hcl/step/sleep)            | Wait for a defined time period.
 | [transform](/docs/flowpipe-hcl/step/transform)    | Use HCL functions to transform data .
 
-<!--
-| [input](/docs/flowpipe-hcl/step/input)            | Request human input.
-
--->
 
 ## Common Step Arguments
 

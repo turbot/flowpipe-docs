@@ -5,40 +5,7 @@ sidebar_label: input
 
 # input
 
-
-## Overview
-<!-- 
-Flowpipe allows you to optimize and automate your operational and business processes, but there are times when human interaction is required.  For example, a manager may be required to approve a privilege escalation request.  Furthermore, we live in an era of constant communication across multiple channels.  People prefer to use specific tools for communication and expect these interactions to occur in their tools.  The Flowpipe `input` step primitive provides the ability to prompt for human input via multiple channels (slack, email, teams, etc) and wait for a response.  
-
-
-
-To facilitate interacting with multiple delivery mechanisms, flowpipe also includes an `integration` configuration resource.  This allows you to configure flowpipe for 2-way communication with your tool (slack, email, etc).  `integration` is a configuration resource (defined in `.fpc` files) like `credential`, thus the configuration is installation level, not mod level; you can define the integrations for your installation once and refer to them from any mods.
-
-Sending notifications is a common pattern, and often users will want to route a request to more than one user, group, or channel, and via more than one delivery mechanism.  For instance, you may want to request approval via slack AND email.  The `notifier` resource allows you to define a list notification integrations to send notifications to.  
-
--->
-
-
-
-
------
-## Input Step
-
-The `input` step primitive allows a workflow to prompt for user input.  The pipeline will send the prompt to one or more configured integrations and will then pause and wait for a response.  When a response is received, the pipeline will wake up and continue.
-
-An `input` step is limited to a single prompt and a single input element - It asks a single question, and returns a single answer (`value`).
-
-
-There are multiple [input types](#input-types), but they all behave roughly the same
-  - generally, you specify `option` blocks, 
-    - options have optional `label`, else use block label
-    - select types may have `selected` boolean
-  - you may either specify `option` blocks OR `options` which is a list of objects
-    - the list of objects format allows you to build the list is built dynamically
-
-You must select a [notifier](#notifiers) to send the request to.  The notifier dictates which integration to use to send the the request (Slack, email, etc) as well as routing information (which slack channel which recipient, etc.)
-
-
+The `input` step primitive allows a workflow to prompt for user input.  The pipeline will send the prompt to one or more [integrations](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier).  It will then pause and wait for a response.  When a response is received, the pipeline will continue and the step will return the selected `value`.
 
 ```hcl
 pipeline "my_step" {
@@ -60,39 +27,46 @@ pipeline "my_step" {
 }
 ```
 
+An `input` step is limited to a single prompt and a single input element - It asks a single question and returns a single answer (`value`).
+
+You must select a [notifier](/docs/reference/config-files/notifier) to send the request to.  The notifier dictates which [integration](/docs/reference/config-files/integration) to send the request to (Slack, email, etc).
+
+There are multiple [input types](#input-types), but they all behave roughly the same:
+- It has one or more [options](#options).
+- The options may either be specified in `option` blocks or as a list of `options`.  The block format is typically preferred when the list of options is statically defined, and the list format is useful when generating the options dynamically.
+- Each option must have a `value`
+- An option may have a `label` (display value).   If no `label` is specified, the `value` is used as the label.
+- An `option` may be `selected` by default.  
 
 
-### Arguments
+## Arguments
 
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
-| `notifier`      | Notifier Reference | Required    | The [notifier](#notifiers) to send the request to.
-| `cc`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
-| `bcc`           | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
-| `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  notifiers that uses `slack` integrations.
-| `depends_on`    | List of Steps | Optional | A list of steps that this step depends on
-| `description`   | String    | Optional    | A description of the step.
-| `for_each`      | Map or List | Optional  | A map or list used as a [step iterator](#iteration).  A step instance will be created for each item in the map or list.
-| `if`            | Condition | Optional    | A [condition to evaluate to determine whether to run this step](#conditional-execution). The step will run only if this condition evaluates to `true`.
+| `notifier`      | Notifier Reference | Required    | The [notifier](/docs/reference/config-files/notifier) to send the request to send the message.
+| `cc`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to notifiers that uses `email` integrations.
+| `bcc`           | List&ltString&gt | Optional    | The email addresses to send to. This only applies to notifiers that uses `email` integrations.
+| `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  `slack` integrations.
+| `markdown`      | Boolean    | Optional    | If set to `true`, the `prompt` will be formatted as markdown.  Set to `false` for plain text.  Defaults to `true`.
 | `option`        | Block     | Optional    | The available [options](#options) to present to the user as `option` blocks.  You may either specify one or ore `option` blocks or a single `options` list, but not both.
 | `options`       | List      | Optional    | The available [options](#options) to present to the user as a list of objects.  You may either specify one or more `option` blocks or a single `options` list, but not both.
 | `prompt`        | String    | Optional    | The text to present to the user as a prompt
-| `subject`       | String    | Optional     | A brief overview statement used by notifiers,  For `email` integrations, this will be used as the email subject. For Slack integrations and web format, this a message title.
-| `title`         | String    | Optional    | Display title for the step.
-| `timeout`       | Number	  | Optional	  | Amount of time your container has to run in seconds. Defaults to `60`.
-| `to`            | List of Strings | Optional    | The email addresses to send to. This only applies to  notifiers that uses `email` integrations.
+| `subject`       | String    | Optional     | The email subject.  This only applies to notifiers that uses `email` integrations.
+| `to`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to  `email` integrations.
 | `type`          | String    | Required     | The [input type](#input-types) to present to the user
 
 
+This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
-### Attributes (Read-Only)
+
+## Attributes (Read-Only)
 
 | Attribute       | Type    |  Description
 |-----------------|---------|-----------------
-| `value `        | String  | The value that the user has selected.  This may be a scalar value (when the type is `button`, `text`, `select`, `combo`) or a list (when the type is `multiselect`, `multicombo`)
+| `value `        | String  | The value that the user has selected.  This may be a scalar value (when the type is `button`, `text`, `select`) or a list (when the type is `multiselect`).
 
 
-### Input Types
+## Input Types
 
 | Type          | Description
 |---------------|---------------------
@@ -100,14 +74,15 @@ pipeline "my_step" {
 | `text`        | Enter a single line of text
 | `select`      | Select a single item from a dropdown list
 | `multiselect`	| Select one or more items from a dropdown list
+
+<!--
 | `combo`       | Select a single item from a dropdown list, or enter a new value
 | `multicombo`	| Select one or more items from a dropdown list, or enter new values
 
 
-The input names and structure are consistent with [steampipe/powerpipe inputs](https://steampipe.io/docs/reference/mod-resources/input).
+-->
 
-
-#### Button - Simple 
+### Button - Simple 
 
 ```hcl
 pipeline "my_pipe" {
@@ -129,7 +104,7 @@ pipeline "my_pipe" {
 }
 ```
 
-#### Button - With labels and values 
+### Button - With labels and values 
 
 ```hcl
 pipeline "my_pipe" {
@@ -158,7 +133,7 @@ pipeline "my_pipe" {
 
 ```
 
-#### select or combo - basic
+### select - basic
 
 ```hcl
 pipeline "my_pipe" {
@@ -182,14 +157,14 @@ pipeline "my_pipe" {
 }
 ```
 
-#### select or combo - with labels, default selection
+### select - with labels & default selection
 
 ```hcl
 pipeline "my_pipe" {
 
   step "input" "select_region" {
     notifier = notifier.default
-    type     = "combo"  
+    type     = "select"  
     prompt   = "Select a region:"
 
     option "us-east-1" {
@@ -215,16 +190,15 @@ pipeline "my_pipe" {
 }
 ```
 
-#### multiselect or multicombo - simple
+### multiselect  - basic
 
-(multi-select combo has the same format)
 
 ```hcl
 pipeline "my_pipe" {
 
   step "input" "select_regions" {
     notifier = notifier.default
-    type     = "multicombo"  
+    type     = "multiselect"  
     prompt   = "Select regions:"
 
     option "us-east-1" {}
@@ -243,7 +217,7 @@ pipeline "my_pipe" {
 }
 ```
 
-#### multiselect or multicombo - with labels, default selection
+### multiselect with labels & default selection
 
 ```hcl
 pipeline "my_pipe" {
@@ -282,9 +256,9 @@ pipeline "my_pipe" {
 
 
 
-### Options
+## Options
 
-The available options to present to the user are specified in either `option` blocks, or in the `options` list.  You may either specify one or ore `option` blocks or a single `options` list, but not both.
+The available options to present to the user are specified in either `option` blocks, or in the `options` list.  You may either specify one or or `option` blocks or a single `options` list, but not both.
 
 If no arguments are passed to `option`, then the block label is used as both the `label` (the text to display) and `value` (the value to return if this option is selected):
 
@@ -367,7 +341,16 @@ The `options` list form is useful for building the options dynamically:
 pipeline "my_pipe" {
 
   step "query" "get_regions" {
-    sql = "select name as value from aws_region where opt_in_status <> 'not-opted-in' order by name" 
+    sql = <<-EOQ
+      select
+        name as value
+      from
+        aws_region
+      where
+        opt_in_status <> 'not-opted-in'
+      order by
+        name
+    EOQ
   }
 
   step "input" "select_regions" {
@@ -379,7 +362,7 @@ pipeline "my_pipe" {
 }
 ```
 
-#### Arguments
+### Arguments
 
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
