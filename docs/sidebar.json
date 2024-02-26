@@ -139,6 +139,7 @@
             "link": "reference/config-files/credential",
             "items": [
               "reference/config-files/credential/abuseipdb",
+              "reference/config-files/credential/alicloud",
               "reference/config-files/credential/aws",
               "reference/config-files/credential/azure",
               "reference/config-files/credential/bitbucket",
