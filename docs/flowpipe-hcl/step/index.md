@@ -35,6 +35,7 @@ Each step type has its own distinct set of attributes, though there are some [co
 | `for_each`      | Map or List | Optional | A map or list used as a [step iterator](#for_each).  A step instance will be created for each item in the map or list.
 | `if`            | Condition| Optional  | An [if condition](#if) to evaluate to determine whether to run this step.
 | `loop`        | Block   | Optional | A [loop block](#loop) to run the step in a sequential loop.
+| `max_concurrency` | Number | Optional   | The maximum number of instances of the step that can be run at a time.  By default, there is no limit but note the step is also subject to the per-step-type limits ([FLOWPIPE_MAX_CONCURRENCY_CONTAINER](/docs/reference/env-vars/flowpipe_max_concurrency_container), [FLOWPIPE_MAX_CONCURRENCY_FUNCTION](/docs/reference/env-vars/flowpipe_max_concurrency_function), [FLOWPIPE_MAX_CONCURRENCY_HTTP](/docs/reference/env-vars/flowpipe_max_concurrency_http), [FLOWPIPE_MAX_CONCURRENCY_QUERY](/docs/reference/env-vars/flowpipe_max_concurrency_query), etc).
 | `output`        | Block   | Optional | One or more [output blocks](#output) to return custom values from the step.
 | `retry`        | Block   | Optional | A [retry block](#retry) to retry the step when an error occurs.
 | `throw`        | Block   | Optional | One or more [throw blocks](#throw) to raise an error from the step.
