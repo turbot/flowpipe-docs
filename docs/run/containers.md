@@ -420,7 +420,7 @@ alias fp="docker run \
     --name flowpipe \
     --mount type=bind,source=$HOME/fp/config,target=/home/flowpipe/.flowpipe/config \
     --mount type=bind,source=$(pwd),target=/workspace \
-    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/docker.sock.raw:/var/run/docker.sock \
     ghcr.io/turbot/flowpipe"
 ```
 
@@ -434,9 +434,8 @@ alias fp="docker run \
     --name flowpipe \
     --mount type=bind,source=$HOME/fp/config,target=/home/flowpipe/.flowpipe/config \
     --mount type=bind,source=$(pwd),target=/workspace \
-    -v /var/run/docker.sock.raw:/var/run/docker.sock \
+    -v /var/run/docker.sock:/var/run/docker.sock \
     ghcr.io/turbot/flowpipe"
 ```
-
 
 Now you can call all available command for Flowpipe as previous examples.
