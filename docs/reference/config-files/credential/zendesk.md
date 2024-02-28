@@ -20,13 +20,13 @@ credential "zendesk" "my_zendesk" {
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
 | `subdomain`     |  String | Optional | The subdomain name of your Zendesk account.
-| `email`         |  String | Optional | Email address of agent user who have permission to access the API.  
+| `email`         |  String | Optional | Email address of agent user who have permission to access the API.
 | `token`         |  String | Optional | API Token for your Zendesk instance.
 
-
-All arguments are optional, and a `zendesk` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `zendesk` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `zendesk` credential type includes an implicit, default credential (`credential.zendesk.default`) that will be configured to set defaults using the environment variables `ZENDESK_EMAIL`, `ZENDESK_SUBDOMAIN`, and `ZENDESK_API_TOKEN`.
 
 ```hcl

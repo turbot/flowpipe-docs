@@ -19,10 +19,10 @@ credential "abuseipdb" "abuseipdb_api_key" {
 |-----------------|---------|----------|-------------------
 | `api_key`       |  String | Optional | API Key
 
-
-All arguments are optional, and an `abuseipdb` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and an `abuseipdb` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `abuseipdb` credential type includes an implicit, default credential (`credential.abuseipdb.default`) that will be configured to set the `api_key` to the `ABUSEIPDB_API_KEY` environment variable.
 
 ```hcl

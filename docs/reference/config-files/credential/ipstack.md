@@ -19,10 +19,10 @@ credential "ipstack" "my_ipstack" {
 |-----------------|---------|----------|-------------------
 | `access_key`    |  String | Optional | API access key
 
-
-All arguments are optional, and a `ipstack` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `ipstack` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `ipstack` credential type includes an implicit, default credential (`credential.ipstack.default`) that will be configured to set the `access_key` to the `IPSTACK_ACCESS_KEY` environment variable.
 
 ```hcl

@@ -20,12 +20,13 @@ credential "servicenow" "snow_creds" {
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
 | `instance_url`  |  String | Optional | Your ServiceNow instance URL
-| `username`      |  String | Optional | ServiceNow username  
+| `username`      |  String | Optional | ServiceNow username
 | `password`      |  String | Optional | ServiceNow app password
 
-All arguments are optional, and a `servicenow` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `servicenow` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `servicenow` credential type includes an implicit, default credential (`credential.servicenow.default`) that will be configured using the environment variables `SERVICENOW_INSTANCE_URL`, `SERVICENOW_USERNAME`, and `SERVICENOW_PASSWORD`.
 
 ```hcl

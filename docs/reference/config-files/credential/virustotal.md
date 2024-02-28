@@ -17,12 +17,12 @@ credential "virustotal" "my_ virustotal" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `api_key`         |  String | Optional | API key  
+| `api_key`         |  String | Optional | API key
 
-
-All arguments are optional, and a `virustotal` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `virustotal` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `virustotal` credential type includes an implicit, default credential (`credential.virustotal.default`) that will be configured to set the `api_key` to the `VTCLI_APIKEY` environment variable.
 
 ```hcl
