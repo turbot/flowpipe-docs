@@ -410,6 +410,22 @@ It is possible to run the flowpipe container with a read-only root filesystem, b
 
 To run the container as a read only root system by passing the docker flag `--read-only`, you can create the alias for `fp` as follows:
 
+On macOS use:
+
+```bash
+alias fp="docker run \
+    -it \
+    --rm \
+    --read-only \
+    --name flowpipe \
+    --mount type=bind,source=$HOME/fp/config,target=/home/flowpipe/.flowpipe/config \
+    --mount type=bind,source=$(pwd),target=/workspace \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    ghcr.io/turbot/flowpipe"
+```
+
+On Linux use:
+
 ```bash
 alias fp="docker run \
     -it \
@@ -421,5 +437,6 @@ alias fp="docker run \
     -v /var/run/docker.sock.raw:/var/run/docker.sock \
     ghcr.io/turbot/flowpipe"
 ```
+
 
 Now you can call all available command for Flowpipe as previous examples.
