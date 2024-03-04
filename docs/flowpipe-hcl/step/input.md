@@ -361,6 +361,37 @@ pipeline "my_pipe" {
 }
 ```
 
+Additionally, when using `button` input type, you can colorize the buttons by setting the `style` attribute on an `option`:
+
+```hcl
+pipeline "my_pipe" {
+
+  step "input" "my_step" {
+    notifier = notifier.default
+    type     = "button"
+    prompt   = "do you want to approve?"
+
+    option "approve_button" {
+      label = "Approve"
+      value = "approve_button_pressed"
+      style = "ok"
+    }
+
+    option "deny_button" {
+      label = "Deny"
+      value = "deny_button_pressed"
+      style = "alert"
+    }
+  }
+
+  step "pipeline" "do_the_thing" {
+    pipeline = pipeline.something
+    if       = step.input.my_step.value == "approve_button_pressed"
+  }
+}
+```
+
+
 ### Arguments
 
 | Argument        | Type      | Optional?   | Description
@@ -368,6 +399,6 @@ pipeline "my_pipe" {
 | `label`         | String    | Optional    | The text to display for the option.
 | `value`         | String    | Optional    | The value to return when the option is selected
 | `selected`      | Boolean   | Optional    | Set to `true` to pre-select the option
-
+| `style`         | String    | Optional    | Set to `ok`, `alert`, `info` (default) to colorize option when used as a `button`
 
 
