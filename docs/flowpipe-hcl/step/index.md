@@ -14,7 +14,7 @@ Each step type has its own distinct set of attributes, though there are some [co
 | Type            | Description
 |-------------------|----------------
 | [container](/docs/flowpipe-hcl/step/container)    | Run a Docker container.
-| [email](/docs/flowpipe-hcl/step/email)            | Send an email.
+| [email](/docs/flowpipe-hcl/step/email)            | [DEPRECATED]  Send an email.
 | [function](/docs/flowpipe-hcl/step/function)      | Run an AWS Lambda-compatible function.
 | [http](/docs/flowpipe-hcl/step/http)              | Make an HTTP request.
 | [input](/docs/flowpipe-hcl/step/input)            | Prompt a user for input
@@ -299,6 +299,7 @@ pipeline "get_astros" {
 | Attribute       | Type    |  Description
 |-----------------|---------|-----------------
 | `errors`        | List    | List of [errors](#errors-read-only) from the step
+| `flowpipe`      | Map     | A map of [Flowpipe metadata](#flowpipe-read-only) about the step instance
 | `output`        | Map     | A [map of the step outputs](#output-read-only) defined in [output blocks](#output)
 
 ### errors (Read-Only)
@@ -314,6 +315,13 @@ To simplify common error handling cases, Flowpipe provides some helper functions
 ### output (Read-Only)
 You can access [custom step outputs](#output-block) using the `output` attribute of a step.  The `output` attribute contains a map of outputs for the step, with an entry for each `output` block.
 
+### flowpipe (Read-Only)
+The `flowpipe` attribute includes metadata about the step instance:
+
+| Attribute       |  Description
+|-----------------|--------------------------
+| `finished_at`   | Timestamp when the step instance finished executing
+| `started_at`    | Timestamp when the step instance started executing
 
 
 

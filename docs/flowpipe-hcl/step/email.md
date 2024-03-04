@@ -5,6 +5,8 @@ sidebar_label: email
 
 # email
 
+***The `email` step is deprecated and will be removed in a future version of Flowpipe. Use the [message step](/docs/flowpipe-hcl/step/message) to send messages.***
+
 The `email` step is used to send an email message.
 
 
