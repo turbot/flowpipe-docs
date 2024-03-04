@@ -25,7 +25,7 @@ pipeline "send_message" {
 ## Arguments
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
-| `text`        | String       | Required    | The message text to send to the integration
+| `text`        | String       | Required    | The message text to send to the integration.
 | `notifier`      | Notifier Reference | Required    | The [notifier](/docs/reference/config-files/notifier) to send the request to send the message.
 | `cc`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to `email` integrations.
 | `bcc`           | List&ltString&gt | Optional    | The email addresses to send to. This only applies to notifiers that uses `email` integrations.

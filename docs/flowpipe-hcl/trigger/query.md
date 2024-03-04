@@ -5,7 +5,7 @@ sidebar_label: query
 
 # query
 
-The query trigger will execute a SQL query on a schedule and can pass row changes as an input to the defined pipeline. The query trigger supports the same database engines as the [query step](/docs/flowpipe-hcl/step/query).
+The query trigger will execute an SQL query on a schedule and can pass row changes as input to the defined pipeline. The query trigger supports the same database engines as the [query step](/docs/flowpipe-hcl/step/query).
 
 ```hcl
 trigger "query" "expired_access_keys" {
@@ -46,8 +46,8 @@ The first time a query trigger runs, all items are considered new. The pipeline 
 On subsequent query trigger runs:
 
 - Any rows with a new `primary_key` are considered inserts. The pipeline defined in the `insert` capture will be run (if it is defined). Flowpipe will store each row's `primary_key` and a hash of the full row data for comparison on subsequent trigger executions.
-- Any rows with an existing `primary_key` who's hashed row data does not match what is stored are considered updates. The pipeline defined in the `update` capture will be run (if it is defined). Flowpipe will save the new row data and hash, overwriting the previous row data and hash for that key.
-- If a `primary_key` that was previously stored is no longer in the result set, then the row is determined to be deleted. The pipeline defined in the `delete` capture will be run (if it is defined). Flowpipe will delete the item with that `primary_key`; if the an item with that key is returned in a future trigger tun, it will be considered an insert.
+- Any rows with an existing `primary_key` whose hashed row data does not match what is stored are considered updates. The pipeline defined in the `update` capture will be run (if it is defined). Flowpipe will save the new row data and hash, overwriting the previous row data and hash for that key.
+- If a `primary_key` that was previously stored is no longer in the result set, then the row is determined to be deleted. The pipeline defined in the `delete` capture will be run (if it is defined). Flowpipe will delete the item with that `primary_key`; if an item with that key is returned in a future trigger run, it will be considered an insert.
 
 ## Arguments
 

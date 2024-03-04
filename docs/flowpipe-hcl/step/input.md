@@ -257,9 +257,9 @@ pipeline "my_pipe" {
 
 ## Options
 
-The available options to present to the user are specified in either `option` blocks, or in the `options` list.  You may either specify one or or `option` blocks or a single `options` list, but not both.
+The available options to present to the user are specified in either `option` blocks, or in the `options` list.  You may either specify one or more `option` blocks or a single `options` list, but not both.
 
-If no arguments are passed to `option`, then the block label is used as both the `label` (the text to display) and `value` (the value to return if this option is selected):
+If no arguments are passed to an `option`, then the block label is used as both the `label` (the text to display) and `value` (the value to return if this option is selected):
 
 ```hcl
   step "input" "select_region" {
@@ -397,8 +397,8 @@ pipeline "my_pipe" {
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
 | `label`         | String    | Optional    | The text to display for the option.
-| `value`         | String    | Optional    | The value to return when the option is selected
-| `selected`      | Boolean   | Optional    | Set to `true` to pre-select the option
-| `style`         | String    | Optional    | Set to `ok`, `alert`, `info` (default) to colorize option when used as a `button`
+| `value`         | String    | Optional    | The value to return when the option is selected.
+| `selected`      | Boolean   | Optional    | Set to `true` to pre-select the option.
+| `style`         | String    | Optional    | Set to `ok`, `alert`, `info` (default) to colorize option when used as a `button`.
 
 

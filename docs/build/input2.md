@@ -18,41 +18,31 @@ Sending notifications is a common pattern, and often users will want to route a 
 To prompt for input in your pipeline, you can use an [input step](/docs/flowpipe-hcl/step/input).
 
 ```hcl
-locals {
-  games = {
-    "Checkers"                 = "https://gametable.org/games/checkers/"
-    "Tic Tac Toe"              = "https://gametable.org/games/tic-tac-toe/"
-    "Global Thermonuclear War" = "https://dosgamezone.com/game/global-thermonuclear-war-1700.html"
-  }
-}
-
-pipeline "play_a_game" {
+pipeline "input_step_example_01" {
   param "notifier" {
     default = "default"
   }
 
-  step "input" "choose_game" {
-    prompt   = "Shall we play a game?"
-    type     = "select"
+  step "input" "approval" {
+    title    = "Flowpipe: Approval Request"
+    prompt   = "Do you approve?"
+    type     = "button"
     notifier = notifier[param.notifier]
 
-    option "Tic Tac Toe" {}
-    option "Checkers" {}
-    option "Global Thermonuclear War" {}
+    option "Yes" {}
+    option "No" {} 
   }
 
-  step "message" "play" {
-    text = "Lets Play ${step.input.choose_game.value}!  <${local.games[step.input.choose_game.value]}>"
-    notifier = notifier[param.notifier]
+  output "choice" {
+    value = step.input.approval.value == "Yes" ? "Approved" : "Denied"
   }
 }
-
 ```
 
-This pipeline will prompt the user to select a game to play using a `select` box (there are other [input step types](/docs/flowpipe-hcl/step/input#input-types), such as `text`, `button`, and `multiselect`).
-After the user selects a game, the pipeline will send back a message with a hyperlink to the selected game.
+This pipeline will prompt the user for approval using `Yes` and `No` buttons (there are other [input step types](/docs/flowpipe-hcl/step/input#input-types), such as `text`, `select`, and `multiselect`).
+After the user clicks a button, the pipeline will continue, and we will return the selected button value in the `choice` output.  This is a trivial example, of course; usually, you will use the input's `value` in a subsequent step.
 
-The `input` and `message` steps route messages to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [`http` integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it.
+The `input` step routes the request to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [`http` integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it. 
 
 Integrations are only loaded in [server mode](/docs/run/server), so let's start the Flowpipe server:
 ```bash
@@ -66,31 +56,25 @@ flowpipe pipeline run input_step_example_01  --host local
 
 Flowpipe runs the pipeline.  When it gets to the input step, it prints the URL for the form and waits:
 ```bash
-$ flowpipe pipeline run play_a_game  --host local
-[flowpipe] Execution ID: exec_cnj190jjtoj8h9b7tkag
-[flowpipe] Warning: Mod is stale, last loaded 2024-03-04T12:21:10.857114-06:00
-[play_a_game] Starting pipeline
-[play_a_game.choose_game] Starting input: https://48ca-2600-1702-ee0-16b0-64c3-eb37-9e39-3968.ngrok-free.app/form/cnj190jjtoj8h9b7tkc0/2fup3zqqmb7zl
-
+[flowpipe] Execution ID: exec_cnb4aobjtojdrgh3gakg
+[input_step_example_01] Starting pipeline
+[input_step_example_01.approval] Starting input: http://localhost:7103/webform/input/rgh3gam0/3bd5115691383e3f2a95532f3db02f5b8ca02cde802e302b8a9008fad9637220
 ```
 
 Open the URL in your browser.  The form appears.  
 
-![](/images/docs/build/input_http_select_game.png)
+![](/images/docs/build/input_webform_approval.png)
 
 
-Select a game and then click the **Submit** button. Return to the terminal where you are running the pipeline.  You will see that the pipeline is now finished and the message appears in the output:
+Click one of the buttons, then return to the terminal where you are running the pipeline.  You will see that the pipeline is now finished, and your choice was returned in the output:
 
 ```bash
-$ flowpipe pipeline run play_a_game  --host local
-[flowpipe] Execution ID: exec_cnj1bv3jtoj8h9b7tkd0
-[flowpipe] Warning: Mod is stale, last loaded 2024-03-04T12:21:10.857114-06:00
-[play_a_game] Starting pipeline
-[play_a_game.choose_game] Starting input: https://48ca-2600-1702-ee0-16b0-64c3-eb37-9e39-3968.ngrok-free.app/form/cnj1bv3jtoj8h9b7tkeg/3oe3jg18n9rf7
-[play_a_game.choose_game] Complete 14s
-[play_a_game.play] Starting message: Lets Play Global Thermonuclear War!  <https://dosg…
-[play_a_game.play] Complete 258ms
-[play_a_game] Complete 15s exec_cnj1bv3jtoj8h9b7tkd0
+[flowpipe] Execution ID: exec_cnb4aobjtojdrgh3gakg
+[input_step_example_01] Starting pipeline
+[input_step_example_01.approval] Starting input: http://localhost:7103/webform/input/rgh3gam0/3bd5115691383e3f2a95532f3db02f5b8ca02cde802e302b8a9008fad9637220
+[input_step_example_01.approval] Complete 7m14s
+[input_step_example_01] Output choice = Approved
+[input_step_example_01] Complete 7m14s exec_cnb4aobjtojdrgh3gakg
 ```
 
 
@@ -124,4 +108,6 @@ notifier "default" {
 The pipeline that we created earlier already routes the input request to the default notifier.  By adding integrations to the default notifier we can route the input request to Slack and/or email without modifying the pipeline!
 
 
-![](/images/docs/build/input_slack_select_game.png)
+![](/images/docs/build/input_slack_approval.png)
+
+

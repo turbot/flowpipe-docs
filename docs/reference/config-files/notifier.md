@@ -74,7 +74,7 @@ notifier "hr" {
 
 ### Overriding arguments
 
-There are some settings that, such as `channel`, `to`, `cc`, `bcc`, and `subject` that can be set in `integration`, the `notifier`, or the `input` or `message` step:
+There are some settings, such as `channel`, `to`, `cc`, `bcc`, and `subject` that can be set in `integration`, the `notifier`, or the `input` or `message` step:
 
 1. The argument passed to the step has the highest priority
 2. The argument passed to the integration has the lowest priority.
@@ -114,7 +114,7 @@ When the `change_request` pipeline is run, the `input` will send the approval em
 
 ### Default Notifier
 
-By default, Flowpipe will include a default `notifier` group that only includes the http integration and thus works out-of-the-box. It is equivalent to:
+By default, Flowpipe will include a default `notifier` group that only includes the HTTP integration and thus works out of the box. It is equivalent to:
 
 ```hcl
 integration "http" "default" {}
@@ -145,7 +145,7 @@ step "input" "my_step" {
 }
 ```
 
-Generally though, Mods that use `input` and `message` steps should allow passing a notifier name as a parameter, but default to the [default notifier](#default-notifier):
+Generally, Mods that use `input` and `message` steps should allow passing a notifier name as a parameter, but default to the [default notifier](#default-notifier):
 
 ```hcl
 
@@ -168,7 +168,7 @@ pipeline "my_pipe" {
 }
 ```
 
-This approach allows the mod to work out-of-the box, but also allows users of your mod to specify a `notifier` specific to them if they desire:
+This approach allows the mod to work the box, but also allows users of your mod to specify a `notifier` specific to them if they desire:
 
 ```bash
 flowpipe pipeline run my_pipe --arg notify=admins

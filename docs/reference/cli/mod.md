@@ -33,7 +33,7 @@ flowpipe mod [command]
 
 ## Git URLs & Private Repos
 
-Flowpipe uses `git` to install and update mods. When you run `flowpipe mod install` or `flowpipe mod update`, Flowpipe will first try using `https` and if that does not work it will try `ssh`.  If your ssh keys are configured properly for `git`, you should be able to pull from private repos that you have access to, as well as public ones.
+Flowpipe uses `git` to install and update mods. When you run `flowpipe mod install` or `flowpipe mod update`, Flowpipe will first try using `https` and if that does not work it will try `ssh`.  If your SSH keys are configured properly for `git`, you should be able to pull from private repos that you have access to, as well as public ones.
 
 When publishing mods, you should usually only depend on public mods (hosted in public repos) so that users of your mod don't encounter permissions issues.
 

@@ -5,7 +5,7 @@ sidebar_label: http
 
 # HTTP Integration
 
-The `http` integration provides a mechanism for responding to inputs by visiting a web page and submitting a form.  This integration requires no arguments and will be created by default.
+The `http` integration provides a mechanism for responding to inputs by visiting a web page and submitting a form.  This integration requires no arguments and will be created by default.  Currently, when sending a message to an `http` integration from a [message step](/docs/flowpipe-hcl/step/message), Flowpipe prints the message to the console.
 
 ```hcl
 integration "http" "default" {}

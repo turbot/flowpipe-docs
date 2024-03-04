@@ -180,7 +180,7 @@ step "http" "list_workspaces" {
 }
 ```
 
-The loop is evaluated last after the step instance has executed and all retries have completed. You can use the special value `result` to evaluate the attributes of the completed step instance. `result` is essentially a self-reference to "this" step after it has run (e.g. the attributes are populated).
+The loop is evaluated last after the step instance has finished executing and all retries have been completed. You can use the special value `result` to evaluate the attributes of the completed step instance. `result` is essentially a self-reference to "this" step after it has run (e.g. the attributes are populated).
 
 You can also use the special attribute called `loop` inside the block. `loop` has a single attribute `index` which is the (zero-based) index of the loop count.
 
@@ -306,7 +306,7 @@ pipeline "get_astros" {
 
 Each step has an [`errors` attribute](/docs/build/write-pipelines/errors#the-errors-attribute) that contains a list of errors that occurred. [Unhandled errors](/docs/build/write-pipelines/errors#handling-errors) will cause the pipeline run to fail and will be returned in the pipeline `errors` list.  
 
-To simplify common error handling cases, Flowpipe provides some helper functions:
+To simplify common error-handling cases, Flowpipe provides some helper functions:
 - `is_error`:  Given a reference to a step, `is_error` returns a boolean `true` if there are 1 or more errors, or false if there are no errors. `is_error(step.http.my_request)` is equivalent to `length(step.http.my_request.errors) > 0`
 -  `error_message`:  Given a reference to a step, `error_message` will return a string containing the first error message, if any. If there are no errors, then it will return an empty string.  This is useful for simple step primitives. 
 

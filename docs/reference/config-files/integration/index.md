@@ -16,7 +16,7 @@ An `integration` is similar in many respects to a `trigger`:
 - It is loaded at mod start-up time and usually creates a public HTTP endpoint (the `request_url`).
 - There are multiple types, each with its own label eg (`integration "slack" "my_slack`), and the arguments vary by type.
 
-Unlike `trigger`, an `integration` does not *initiate* a pipeline but instead is referenced *in a pipeline step* to interact with an external system.
+Unlike a `trigger`, an `integration` does not *initiate* a pipeline but instead is referenced *in a pipeline step* to interact with an external system.
 
 ## Request URL
 Behind the scenes, each of these integrations has its own **Request URL** HTTP endpoint.  The integration endpoints will receive responses in their native format and will perform any service-specific tasks for security, authentication, data transformation, etc to extract the `value` from the response.  The value will be passed as an attribute of the step so that it may be inspected by later steps. 

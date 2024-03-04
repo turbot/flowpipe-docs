@@ -50,29 +50,6 @@ To learn more, see **[Managing Workspaces →](/docs/run/workspaces)**
 | `watch`             | `true`                       | Watch .mod files for changes when running `flowpipe server`.
 
 
-<!--
-
-| `pipes_host`        | `pipes.turbot.com`           | Set the Turbot Pipes host for connecting to Turbot Pipes workspace.
-| `pipes_token`       | The token obtained by `flowpipe login` | Set the Turbot Pipes authentication token for connecting to a Turbot Pipes workspace.  This may be a token obtained by `flowpipe login` or a user-generated [token](/https://turbot.com/pipes/docs/da-settings#tokens).
-
-
-| `event_store`       | `$PWD/.flowpipe/flowpipe.db` | The path the the event store file. If the file does not exist, it will be created.
-| `insecure`          | `false`                      | When set to `true`, ignore any TLS certificate errors and warnings when connecting to a Flowpipe API host. 
-
-
-| `query_timeout`     | `240` for controls, unlimited otherwise       | The maximum time (in seconds) a query is allowed to run before it times out.
-
-
-
-| `search_path`       | `public`, then alphabetical                   | A comma-separated list of connections to use as a custom search path for the control run. See also: [Using search_path to target connections and aggregators](https://steampipe.io/docs/guides/search-path).
-| `search_path_prefix`| none                                          | A comma-separated list of connections to use as a prefix to the current search path for the control run. 
-
-| `theme`             | `dark`                                        | Select the output theme (color scheme, etc) when running `steampipe check`.  Possible values are `light`,`dark`, and `plain`  <br /> <br />CLI: `--theme` 
-
-| `workspace_database`| `local`                                       | Workspace database. This can be a local or remote Turbot Pipes database.
--->
-
-
 
 Workspaces are defined using the `workspace` block in one or more Flowpipe config files.  Flowpipe will load ALL configuration files (`*.fpc`) from every directory in the [configuration search path](/docs/reference/env-vars/flowpipe_config_path), with decreasing precedence. The set of workspaces is the union of all workspaces defined in these directories.  
 

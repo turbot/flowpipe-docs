@@ -5,7 +5,7 @@ sidebar_label: slack
 
 # Slack Integration
 
-The `slack` integration can be used to send Slack messages with a [`message` step](/docs/flowpipe-hcl/step/message), or to prompt for user input in an [`input` step](/docs/flowpipe-hcl/step/input).  
+The `slack` integration can be used to send Slack messages with a [`message` step](/docs/flowpipe-hcl/step/message) or to prompt for user input in an [`input` step](/docs/flowpipe-hcl/step/input).
 
 
 ```hcl
@@ -53,7 +53,7 @@ integration "slack" "my_slack_app" {
 ```
 
 
-### Example: Slack with webhook url
+### Example: Slack with webhook URL
 
 ```hcl
 integration "slack" "my_slack_app" {
