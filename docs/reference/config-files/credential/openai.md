@@ -17,12 +17,18 @@ credential "openai" "my_openai" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `api_key`       |  String | Optional | API key  
+| `api_key`       |  String | Optional | API key
 
+All arguments are optional, and an `openai` credential with no arguments will behave the same as the [default credential](#default-credential).
 
-All arguments are optional, and an `openai` credential with no arguments will behave the same as the [default credential](#default-credential).  
+## Attributes (Read-Only)
+
+| Attribute       | Type    | Description
+|-----------------|---------|-----------------
+| `env`           | Map     | A map of the resolved credential-related environment variables (`OPENAI_API_KEY`)
 
 ## Default Credential
+
 The `openai` credential type includes an implicit, default credential (`credential.openai.default`) that will be configured to set the `api_key` to the `OPENAI_API_KEY` environment variable.
 
 ```hcl

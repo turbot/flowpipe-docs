@@ -19,10 +19,16 @@ credential "teams" "my_teams" {
 |-----------------|---------|----------|-------------------
 | `access_token`  |  String | Optional | API token
 
+All arguments are optional, and a `teams` credential with no arguments will behave the same as the [default credential](#default-credential).
 
-All arguments are optional, and a `teams` credential with no arguments will behave the same as the [default credential](#default-credential).  
+## Attributes (Read-Only)
+
+| Attribute       | Type    | Description
+|-----------------|---------|-----------------
+| `env`           | Map     | A map of the resolved credential-related environment variables (`TEAMS_ACCESS_TOKEN`)
 
 ## Default Credential
+
 The `teams` credential type includes an implicit, default credential (`credential.teams.default`) that will be configured to set the `access_token` to the `TEAMS_ACCESS_TOKEN` environment variable.
 
 ```hcl

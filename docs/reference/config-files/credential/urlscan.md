@@ -17,10 +17,15 @@ credential "urlscan" "my_urlscan" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `api_key`       |  String | Optional | API   
+| `api_key`       |  String | Optional | API Key
 
+All arguments are optional, and a `urlscan` credential with no arguments will behave the same as the [default credential](#default-credential).
 
-All arguments are optional, and a `urlscan` credential with no arguments will behave the same as the [default credential](#default-credential).  
+## Attributes (Read-Only)
+
+| Attribute       | Type    | Description
+|-----------------|---------|-----------------
+| `env`           | Map     | A map of the resolved credential-related environment variables (`URLSCAN_API_KEY`)
 
 ## Default Credential
 

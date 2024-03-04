@@ -18,13 +18,13 @@ credential "trello" "my_trello" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `api_key`       |  String | Optional | API key  
+| `api_key`       |  String | Optional | API key
 | `token`         |  String | Optional | API token
 
-
-All arguments are optional, and a `trello` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `trello` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `trello` credential type includes an implicit, default credential (`credential.trello.default`) that will be configured to set the `api_key` to the `TRELLO_API_KEY` environment variable and the `token` to the `TRELLO_TOKEN` environment variable.
 
 ```hcl

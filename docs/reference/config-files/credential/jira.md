@@ -19,11 +19,11 @@ credential "jira" "jira_creds" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `api_token`     |  String | Optional | API access token  
+| `api_token`     |  String | Optional | API access token
 | `base_url`      |  String | Optional | The Base Url of your Jira API instance
 | `username`      |  String | Optional | The user name to access the Jira cloud instance
 
-All arguments are optional, and a `jira` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `jira` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
 

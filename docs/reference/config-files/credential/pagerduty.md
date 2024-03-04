@@ -19,10 +19,10 @@ credential "pagerduty" "my_pagerduty" {
 |-----------------|---------|----------|-------------------
 | `token`         |  String | Optional | API token
 
-
-All arguments are optional, and a `pagerduty` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `pagerduty` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `pagerduty` credential type includes an implicit, default credential (`credential.pagerduty.default`) that will be configured to set the `token` to the `PAGERDUTY_TOKEN` environment variable.
 
 ```hcl

@@ -13,34 +13,32 @@ credential "gcp" "gcp_def" {
 }
 ```
 
-
 ## Arguments
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `credentials`   |  String | Optional | Either the path to a JSON credential file that contains Google application credentials or the contents of a service account key file in JSON format.  
-| `ttl`           |  Number | Optional |  The time, in seconds, to cache the credentials.  By default, the GP credential will be cached for 5 minutes.
+| `credentials`   |  String | Optional | Either the path to a JSON credential file that contains Google application credentials or the contents of a service account key file in JSON format.
+| `ttl`           |  Number | Optional | The time, in seconds, to cache the credentials. By default, the GP credential will be cached for 5 minutes.
 
-
-All arguments are optional, and a `gcp` credential with no arguments will behave the same as the [GCP default credential](#default-credential). 
-
-
+All arguments are optional, and a `gcp` credential with no arguments will behave the same as the [GCP default credential](#default-credential).
 
 ## Attributes (Read-Only)
 
-| Attribute       | Type    |  Description
+| Attribute       | Type    | Description
 |-----------------|---------|-----------------
-| `access_token`  |  String | An OAuth access token to use to authenticate to GCP. 
-
+| `access_token`  |  String | An OAuth access token to use to authenticate to GCP.
 
 ## Default Credential
-The GCP credential type includes an implicit, default credential (`credential.gcp.default`) that will be configured using the same mechanism as the GCloud CLI (environment variables, config files, etc); the effective credentials of this default are the same as if you run the `gcloud` command.  Credentials will be loaded from:
+
+The GCP credential type includes an implicit, default credential (`credential.gcp.default`) that will be configured using the same mechanism as the GCloud CLI (environment variables, config files, etc); the effective credentials of this default are the same as if you run the `gcloud` command. Credentials will be loaded from:
+
 - The path specified in the `GOOGLE_APPLICATION_CREDENTIALS` environment variable, if set; otherwise
 - The standard location (`~/.config/gcloud/application_default_credentials.json`)
 
 ## Examples
 
 ### Static Credentials from Credential File
+
 ```hcl
 credential "gcp" "gcp_def" {
   credentials = "~/.config/gcloud/my_credentials.json"
@@ -48,6 +46,7 @@ credential "gcp" "gcp_def" {
 ```
 
 ### Static Credentials defined inline
+
 ```hcl
 credential "gcp_inline" {
   #project = "my_project"
@@ -62,9 +61,6 @@ credential "gcp_inline" {
   EOC
 }
 ```
-
-
-`
 
 ### Using GCP Credentials in Container Step
 
@@ -85,7 +81,6 @@ pipeline "gcp_test" {
   }
 }
 ```
-
 
 ### Using GCP Credentials in HTTP Step
 

@@ -17,12 +17,18 @@ credential "slack" "my_slack" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `token`         |  String | Optional | An API token for slack.  
+| `token`         |  String | Optional | An API token for slack.
 
+All arguments are optional, and a `slack` credential with no arguments will behave the same as the [Slack default credential](#default-credential).
 
-All arguments are optional, and a `slack` credential with no arguments will behave the same as the [Slack default credential](#default-credential).  
+## Attributes (Read-Only)
+
+| Attribute       | Type    | Description
+|-----------------|---------|-----------------
+| `env`           | Map     | A map of the resolved credential-related environment variables (`SLACK_TOKEN`)
 
 ## Default Credential
+
 The Slack credential type includes an implicit, default credential (`credential.slack.default`) that will be configured to set the `token` to the `SLACK_TOKEN` environment variable.
 
 ```hcl
@@ -34,6 +40,7 @@ credential "slack" "default" {
 ## Examples
 
 ### Static Credentials
+
 ```hcl
 credential "slack" "my_slack" {
   token = "xoxp-234567890"

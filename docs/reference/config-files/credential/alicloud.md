@@ -21,7 +21,7 @@ credential "alicloud" "alicloud" {
 | `access_key`     |  String | Optional | A static access key to use to authenticate.
 | `secret_key`     |  String | Optional | A static secret key to use to authenticate.
 
-All arguments are optional, and a `alicloud` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `alicloud` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
 
