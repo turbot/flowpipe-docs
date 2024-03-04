@@ -322,25 +322,3 @@ The `flowpipe` attribute includes metadata about the step instance:
 |-----------------|--------------------------
 | `finished_at`   | Timestamp when the step instance finished executing
 | `started_at`    | Timestamp when the step instance started executing
-
-
-
-<!--
-
-
-| Argument        | Type    | Optional?  | Description
-|-----------------|---------|------------|-----------------
-| `duration`      | String or Number | Required | The amount of time to sleep as an integer or a [duration string](#duration-strings).  If the duration is an integer, it is interpreted as the number of milliseconds.  
-| `depends_on`    | List of Steps | Optional | A list of steps that this step [depends on](/docs/flowpipe-hcl/pipeline#depends_on-argument).
-| `description`   | String  | Optional    | A description of the step.
-| `error`         | Block   | Optional | An [error block](/docs/flowpipe-hcl/pipeline#error-block) to handle errors from the step.
-| `for_each`      | Map or List | Optional | A map or list used as a [step iterator](/docs/flowpipe-hcl/pipeline#for_each-argument).  A step instance will be created for each item in the map or list.
-| `if`            | Condition| Optional  | An [if condition](/docs/flowpipe-hcl/pipeline#if-argument) to evaluate to determine whether to run this step.
-| `loop`        | Block   | Optional | A [loop block](/docs/flowpipe-hcl/pipeline#loop-block) to run the step in a sequential loop.
-| `output`        | Block   | Optional | One or more [output blocks](/docs/flowpipe-hcl/pipeline#output-block) to return custom values from the step.
-| `retry`        | Block   | Optional | A [retry block](/docs/flowpipe-hcl/pipeline#retry-block) to retry the step when an error occurs.
-| `throw`        | Block   | Optional | One or more [throw blocks](/docs/flowpipe-hcl/pipeline#throw-block) to raise an error from the step.
-| `timeout`       | Number	  | Optional	  | [Amount of time](/docs/flowpipe-hcl/pipeline#timeout-argument) this step has to run before an error is raised. Defaults to `60s`.
-| `title`         | String | Optional | A display title for the step.
-
--->
