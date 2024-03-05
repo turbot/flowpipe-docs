@@ -91,7 +91,9 @@ The webhook URL will remain consistent across restarts. The {random string} is g
   - Because the URL contains the trigger name, changing the trigger name will generate a new URL.  
   - The salt value is stored in `~/.flowpipe/internal/salt`
   - If the file is missing or empty, flowpipe will randomly generate a new salt and write it there.  If you want to change *all* of your webhook URLs, remove the salt value.
-<!--  - The file may contain more than one salt. If more than one value is specified, a URL will be generated for EACH salt value for every webhook.  The last one will be considered the "default" - the one that will be shown in `flowpipe trigger list` and available in the `url` HCL attribute for the trigger (`trigger.http.my_webhook.url`).  `flowpipe trigger show` will show all the trigger URLs.  -->
+<!--  
+  - The file may contain more than one salt. If more than one value is specified, a URL will be generated for EACH salt value for every webhook.  The last one will be considered the "default" - the one that will be shown in `flowpipe trigger list` and available in the `url` HCL attribute for the trigger (`trigger.http.my_webhook.url`).  `flowpipe trigger show` will show all the trigger URLs.
+-->
   
 
 ## Webhook Response  
