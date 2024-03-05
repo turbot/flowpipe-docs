@@ -5,7 +5,7 @@ sidebar_label: message
 
 # message
 
-The `message` step is used to send a message to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier).
+Use the `message` step to send a message to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier).
 
 
 ```hcl

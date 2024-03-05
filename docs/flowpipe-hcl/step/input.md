@@ -5,7 +5,7 @@ sidebar_label: input
 
 # input
 
-The `input` step primitive allows a workflow to prompt for user input.  The pipeline will send the prompt to one or more [integrations](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier).  It will then pause and wait for a response.  When a response is received, the pipeline will continue and the step will return the selected `value`.
+Use the `input` step primitive to prompt for user input.  The pipeline will send the prompt to one or more [integrations](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier).  It will then pause and wait for a response.  When a response is received, the pipeline will continue and the step will return the selected `value`.
 
 ```hcl
 pipeline "my_step" {
@@ -27,14 +27,14 @@ pipeline "my_step" {
 }
 ```
 
-An `input` step is limited to a single prompt and a single input element - It asks a single question and returns a single answer (`value`).
+An `input` step is limited to a single prompt and a single input element. It asks a single question and returns a single answer (`value`).
 
-You must select a [notifier](/docs/reference/config-files/notifier) to send the request to.  The notifier dictates which [integration](/docs/reference/config-files/integration) to send the request to (Slack, email, etc).
+You must select a [notifier](/docs/reference/config-files/notifier) that defines which [integration](/docs/reference/config-files/integration) will handle the interaction: Slack, email, or other.
 
-There are multiple [input types](#input-types), but they all behave roughly the same:
-- It has one or more [options](#options).
+There are multiple [input types](#input-types), but they all share these traits:
+- There can be one or more [options](#options).
 - The options may either be specified in `option` blocks or as a list of `options`.  The block format is typically preferred when the list of options is statically defined, and the list format is useful when generating the options dynamically.
-- Each option must have a `value`
+- Each option must have a `value`.
 - An option may have a `label` (display value).   If no `label` is specified, the `value` is used as the label.
 - An `option` may be `selected` by default.  
 
