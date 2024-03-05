@@ -40,9 +40,9 @@ pipeline "another_pipe" {
 |-----------------|-----------|-------------|-----------------
 | `image`         | String	  | Optional*	  | The docker image to use, eg `turbot/steampipe:latest`.  [You must specify `image` or `source` but not both](#source-vs-image).
 | `source`        | String	  | Optional*	  | The path to a folder that contains the `dockerfile` or `containerfile` to build the container.  [You must specify `image` or `source` but not both](#source-vs-image).
-| `cmd`           | List of String| Optional  |	The cmd to use to start the container. 
+| `cmd`           | List&ltString&gt| Optional  |	The cmd to use to start the container. 
 | `cpu_shares`    | Number    | Optional    | CPU shares (relative weight) for the container.
-| `entrypoint`    | List of String | Optional  | Overwrite the default `ENTRYPOINT` of the image. The entrypoint allows you to configure a container to run an executable. 
+| `entrypoint`    | List&ltString&gt | Optional  | Overwrite the default `ENTRYPOINT` of the image. The entrypoint allows you to configure a container to run an executable. 
 | `env`           | Map	of Strings | Optional	  | A map of string to set environment variables
 | `memory`        | Number	  | Optional	  | Amount of memory in MB your container can use at runtime. Defaults to `128`.
 | `memory_reservation` | Number | Optional	  | Allows you to specify a soft limit smaller than `memory` which is activated when Docker detects contention or low memory on the host machine. If you use `memory-reservation`, it must be set lower than `memory` for it to take precedence. Because it is a soft limit, it does not guarantee that the container doesn't exceed the limit.

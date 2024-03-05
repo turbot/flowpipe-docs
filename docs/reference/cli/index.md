@@ -10,7 +10,9 @@ sidebar_label: Flowpipe CLI
 | Command | Description
 |-|-
 | [flowpipe help](/docs/reference/cli/help)      | Help about any command
+| [flowpipe integration](/docs/reference/cli/integration)   | List and view integrations
 | [flowpipe mod](/docs/reference/cli/mod)        | Flowpipe mod management
+| [flowpipe notifier](/docs/reference/cli/notifier)   | List and view notifiers
 | [flowpipe pipeline](/docs/reference/cli/pipeline) | List, view, and run Flowpipe pipelines
 | [flowpipe process](/docs/reference/cli/process) | List and view Flowpipe processes
 | [flowpipe server](/docs/reference/cli/server)  | Run Flowpipe server, including triggers and integrations
@@ -58,6 +60,24 @@ sidebar_label: Flowpipe CLI
   </tr>
 
 
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-container int</inlineCode> </td>
+    <td>Set the maximum number of <inlineCode>container</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>25</inlineCode>). </td>
+  </tr>
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-function int</inlineCode> </td>
+    <td> Set the maximum number of <inlineCode>function</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>50</inlineCode>). </td>
+  </tr>
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-http int</inlineCode> </td>
+    <td> Set the maximum number of <inlineCode>http</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>500</inlineCode>). </td>
+  </tr>
+  <tr> 
+    <td nowrap="true">  <inlineCode>--max-concurrency-query int</inlineCode> </td>
+    <td> Set the maximum number of <inlineCode>query</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>50</inlineCode>). </td>
+  </tr>
+
+
 
   <tr> 
     <td nowrap="true"> <inlineCode>--mod-location</inlineCode>  </td> 
@@ -86,27 +106,15 @@ sidebar_label: Flowpipe CLI
 <!--
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--cloud-host</inlineCode>  </td> 
-    <td>  Sets the Flowpipe Cloud host used when connecting to Flowpipe Cloud workspaces.  See <a href="/docs/reference/env-vars/flowpipe_cloud_host">STEAMPIPE_CLOUD_HOST</a> for details. </td>
+    <td nowrap="true"> <inlineCode>--pipes-host</inlineCode>  </td> 
+    <td>  Sets the host used when connecting to Turbot Pipesworkspaces.  See <a href="/docs/reference/env-vars/pipes_host">PIPES_HOST</a> for details. </td>
   </tr>
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--cloud-token</inlineCode>  </td> 
-    <td>  Sets the Flowpipe Cloud authentication token used when connecting to Flowpipe Cloud workspaces.  See <a href="/docs/reference/env-vars/flowpipe_cloud_token">STEAMPIPE_CLOUD_TOKEN</a> for details. </td>
+    <td nowrap="true"> <inlineCode>--pipes-token</inlineCode>  </td> 
+    <td>  Sets the authentication token used when connecting to Turbot Pipes workspaces.  See <a href="/docs/reference/env-vars/pipes_token">PIPES_TOKEN</a> for details. </td>
   </tr>
 
-
-
-  <tr> 
-    <td nowrap="true"> <inlineCode>--workspace</inlineCode>  </td> 
-    <td>  Sets the Flowpipe <a href="/docs/run/workspaces"> workspace profile</a>.  If not specified, the <inlineCode>default</inlineCode> workspace will be used if it exists.  See <a href="/docs/reference/env-vars/flowpipe_workspace">STEAMPIPE_WORKSPACE</a> for details.</td>
-  </tr>
-
-
-  <tr> 
-    <td nowrap="true"> <inlineCode>--workspace-database</inlineCode>  </td> 
-    <td>  Sets the database that Flowpipe will connect to. This can be <inlineCode>local</inlineCode> (the default) or a remote Flowpipe Cloud database.  See <a href="/docs/reference/env-vars/flowpipe_workspace_database">STEAMPIPE_WORKSPACE_DATABASE</a> for details. </td>
-  </tr>
 
 -->
 

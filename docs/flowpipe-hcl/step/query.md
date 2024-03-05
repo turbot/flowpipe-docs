@@ -5,21 +5,20 @@ sidebar_label: query
 
 # query
 
-A query step runs a database query against a database.  [Postgres](#postgres-query), [MySQL](#mysql-query), [SQLite](#sqlite-query), and [DuckDB](#duckdb-query) databases are currently supported.
-
+A query step runs a database query against a database. [Postgres](#postgres-query), [MySQL](#mysql-query), [SQLite](#sqlite-query), and [DuckDB](#duckdb-query) databases are currently supported.
 
 ```hcl
 pipeline "enabled_regions" {
 
   step "query" "get_enabled_regions" {
-    connection_string = "postgres://steampipe@localhost:9193/steampipe"
-    sql = <<-EOQ
-      select 
+    database = "postgres://steampipe@localhost:9193/steampipe"
+    sql      = <<-EOQ
+      select
         name,
         account_id,
-        opt_in_status 
-      from 
-        aws_region 
+        opt_in_status
+      from
+        aws_region
       where
         opt_in_status <> 'not-opted-in'
     EOQ
@@ -34,23 +33,21 @@ pipeline "enabled_regions" {
 
 ## Arguments
 
-| Argument        | Type    | Optional?  | Description
-|-----------------|---------|------------|-----------------
-| `connection_string` | String | Required | A connection string used to connect to the database.
-| `sql`           | String | Required | A SQL query string. 
-| `args`	        | Map	    | Optional	  | A map of arguments to pass to the query.
-
+| Argument   | Type   | Optional? | Description                                          |
+| -----------| ------ | --------- | ---------------------------------------------------- |
+| `database` | String | Required  | A connection string used to connect to the database. |
+| `sql`      | String | Required  | A SQL query string.                                  |
+| `args`     | Map    | Optional  | A map of arguments to pass to the query.             |
 
 This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
-
 ## Attributes (Read-Only)
 
-| Attribute       | Type    |  Description
-|-----------------|---------|-----------------
-| `rows`          | List of objects | The query results, as an array of row objects
+| Attribute | Type            | Description                                   |
+| --------- | --------------- | --------------------------------------------- |
+| `rows`    | List of objects | The query results, as an array of row objects |
 
-The `rows` attribute contains the query result as a list of objects with an item for each row, where the column name is the key and the column value is the value.  
+The `rows` attribute contains the query result as a list of objects with an item for each row, where the column name is the key and the column value is the value.
 
 For example:
 
@@ -58,14 +55,14 @@ For example:
 pipeline "enabled_regions" {
 
   step "query" "get_enabled_regions" {
-    connection_string = "postgres://steampipe@localhost:9193/steampipe"
-    sql = <<-EOQ
-      select 
+    database = "postgres://steampipe@localhost:9193/steampipe"
+    sql      = <<-EOQ
+      select
         name,
         account_id,
-        opt_in_status 
-      from 
-        aws_region 
+        opt_in_status
+      from
+        aws_region
       where
         opt_in_status <> 'not-opted-in'
     EOQ
@@ -79,6 +76,7 @@ pipeline "enabled_regions" {
 ```
 
 Results in:
+
 ```json
 {
   "enabled_regions": [
@@ -107,8 +105,8 @@ Results in:
 }
 ```
 
-
 Since `rows` is a list, you can use standard HCL `for` expressions:
+
 ```hcl
 output "enabled_region_names" {
     value = [ for v in step.query.get_enabled_regions.rows : v.name ]
@@ -116,14 +114,15 @@ output "enabled_region_names" {
 ```
 
 or splats:
+
 ```hcl
 output "enabled_region_names" {
     value = step.query.get_enabled_regions.rows[*].name
 }
 ```
 
-
 to extract data.
+
 ```json
 {
   "enabled_region_names": [
@@ -136,11 +135,12 @@ to extract data.
 }
 ```
 
-##  More Examples
+## More Examples
 
 ### Postgres Query
 
-Postgres `connection_string` follows the standard URI syntax supported by `psql` and `pgcli`:
+Postgres `database` follows the standard URI syntax supported by `psql` and `pgcli`:
+
 ```bash
 postgresql://[user[:password]@][host][:port][/dbname][?param1=value1&...]
 ```
@@ -149,14 +149,14 @@ postgresql://[user[:password]@][host][:port][/dbname][?param1=value1&...]
 pipeline "enabled_regions" {
 
   step "query" "get_enabled_regions" {
-    connection_string = "postgres://steampipe@localhost:9193/steampipe"
-    sql = <<-EOQ
-      select 
+    database = "postgres://steampipe@localhost:9193/steampipe"
+    sql      = <<-EOQ
+      select
         name,
         account_id,
-        opt_in_status 
-      from 
-        aws_region 
+        opt_in_status
+      from
+        aws_region
       where
         opt_in_status <> 'not-opted-in'
     EOQ
@@ -171,23 +171,24 @@ pipeline "enabled_regions" {
 
 ### SQLite query
 
-The SQLite `connection_string` is the path to a SQLite database file:
+The SQLite `database` is the path to a SQLite database file:
+
 ```bash
 sqlite:path/to/file
 ```
 
 The path is relative to the [mod location](/docs/run#mod-location), and `//` is optional after the scheme, thus the following are equivalent:
-```hcl
-connection_string = "sqlite:./my_sqlite_db.db"
-connection_string = "sqlite://./my_sqlite_db.db"
-connection_string = "sqlite://my_sqlite_db.db"
-```
 
+```hcl
+database = "sqlite:./my_sqlite_db.db"
+database = "sqlite://./my_sqlite_db.db"
+database = "sqlite://my_sqlite_db.db"
+```
 
 ```hcl
 pipeline "sqlite_query" {
   step "query" "step_1" {
-    connection_string = "sqlite:./my_sqlite_db.db"
+    database = "sqlite:./my_sqlite_db.db"
 
     sql = <<EOQ
       select
@@ -203,25 +204,26 @@ pipeline "sqlite_query" {
 }
 ```
 
-
 ### DuckDB query
 
-The DuckDB `connection_string` is the path to a DuckDB database file:
+The DuckDB `database` is the path to a DuckDB database file:
+
 ```bash
 duckdb:path/to/file
 ```
 
 The path is relative to the [mod location](/docs/run#mod-location), and `//` is optional after the scheme, thus the following are equivalent:
+
 ```hcl
-connection_string = "duckdb:./my_ducks.db"
-connection_string = "duckdb://./my_ducks.db"
-connection_string = "duckdb://my_ducks.db"
+database = "duckdb:./my_ducks.db"
+database = "duckdb://./my_ducks.db"
+database = "duckdb://my_ducks.db"
 ```
 
 ```hcl
 pipeline "duckdb_query" {
   step "query" "step_1" {
-    connection_string = "duckdb:./my_ducks.db"
+    database = "duckdb:./my_ducks.db"
 
     sql = <<EOQ
       select
@@ -237,7 +239,6 @@ pipeline "duckdb_query" {
 }
 ```
 
-
 ### MySQL Query
 
 The MySQL connection string supports the syntax of the [GO SQL driver for MySQL](https://github.com/go-sql-driver/mysql?tab=readme-ov-file#examples):
@@ -246,12 +247,11 @@ The MySQL connection string supports the syntax of the [GO SQL driver for MySQL]
 mysql://[user[:password]@]network-location[:port][/dbname][?param1=value1&...]
 ```
 
-
 ```hcl
 pipeline "mysql_query" {
 
   step "query" "step_1" {
-    connection_string = "mysql://root:my_pass@tcp(localhost)/mysql"
+    database = "mysql://root:my_pass@tcp(localhost)/mysql"
 
     sql = <<EOQ
       select

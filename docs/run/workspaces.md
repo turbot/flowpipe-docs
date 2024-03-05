@@ -21,6 +21,7 @@ workspace "local_server" {
   port          = 7103
   input         = false
   memory_max_mb = 2048
+  base_url      = "https://84c5df474.ngrok-free.dev"
 }
 
 workspace "remote_server" {

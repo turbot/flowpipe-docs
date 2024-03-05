@@ -19,10 +19,10 @@ credential "jumpcloud" "jumpcloud_api_key" {
 |-----------------|---------|----------|-------------------
 | `api_key`       |  String | Optional | API Key
 
-
 All arguments are optional, and an `jumpcloud` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `jumpcloud` credential type includes an implicit, default credential (`credential.jumpcloud.default`) that will be configured to set the `api_key` to the `JUMPCLOUD_API_KEY` environment variable.
 
 ```hcl

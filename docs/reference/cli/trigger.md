@@ -5,7 +5,7 @@ sidebar_label: flowpipe trigger
 
 # flowpipe trigger
 
-Manage Flowpipe variables in the current mod and its direct dependents.
+Manage Flowpipe triggers in the current mod and its direct dependents.
 
 
 ## Usage

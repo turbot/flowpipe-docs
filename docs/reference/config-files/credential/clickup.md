@@ -19,10 +19,10 @@ credential "clickup" "my_clickup" {
 |-----------------|---------|----------|-------------------
 | `token`         |  String | Optional | API token
 
-
-All arguments are optional, and a `clickup` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `clickup` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `clickup` credential type includes an implicit, default credential (`credential.clickup.default`) that will be configured to set the `token` to the `CLICKUP_TOKEN` environment variable.
 
 ```hcl

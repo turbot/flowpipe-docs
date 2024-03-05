@@ -21,4 +21,4 @@ credential "mastodon" "mastodon_creds" {
 | `server`        |  String | Optional | The federated server your account lives
 | `access_token`  |  String | Optional | Mastodon access token
 
-All arguments are optional, and a `mastodon` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and a `mastodon` credential with no arguments will behave the same as the [default credential](#default-credential).

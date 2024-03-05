@@ -17,12 +17,18 @@ credential "github" "my_gh_token" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `token`         |  String | Optional | API access token  
+| `token`         |  String | Optional | API access token
 
+All arguments are optional, and a `github` credential with no arguments will behave the same as the [default credential](#default-credential).
 
-All arguments are optional, and a `github` credential with no arguments will behave the same as the [default credential](#default-credential).  
+## Attributes (Read-Only)
+
+| Attribute       | Type    | Description
+|-----------------|---------|-----------------
+| `env`           | Map     | A map of the resolved credential-related environment variables (`GITHUB_TOKEN`)
 
 ## Default Credential
+
 The `github` credential type includes an implicit, default credential (`credential.github.default`) that will be configured to set the `token` to the `GITHUB_TOKEN` environment variable.
 
 ```hcl

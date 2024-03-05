@@ -37,6 +37,7 @@ pipeline "get_astronauts" {
 |-----------------|---------|-------------|-----------------
 | `description`   | String  | Optional    | A description of the pipeline.
 | `documentation` | String  | Optional | A markdown string containing a long form description, used as documentation for the mod on hub.steampipe.io. 
+| `max_concurrency` | Number | Optional   | The maximum number of instances of the pipeline that can be run at a time.  By default, there is no limit.
 | `param`         | Block   | Optional    | A [param](#parameters) block that defines the parameters that can be passed into the pipeline. 
 | `output`        | Block   | Optional    | one or more [output](#outputs) blocks to return values from the pipeline 
 | `step`          | Block   | Optional    | one or more [steps](#steps) to run 

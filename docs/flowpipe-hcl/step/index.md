@@ -3,7 +3,6 @@ title: step
 sidebar_label: step
 ---
 
-
 # step
 
 A pipeline is composed of one or more steps. Each step has a type and a name, and the arguments are dependent on the type. The step types are sometimes referred to as "primitives". 
@@ -15,18 +14,16 @@ Each step type has its own distinct set of attributes, though there are some [co
 | Type            | Description
 |-------------------|----------------
 | [container](/docs/flowpipe-hcl/step/container)    | Run a Docker container.
-| [email](/docs/flowpipe-hcl/step/email)            | Send an email.
+| [email](/docs/flowpipe-hcl/step/email)            | [DEPRECATED]  Send an email.
 | [function](/docs/flowpipe-hcl/step/function)      | Run an AWS Lambda-compatible function.
 | [http](/docs/flowpipe-hcl/step/http)              | Make an HTTP request.
-| [pipeline](/docs/flowpipe-hcl/step/pipeline) | Run another Flowpipe pipeline.
+| [input](/docs/flowpipe-hcl/step/input)            | Prompt a user for input
+| [message](/docs/flowpipe-hcl/step/message)        | Send a message to an integration.
+| [pipeline](/docs/flowpipe-hcl/step/pipeline)      | Run another Flowpipe pipeline.
 | [query](/docs/flowpipe-hcl/step/query)            | Run a SQL query.
 | [sleep](/docs/flowpipe-hcl/step/sleep)            | Wait for a defined time period.
 | [transform](/docs/flowpipe-hcl/step/transform)    | Use HCL functions to transform data .
 
-<!--
-| [input](/docs/flowpipe-hcl/step/input)            | Request human input.
-
--->
 
 ## Common Step Arguments
 
@@ -38,6 +35,7 @@ Each step type has its own distinct set of attributes, though there are some [co
 | `for_each`      | Map or List | Optional | A map or list used as a [step iterator](#for_each).  A step instance will be created for each item in the map or list.
 | `if`            | Condition| Optional  | An [if condition](#if) to evaluate to determine whether to run this step.
 | `loop`        | Block   | Optional | A [loop block](#loop) to run the step in a sequential loop.
+| `max_concurrency` | Number | Optional   | The maximum number of instances of the step that can be run at a time.  By default, there is no limit but note the step is also subject to the per-step-type limits ([FLOWPIPE_MAX_CONCURRENCY_CONTAINER](/docs/reference/env-vars/flowpipe_max_concurrency_container), [FLOWPIPE_MAX_CONCURRENCY_FUNCTION](/docs/reference/env-vars/flowpipe_max_concurrency_function), [FLOWPIPE_MAX_CONCURRENCY_HTTP](/docs/reference/env-vars/flowpipe_max_concurrency_http), [FLOWPIPE_MAX_CONCURRENCY_QUERY](/docs/reference/env-vars/flowpipe_max_concurrency_query), etc).
 | `output`        | Block   | Optional | One or more [output blocks](#output) to return custom values from the step.
 | `retry`        | Block   | Optional | A [retry block](#retry) to retry the step when an error occurs.
 | `throw`        | Block   | Optional | One or more [throw blocks](#throw) to raise an error from the step.
@@ -182,7 +180,7 @@ step "http" "list_workspaces" {
 }
 ```
 
-The loop is evaluated last after the step instance has executed and all retries have completed. You can use the special value `result` to evaluate the attributes of the completed step instance. `result` is essentially a self-reference to "this" step after it has run (e.g. the attributes are populated).
+The loop is evaluated last after the step instance has finished executing and all retries have been completed. You can use the special value `result` to evaluate the attributes of the completed step instance. `result` is essentially a self-reference to "this" step after it has run (e.g. the attributes are populated).
 
 You can also use the special attribute called `loop` inside the block. `loop` has a single attribute `index` which is the (zero-based) index of the loop count.
 
@@ -301,13 +299,14 @@ pipeline "get_astros" {
 | Attribute       | Type    |  Description
 |-----------------|---------|-----------------
 | `errors`        | List    | List of [errors](#errors-read-only) from the step
+| `flowpipe`      | Map     | A map of [Flowpipe metadata](#flowpipe-read-only) about the step instance
 | `output`        | Map     | A [map of the step outputs](#output-read-only) defined in [output blocks](#output)
 
 ### errors (Read-Only)
 
 Each step has an [`errors` attribute](/docs/build/write-pipelines/errors#the-errors-attribute) that contains a list of errors that occurred. [Unhandled errors](/docs/build/write-pipelines/errors#handling-errors) will cause the pipeline run to fail and will be returned in the pipeline `errors` list.  
 
-To simplify common error handling cases, Flowpipe provides some helper functions:
+To simplify common error-handling cases, Flowpipe provides some helper functions:
 - `is_error`:  Given a reference to a step, `is_error` returns a boolean `true` if there are 1 or more errors, or false if there are no errors. `is_error(step.http.my_request)` is equivalent to `length(step.http.my_request.errors) > 0`
 -  `error_message`:  Given a reference to a step, `error_message` will return a string containing the first error message, if any. If there are no errors, then it will return an empty string.  This is useful for simple step primitives. 
 
@@ -316,25 +315,10 @@ To simplify common error handling cases, Flowpipe provides some helper functions
 ### output (Read-Only)
 You can access [custom step outputs](#output-block) using the `output` attribute of a step.  The `output` attribute contains a map of outputs for the step, with an entry for each `output` block.
 
+### flowpipe (Read-Only)
+The `flowpipe` attribute includes metadata about the step instance:
 
-
-
-<!--
-
-
-| Argument        | Type    | Optional?  | Description
-|-----------------|---------|------------|-----------------
-| `duration`      | String or Number | Required | The amount of time to sleep as an integer or a [duration string](#duration-strings).  If the duration is an integer, it is interpreted as the number of milliseconds.  
-| `depends_on`    | List of Steps | Optional | A list of steps that this step [depends on](/docs/flowpipe-hcl/pipeline#depends_on-argument).
-| `description`   | String  | Optional    | A description of the step.
-| `error`         | Block   | Optional | An [error block](/docs/flowpipe-hcl/pipeline#error-block) to handle errors from the step.
-| `for_each`      | Map or List | Optional | A map or list used as a [step iterator](/docs/flowpipe-hcl/pipeline#for_each-argument).  A step instance will be created for each item in the map or list.
-| `if`            | Condition| Optional  | An [if condition](/docs/flowpipe-hcl/pipeline#if-argument) to evaluate to determine whether to run this step.
-| `loop`        | Block   | Optional | A [loop block](/docs/flowpipe-hcl/pipeline#loop-block) to run the step in a sequential loop.
-| `output`        | Block   | Optional | One or more [output blocks](/docs/flowpipe-hcl/pipeline#output-block) to return custom values from the step.
-| `retry`        | Block   | Optional | A [retry block](/docs/flowpipe-hcl/pipeline#retry-block) to retry the step when an error occurs.
-| `throw`        | Block   | Optional | One or more [throw blocks](/docs/flowpipe-hcl/pipeline#throw-block) to raise an error from the step.
-| `timeout`       | Number	  | Optional	  | [Amount of time](/docs/flowpipe-hcl/pipeline#timeout-argument) this step has to run before an error is raised. Defaults to `60s`.
-| `title`         | String | Optional | A display title for the step.
-
--->
+| Attribute       |  Description
+|-----------------|--------------------------
+| `finished_at`   | Timestamp when the step instance finished executing
+| `started_at`    | Timestamp when the step instance started executing

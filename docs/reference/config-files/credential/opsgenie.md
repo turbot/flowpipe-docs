@@ -21,10 +21,10 @@ credential "opsgenie" "my_opsgenie" {
 | `alert_api_key`   |  String | Optional | API key for the alerts API
 | `incident_api_key`|  String | Optional | API key for the incidents API
 
-
-All arguments are optional, and an `opsgenie` credential with no arguments will behave the same as the [default credential](#default-credential).  
+All arguments are optional, and an `opsgenie` credential with no arguments will behave the same as the [default credential](#default-credential).
 
 ## Default Credential
+
 The `opsgenie` credential type includes an implicit, default credential (`credential.opsgenie.default`) that will be configured to set the `alert_api_key` to the `OPSGENIE_ALERT_API_KEY` environment variable and `incident_api_key` to `OPSGENIE_INCIDENT_API_KEY`.
 
 ```hcl

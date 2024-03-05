@@ -19,10 +19,16 @@ credential "uptimerobot" "my_uptimerobot" {
 |-----------------|---------|----------|-------------------
 | `api_key`       |  String | Optional | API Key
 
+All arguments are optional, and a `uptimerobot` credential with no arguments will behave the same as the [default credential](#default-credential).
 
-All arguments are optional, and a `uptimerobot` credential with no arguments will behave the same as the [default credential](#default-credential).  
+## Attributes (Read-Only)
+
+| Attribute       | Type    | Description
+|-----------------|---------|-----------------
+| `env`           | Map     | A map of the resolved credential-related environment variables (`UPTIMEROBOT_API_KEY`)
 
 ## Default Credential
+
 The `uptimerobot` credential type includes an implicit, default credential (`credential.uptimerobot.default`) that will be configured to set the `api_key` to the `UPTIMEROBOT_API_KEY` environment variable.
 
 ```hcl

@@ -4,13 +4,9 @@ sidebar_label: steampipe
 ---
 
 
-# COMING SOON!
-> This feature is not yet available for general release and is subject to change.
-
-<hr />
-
-
 # steampipe
+
+The `steampipe` credential import resource allows you to bulk import credentials from Steampipe connections.  This allows you to import the plugin credentials from your Steampipe installation into Flowpipe.
 
 ```hcl
 credential_import "steampipe" {
@@ -24,7 +20,7 @@ credential_import "steampipe" {
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
 | `source`        |  String | Optional | Path to the config file(s) with the connections to import.  Defaults to `~/.steampipe/config/*.spc`.
-| `connections`   |  List of String | Optional | A list of connection names to import.  You may use the `*` globbing wildcard in these entries.  The default is `["*"]` (all connections).
+| `connections`   |  List&ltString&gt | Optional | A list of connection names to import.  You may use the `*` globbing wildcard in these entries.  The default is `["*"]` (all connections).
 | `prefix`        | String  | Optional | A string to prepend to the connection name to create the credential name. 
 
 ## Examples
@@ -49,7 +45,6 @@ credential_import "steampipe" {
 ```
 
 ### Import specific Steampipe connections only
-
 
 ```hcl
 credential_import "steampipe" {

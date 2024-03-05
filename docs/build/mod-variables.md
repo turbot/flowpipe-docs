@@ -1,6 +1,6 @@
 ---
-title: Using Variables
-sidebar_label: Using Variables
+title: Pass Variables
+sidebar_label: Pass Variables
 ---
 
 # Using Variables
