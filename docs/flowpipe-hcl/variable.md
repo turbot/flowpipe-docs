@@ -97,7 +97,7 @@ pipeline "describe_vpcs" {
 |-|-|-|-
 | `default` | Any |Optional|  A default value.  If no value is passed, the user is not prompted and the default is used. 
 | `description` | String| Optional|  A description of the variable.  This text is included when the user is prompted for a variable's value.
-| `type` | String | Optional | The [variable type](#variable-types).  This may be a simple type or a collection.
+| `type` | Type | Optional | The [variable type](#variable-types).  This may be a simple type or a collection.
 
 
 ## Variable Types
