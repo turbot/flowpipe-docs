@@ -22,7 +22,7 @@ locals {
   games = {
     "Checkers"                 = "https://gametable.org/games/checkers/"
     "Tic Tac Toe"              = "https://gametable.org/games/tic-tac-toe/"
-    "Global Thermonuclear War" = "https://dosgamezone.com/game/global-thermonuclear-war-1700.html"
+    "Global Thermonuclear War" = "Sorry - the only winning move is not to play."
   }
 }
 
@@ -35,18 +35,17 @@ pipeline "play_a_game" {
     prompt   = "Shall we play a game?"
     type     = "select"
     notifier = notifier[param.notifier]
-
-    option "Tic Tac Toe" {}
+    
+    option "Tic Tac Toe" {} 
     option "Checkers" {}
-    option "Global Thermonuclear War" {}
+    option "Global Thermonuclear War" {} 
   }
 
   step "message" "play" {
-    text = "Lets Play ${step.input.choose_game.value}!  <${local.games[step.input.choose_game.value]}>"
+    text     = "Lets Play ${step.input.choose_game.value}! ${local.games[step.input.choose_game.value]}"
     notifier = notifier[param.notifier]
   }
 }
-
 ```
 
 This pipeline will prompt the user to select a game to play using a `select` box (there are other [input step types](/docs/flowpipe-hcl/step/input#input-types), such as `text`, `button`, and `multiselect`).

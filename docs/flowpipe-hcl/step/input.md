@@ -144,7 +144,7 @@ pipeline "my_pipe" {
 
     option "us-east-1" {}
     option "us-east-2" {}
-    option "us-west-2" {}    
+    option "us-west-1" {}    
     option "us-west-2" {}
     
   }
@@ -173,7 +173,7 @@ pipeline "my_pipe" {
     option "us-east-2" {
       label     = "Ohio"
     }
-    option "us-west-2" {
+    option "us-west-1" {
       label     = "N. California"
     }    
     option "us-west-2" {
@@ -202,7 +202,7 @@ pipeline "my_pipe" {
 
     option "us-east-1" {}
     option "us-east-2" {}
-    option "us-west-2" {}    
+    option "us-west-1" {}    
     option "us-west-2" {}
   }
 
@@ -235,7 +235,7 @@ pipeline "my_pipe" {
       selected  = true
     }
 
-    option "us-west-2" {
+    option "us-west-1" {
       label     = "N. California"
     }    
     option "us-west-2" {
@@ -269,7 +269,7 @@ If no arguments are passed to an `option`, then the block label is used as both 
 
     option "us-east-1" {}
     option "us-east-2" {}
-    option "us-west-2" {}    
+    option "us-west-1" {}    
     option "us-west-2" {}
     
   }
@@ -291,7 +291,7 @@ Each option may optionally specify a `label` (the text to display) and a `value`
     option "us-east-2" {
       label     = "Ohio"
     }
-    option "us-west-2" {
+    option "us-west-1" {
       label     = "N. California"
     }    
     option "us-west-2" {

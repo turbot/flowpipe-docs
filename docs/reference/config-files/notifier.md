@@ -63,7 +63,7 @@ notifier "hr" {
 
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
-| `integration`   | Integration Reference | Required    | The [integration](#integrations) to send the request to.
+| `integration`   | Integration Reference | Required    | The [integration](/docs/reference/config-files/integration) to send the request to.
 | `cc`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to `email` integrations.
 | `bcc`           | List&ltString&gt | Optional    | The email addresses to send to. This only applies to `email` integrations.
 | `channel`       | String    | Optional    | The channel to send the request to. This only applies to `slack` integrations.
@@ -151,7 +151,7 @@ Generally, Mods that use `input` and `message` steps should allow passing a noti
 
 pipeline "my_pipe" {
   param "notify" {
-    default = "default
+    default = "default"
   }
 
   step "input" "my_step" {
