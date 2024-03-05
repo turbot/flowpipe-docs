@@ -116,7 +116,7 @@ In order to finish setting up the Slack app, we will need to get the Request URL
 $ flowpipe integration show slack.default --host local
 Name:        slack.default
 Type:        slack
-Request URL: https://0000-1111-2222-ee0-16b0-91dd-fdc0-3333-4444.ngrok-free.app/api/latest/hook/integration.slack.default/0000000000000a565c4b466152f660b3bf873b83cd83e27c011c8000000000000
+Request URL: https://0000-1111-2222-ee0-16b0-91dd-fdc0-3333-4444.ngrok-free.app/api/latest/integration/slack/default/0s9bkjhq8mn0x
 ```
 
 ### Enable Interactivity in the Slack App

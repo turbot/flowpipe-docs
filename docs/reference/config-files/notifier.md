@@ -151,7 +151,7 @@ Generally, Mods that use `input` and `message` steps should allow passing a noti
 
 pipeline "my_pipe" {
   param "notify" {
-    default = "default
+    default = "default"
   }
 
   step "input" "my_step" {
