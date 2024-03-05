@@ -5,7 +5,7 @@ sidebar_label: slack
 
 # Slack Integration
 
-The `slack` integration can be used to send Slack messages with a [`message` step](/docs/flowpipe-hcl/step/message) or to prompt for user input in an [`input` step](/docs/flowpipe-hcl/step/input).
+Use the `slack` integration to send Slack messages with a [`message` step](/docs/flowpipe-hcl/step/message) or to prompt for user input in an [`input` step](/docs/flowpipe-hcl/step/input).
 
 
 ```hcl
@@ -21,10 +21,10 @@ integration "slack" "my_slack_app" {
 
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
-| `token`         | String	  | *Optional	  | The slack user token for the app.  The token must have the required scopes. You must specify either a `token` or `webhook_url`.
-| `webhook_url `  | String	  | *Optional	  | A Slack webhook url to post to a slack channel. Note that a webhook is tied to a specific channel; if you specify a channel in the step options it will be ignored. You must specify either a `token` or `webhook_url`.
+| `token`         | String	  | Optional	  | The Slack user token for the app.  The token must have the required scopes. You must specify either a `token` or `webhook_url`.
+| `webhook_url `  | String	  | Optional	  | A Slack webhook url to post to a slack channel. Note that a webhook is tied to a specific channel; if you specify a channel in the step options it will be ignored. You must specify either a `token` or `webhook_url`.
 | `channel`       | String	  | Optional	  | The Slack channel to send to.  This value should be considered a default; if an `input` step specifies a `channel` it will override this value.   Note that a webhook is tied to a specific channel, so if you specify a `webhook_url` then this setting will have no effect.
-| `signing_secret`| String    | Optional    | Slack signing secret used to verify that the responses are from slack.  This setting only applies if you use a `token`.
+| `signing_secret`| String    | Optional    | Slack signing secret used to verify that the responses are from Slack.  This setting only applies if you use a `token`.
 | `title`         | String    | Optional    | Display title for the integration.
 
 
@@ -32,7 +32,7 @@ integration "slack" "my_slack_app" {
 
 | Attribute       | Type    |  Description
 |-----------------|---------|-----------------
-| `request_url`   | String  | The webhook URL to configure as the request url in your slack app
+| `request_url`   | String  | The webhook URL to configure as the request url in your Slack app
 
 
 ## Examples
@@ -85,7 +85,7 @@ First, we'll need to [create an app in Slack](https://api.slack.com/start/quicks
 
 ### Create the Flowpipe Integration
 
-Now that the app is created, we will create a new Slack integration in Flowpipe.  If you don't already have one, create a `flowpipe.fpc` in your config directory (usually `~/.flowpipe/config/`).  Create a [Slack Integration](/docs/reference/config-files/integration/slack).  Set the `token` and `signing_secret` to the values for your slack app, and set the channel to whichever slack channel you would like to use as the default channel.
+Now that the app is created, we will create a new Slack integration in Flowpipe.  If you don't already have one, create a `flowpipe.fpc` in your config directory (usually `~/.flowpipe/config/`).  Create a [Slack Integration](/docs/reference/config-files/integration/slack).  Set the `token` and `signing_secret` to the values for your slack app, and set the channel to whichever Slack channel you would like to use as the default channel.
 
 ```hcl
 integration "slack" "default" {
@@ -95,12 +95,12 @@ integration "slack" "default" {
 }
 ```
 
-Because Slack will need to call back to Flowpipe, we will need a publicly available endpoint to call back to.  For this example, we will use [ngrok](https://ngrok.com/) for this purpose.  Download and install ngrok, and then start it, listening to HTTP on the Flowpipe port:
+Because Slack will need to call back to Flowpipe, we will need a public endpoint. For this example, we will use [ngrok](https://ngrok.com/). Download and install ngrok, and then start it, listening to HTTP on the Flowpipe port:
 ```bash
 ngrok http 7103
 ```
 
-When ngrok starts, it will create a random public URL to forward to your local system.  Copy this URL (from the `Forwarding` line) - we will use this to set the Flowpipe base URL.  In this case, we are using an ephemeral address from ngrok, so we will just pass the base URL to the `flowpipe server` command.
+When ngrok starts, it will create a random public URL to forward to your local system.  Copy this URL (from the `Forwarding` line), we will use it to set the Flowpipe base URL.  In this case, we are using an ephemeral address from ngrok, so we will just pass the base URL to the `flowpipe server` command.
 
 You can also set the base URL via the [FLOWPIPE_BASE_URL](/docs/reference/env-vars/flowpipe_base_url) environment variable or the `base_url` [workspace argument](/docs/reference/config-files/workspace), and this may be simpler if you have a stable reverse proxy or public URL.
 
@@ -127,7 +127,7 @@ Now we need to enable your Slack app for interactivity and complete the Slack se
 1. Re-install the app in the workspace.  From the menu on the left, select **Install App**, then click **Reinstall to Workspace**.
 
 
-The Slack app is now configured.  **Note that you must also invite the bot user to any channel that you want to post messages to!**  You can go the the channel in Slack and invite the integration by name: `/invite @Flowpipe Integration`.
+The Slack app is now configured.  **Note that you must also invite the bot user to any channel that you want to post messages to!**  You can go to the channel in Slack and invite the integration by name: `/invite @Flowpipe Integration`.
 
 
 ### Setup the Notifier

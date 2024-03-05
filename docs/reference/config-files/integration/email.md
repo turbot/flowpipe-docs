@@ -5,7 +5,7 @@ sidebar_label: email
 
 # Email Integration
 
-The `email` integration can be used to send email messages with a [`message` step](/docs/flowpipe-hcl/step/message) or to prompt for user input in an [`input` step](/docs/flowpipe-hcl/step/input).
+Use the `email` integration to send email messages with a [`message` step](/docs/flowpipe-hcl/step/message) or to prompt for user input in an [`input` step](/docs/flowpipe-hcl/step/input).
 
 ```hcl
 integration "email" "my_email_app" {
