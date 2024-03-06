@@ -401,7 +401,7 @@ fp pipeline list
 
 ## Running in read-only mode
 
-It is possible to run the flowpipe container with a read-only root filesystem, but note the following:
+It is possible to run the Flowpipe container with a read-only root filesystem, but note the following:
 
 - `/tmp` must be writable (mount with tmpfs)
 - config (`/home/flowpipe/.flowpipe/config`) must be writable
