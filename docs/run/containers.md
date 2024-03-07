@@ -106,14 +106,14 @@ Below are instructions on how to set up aliases for both macOS and Linux users:
 For macOS users, the alias includes a specific Docker socket path used by Docker Desktop. This ensures that Flowpipe can communicate with the Docker daemon running on macOS. Open your terminal and run the following commands:
 
 ```bash
-alias fp="docker run \
+alias fp='docker run \
     -it \
     --rm \
     --name flowpipe \
     --mount type=bind,source=$HOME/fp/config,target=/home/flowpipe/.flowpipe/config \
     --mount type=bind,source=$(pwd),target=/workspace \
     -v /var/run/docker.sock.raw:/var/run/docker.sock \
-    ghcr.io/turbot/flowpipe"
+    ghcr.io/turbot/flowpipe'
 ```
 
 ### Linux Setup
@@ -122,7 +122,7 @@ For Linux users, the setup is slightly different to accommodate the Linux Docker
 Run the following commands in your terminal:
 
 ```bash
-alias fp="docker run \
+alias fp='docker run \
   -it \
   --rm \
   --name flowpipe \
@@ -131,7 +131,7 @@ alias fp="docker run \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -e USER_UID=$(id -u) \
   -e USER_GID=$(id -g) \
-  ghcr.io/turbot/flowpipe"
+  ghcr.io/turbot/flowpipe'
 ```
 
 ### Using Flowpipe with Docker
@@ -390,7 +390,7 @@ docker run \
 After initiating the server, establish an alias `fp` to streamline the execution of commands against the detached container:
 
 ```bash
-alias fp="docker exec -it flowpipe-detached flowpipe"
+alias fp='docker exec -it flowpipe-detached flowpipe'
 ```
 
 As previously shown, you can use this `fp` alias to run Flowpipe commands against the running detached container, for example, listing all available pipelines:
@@ -413,7 +413,7 @@ To run the container as a read only root system by passing the docker flag `--re
 On macOS use:
 
 ```bash
-alias fp="docker run \
+alias fp='docker run \
     -it \
     --rm \
     --read-only \
@@ -421,13 +421,13 @@ alias fp="docker run \
     --mount type=bind,source=$HOME/fp/config,target=/home/flowpipe/.flowpipe/config \
     --mount type=bind,source=$(pwd),target=/workspace \
     -v /var/run/docker.sock.raw:/var/run/docker.sock \
-    ghcr.io/turbot/flowpipe"
+    ghcr.io/turbot/flowpipe'
 ```
 
 On Linux use:
 
 ```bash
-alias fp="docker run \
+alias fp='docker run \
     -it \
     --rm \
     --read-only \
@@ -435,7 +435,7 @@ alias fp="docker run \
     --mount type=bind,source=$HOME/fp/config,target=/home/flowpipe/.flowpipe/config \
     --mount type=bind,source=$(pwd),target=/workspace \
     -v /var/run/docker.sock:/var/run/docker.sock \
-    ghcr.io/turbot/flowpipe"
+    ghcr.io/turbot/flowpipe'
 ```
 
 Now you can call all available command for Flowpipe as previous examples.
