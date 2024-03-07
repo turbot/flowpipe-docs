@@ -47,7 +47,7 @@ There are multiple [input types](#input-types), but they all share these traits:
 | `cc`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to notifiers that uses `email` integrations.
 | `bcc`           | List&ltString&gt | Optional    | The email addresses to send to. This only applies to notifiers that uses `email` integrations.
 | `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  `slack` integrations.
-| `option`        | Block     | Optional    | The available [options](#options) to present to the user as `option` blocks.  You may either specify one or ore `option` blocks or a single `options` list, but not both.
+| `option`        | Block     | Optional    | The available [options](#options) to present to the user as `option` blocks.  You may either specify one or more `option` blocks or a single `options` list, but not both.
 | `options`       | List      | Optional    | The available [options](#options) to present to the user as a list of objects.  You may either specify one or more `option` blocks or a single `options` list, but not both.
 | `prompt`        | String    | Optional    | The text to present to the user as a prompt
 | `subject`       | String    | Optional     | The email subject.  This only applies to notifiers that uses `email` integrations.
@@ -316,7 +316,7 @@ You may instead pass all options as a list in the `options` argument:
         selected  = true
       },
       {
-        value     = "us-east-2
+        value     = "us-east-2"
         label     = "Ohio"
         selected  = true
       },
