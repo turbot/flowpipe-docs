@@ -64,6 +64,7 @@ This step also supports the [common step arguments](/docs/flowpipe-hcl/step#comm
 |-----------------|---------|-----------------
 | `value `        | String  | The value that the user has selected.  This may be a scalar value (when the type is `button`, `text`, `select`) or a list (when the type is `multiselect`).
 
+----
 
 ## Input Types
 
@@ -81,7 +82,15 @@ This step also supports the [common step arguments](/docs/flowpipe-hcl/step#comm
 
 -->
 
+----
 ### Button - Simple 
+
+##### HTTP
+![](/images/docs/powerpipe-hcl/input_button_simple_http.png)
+
+##### Slack
+![](/images/docs/powerpipe-hcl/input_button_simple_slack.png)
+
 
 ```hcl
 pipeline "my_pipe" {
@@ -89,7 +98,7 @@ pipeline "my_pipe" {
   step "input" "my_step" {
     notifier = notifier.default
     type     = "button"
-    prompt   = "do you want to approve?"
+    prompt   = "Do you want to approve?"
 
     option "Approve" {}
     option "Deny" {}
@@ -103,7 +112,16 @@ pipeline "my_pipe" {
 }
 ```
 
+----
+
 ### Button - With labels and values 
+
+##### HTTP
+![](/images/docs/powerpipe-hcl/input_button_simple_http.png)
+
+##### Slack
+![](/images/docs/powerpipe-hcl/input_button_simple_slack.png)
+
 
 ```hcl
 pipeline "my_pipe" {
@@ -111,7 +129,7 @@ pipeline "my_pipe" {
   step "input" "my_step" {
     notifier = notifier.default
     type     = "button"
-    prompt   = "do you want to approve?"
+    prompt   = "Do you want to approve?"
 
     option "approve_button" {
       label = "Approve"
@@ -132,7 +150,16 @@ pipeline "my_pipe" {
 
 ```
 
-### select - basic
+----
+
+### Select - basic
+
+##### HTTP
+![](/images/docs/powerpipe-hcl/input_select_simple_http_open.png)
+
+##### Slack
+![](/images/docs/powerpipe-hcl/input_select_simple_slack_open.png)
+
 
 ```hcl
 pipeline "my_pipe" {
@@ -158,7 +185,18 @@ pipeline "my_pipe" {
 }
 ```
 
-### select - with labels & default selection
+----
+
+
+
+#### Select - with labels & default selection
+
+##### HTTP
+![](/images/docs/powerpipe-hcl/input_select_labels_http_open.png)
+
+##### Slack
+![](/images/docs/powerpipe-hcl/input_select_labels_slack_open.png)
+
 
 ```hcl
 pipeline "my_pipe" {
@@ -193,7 +231,17 @@ pipeline "my_pipe" {
 }
 ```
 
-### multiselect  - basic
+----
+
+
+
+### Multiselect  - basic
+
+##### HTTP
+![](/images/docs/powerpipe-hcl/input_multiselect_simple_http_selected.png)
+
+##### Slack
+![](/images/docs/powerpipe-hcl/input_multiselect_simple_slack_selected.png)
 
 
 ```hcl
@@ -222,7 +270,17 @@ pipeline "my_pipe" {
 }
 ```
 
-### multiselect with labels & default selection
+----
+
+
+### Multiselect with labels & default selection
+
+##### HTTP
+![](/images/docs/powerpipe-hcl/input_multiselect_labels_http_selected.png)
+
+##### Slack
+![](/images/docs/powerpipe-hcl/input_multiselect_labels_slack_selected.png)
+
 
 ```hcl
 pipeline "my_pipe" {
@@ -261,6 +319,7 @@ pipeline "my_pipe" {
 }
 ```
 
+----
 
 
 ## Options
@@ -377,7 +436,7 @@ pipeline "my_pipe" {
   step "input" "my_step" {
     notifier = notifier.default
     type     = "button"
-    prompt   = "do you want to approve?"
+    prompt   = "Do you want to approve?"
 
     option "approve_button" {
       label = "Approve"
