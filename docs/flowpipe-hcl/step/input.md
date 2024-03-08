@@ -151,7 +151,9 @@ pipeline "my_pipe" {
 
   step "pipeline" "list_buckets" {
     pipeline = aws.pipeline.list_buckets
-    region   = step.input.select_region.value
+    args = {
+      region = step.input.select_region.value
+    }
   }
 }
 ```
@@ -183,7 +185,9 @@ pipeline "my_pipe" {
 
   step "pipeline" "list_buckets" {
     pipeline = aws.pipeline.list_buckets
-    region   = step.input.select_region.value
+    args = {
+      region = step.input.select_region.value
+    }
   }
 
 }
@@ -210,7 +214,9 @@ pipeline "my_pipe" {
     pipeline = aws.pipeline.list_buckets
 
     for_each = step.input.select_regions.value
-    region   = each.value
+    args = {
+      region = each.value
+    }
   }
 
 }
@@ -247,7 +253,9 @@ pipeline "my_pipe" {
     pipeline = aws.pipeline.list_buckets
 
     for_each = step.input.select_regions.value
-    region   = each.value
+    args = {
+      region = each.value
+    }
   }
 
 }
