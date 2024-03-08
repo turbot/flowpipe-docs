@@ -98,7 +98,7 @@ flowpipe pipeline run reallyfreegeoip.pipeline.get_ip_geolocation --arg ip_addre
 
 ## Composing with pipelines
 
-While running the dependency pipelines directly in the CLI is useful, the real power is the ability to compose pipelines from other pipelines. Let's add a [pipeline step](/docs/flowpipe-hcl/step/pipeline) to take our ip address and look up our geo-location information.
+While running the dependency pipelines directly in the CLI is useful, the real power is the ability to compose pipelines from other pipelines. Let's add a [pipeline step](/docs/flowpipe-hcl/step/pipeline) to take our IP address and look up our geo-location information.
 
 ```hcl
 pipeline "learn_flowpipe" {
@@ -195,51 +195,33 @@ pipeline "learn_flowpipe" {
 
 ![](/images/docs/learn/weather-report.png)
 
-## Send to Slack
 
-Now let's send the forecast to Slack. First, we'll install the `slack` mod.
 
-```bash
-flowpipe mod install github.com/turbot/flowpipe-mod-slack
-flowpipe mod list
-```
+## Send a message
 
-```bash
-local
-├── github.com/turbot/flowpipe-mod-reallyfreegeoip@v0.1.0
-└── github.com/turbot/flowpipe-mod-slack@v0.1.0
-```
+Now we have a pipeline that can get the local forecast - let's send it somewhere!  The [message step](/docs/flowpipe-hcl/step/message) provides a mechanism for sending messages via multiple communication channels, such as Slack and Email. 
 
-The [documentation](https://hub.flowpipe.io/mods/turbot/slack#credentials) for the `slack` mod shows you two ways to authenticate: with the `SLACK_TOKEN` environment variable, or with a Flowpipe [credential](/docs/run/credentials) in the file `~/.flowpipe.config/slack.fpc`. Here we'll use the former.
 
-```bash
-export SLACK_TOKEN="xoxb-562...ESg7"
-```
+The `message` step (along with the [`input` step](/docs/build/input)) routes messages to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [`http` integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it.
 
-Before using the mod in our pipeline, verify that the token you generated for your Slack app has the necessary scopes. In this case, the token needs `chat:write`. To verify that the `slack` mod can successfully post to a channel, we can use the CLI.
-
-```bash
- flowpipe pipeline run slack.pipeline.post_message --arg text=ok --arg channel=random
-```
-
-Now add this step to the `learn_flowpipe` pipeline.
+Add this step to the `learn_flowpipe` pipeline.
 
 ```hcl
-  step "pipeline" "send_to_slack" {
-    pipeline = slack.pipeline.post_message
-    args = {
-      text = step.transform.friendly_forecast.value
-      channel = "random"
-    }
+  step "message" "send_forecast" {
+    notifier = notifier.default
+    subject  = "Todays Forecast"
+    text     = step.transform.friendly_forecast.value
   }
 ```
 
-And run that pipeline again.
+And run the pipeline again.
 
 ```bash
 flowpipe pipeline run learn_flowpipe
 ```
 
-In addition to the console output we've already seen, you should see a message like this in Slack.
+You should see the message printed to the console when you run the pipeline. You can send it via [Email](/docs/reference/config-files/integration/email) or [Slack](/docs/reference/config-files/integration/slack) without modifying the pipeline code.  Just create the appropriate [integrations](/docs/reference/config-files/integration), add them to the [default notifier](/docs/reference/config-files/notifier#default-notifier), and run the pipeline again!
+
 
 ![](/images/docs/learn/slack-weather-report.png)
+
