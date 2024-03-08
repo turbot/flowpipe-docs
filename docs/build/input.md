@@ -3,7 +3,7 @@ title: Ask for Input
 sidebar_label: Ask for Input
 ---
 
-# Prompting for Input
+# Ask for Input
 
 Flowpipe allows you to optimize and automate your operational and business processes, but there are times when human interaction is required.  For example, a manager may be required to approve a privilege escalation request.  Furthermore, we live in an era of constant communication across multiple channels.  People prefer to use specific tools (Email, Slack, etc.) for communication and expect these interactions to occur in their tools.  The Flowpipe `input` step primitive provides the ability to prompt for human input via multiple channels and wait for a response.
 

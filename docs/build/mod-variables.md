@@ -3,7 +3,7 @@ title: Pass Variables
 sidebar_label: Pass Variables
 ---
 
-# Using Variables
+# Pass Variables
 
 [Variables](/docs/flowpipe-hcl/variable) are module-level objects that allow you to pass values to your module at runtime.  When running Flowpipe, you can pass values on the command line or from a `.fpvars` file, and you will be prompted for any variables that have no values.
 
