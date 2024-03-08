@@ -86,10 +86,10 @@ This step also supports the [common step arguments](/docs/flowpipe-hcl/step#comm
 ### Button - Simple 
 
 ##### HTTP
-![](/images/docs/powerpipe-hcl/input_button_simple_http.png)
+![](/images/docs/flowpipe-hcl/input_button_simple_http.png)
 
 ##### Slack
-![](/images/docs/powerpipe-hcl/input_button_simple_slack.png)
+![](/images/docs/flowpipe-hcl/input_button_simple_slack.png)
 
 
 ```hcl
@@ -117,10 +117,10 @@ pipeline "my_pipe" {
 ### Button - With labels and values 
 
 ##### HTTP
-![](/images/docs/powerpipe-hcl/input_button_simple_http.png)
+![](/images/docs/flowpipe-hcl/input_button_simple_http.png)
 
 ##### Slack
-![](/images/docs/powerpipe-hcl/input_button_simple_slack.png)
+![](/images/docs/flowpipe-hcl/input_button_simple_slack.png)
 
 
 ```hcl
@@ -155,10 +155,10 @@ pipeline "my_pipe" {
 ### Select - basic
 
 ##### HTTP
-![](/images/docs/powerpipe-hcl/input_select_simple_http_open.png)
+![](/images/docs/flowpipe-hcl/input_select_simple_http_open.png)
 
 ##### Slack
-![](/images/docs/powerpipe-hcl/input_select_simple_slack_open.png)
+![](/images/docs/flowpipe-hcl/input_select_simple_slack_open.png)
 
 
 ```hcl
@@ -192,10 +192,10 @@ pipeline "my_pipe" {
 #### Select - with labels & default selection
 
 ##### HTTP
-![](/images/docs/powerpipe-hcl/input_select_labels_http_open.png)
+![](/images/docs/flowpipe-hcl/input_select_labels_http_open.png)
 
 ##### Slack
-![](/images/docs/powerpipe-hcl/input_select_labels_slack_open.png)
+![](/images/docs/flowpipe-hcl/input_select_labels_slack_open.png)
 
 
 ```hcl
@@ -238,10 +238,10 @@ pipeline "my_pipe" {
 ### Multiselect  - basic
 
 ##### HTTP
-![](/images/docs/powerpipe-hcl/input_multiselect_simple_http_selected.png)
+![](/images/docs/flowpipe-hcl/input_multiselect_simple_http_selected.png)
 
 ##### Slack
-![](/images/docs/powerpipe-hcl/input_multiselect_simple_slack_selected.png)
+![](/images/docs/flowpipe-hcl/input_multiselect_simple_slack_selected.png)
 
 
 ```hcl
@@ -276,10 +276,10 @@ pipeline "my_pipe" {
 ### Multiselect with labels & default selection
 
 ##### HTTP
-![](/images/docs/powerpipe-hcl/input_multiselect_labels_http_selected.png)
+![](/images/docs/flowpipe-hcl/input_multiselect_labels_http_selected.png)
 
 ##### Slack
-![](/images/docs/powerpipe-hcl/input_multiselect_labels_slack_selected.png)
+![](/images/docs/flowpipe-hcl/input_multiselect_labels_slack_selected.png)
 
 
 ```hcl
