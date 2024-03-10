@@ -220,7 +220,7 @@ And run the pipeline again.
 flowpipe pipeline run learn_flowpipe
 ```
 
-You should see the message printed to the console when you run the pipeline. You can send it via [Email](/docs/reference/config-files/integration/email) or [Slack](/docs/reference/config-files/integration/slack) without modifying the pipeline code.  Just create the appropriate [integrations](/docs/reference/config-files/integration), add them to the [default notifier](/docs/reference/config-files/notifier#default-notifier), and run the pipeline again!
+You should see the message printed to the console when you run the pipeline. You can send it via [Email](/docs/reference/config-files/integration/email), [Slack](/docs/reference/config-files/integration/slack) or [Microsoft Teams](/docs/reference/config-files/integration/msteams) without modifying the pipeline code.  Just create the appropriate [integrations](/docs/reference/config-files/integration), add them to the [default notifier](/docs/reference/config-files/notifier#default-notifier), and run the pipeline again!
 
 
 ![](/images/docs/learn/slack-weather-report.png)
