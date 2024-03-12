@@ -37,9 +37,9 @@ integration "msteams" "general_channel" {
 > Note: Webhook URLs allow unauthenticated messages to be sent to the attached channel and should be treated as secrets.
 
 1. Navigate within Microsoft Teams to the channel you wish to obtain a webhook URL for.
-1. Click **...** next to the channel name in the side-menu.
+1. Click **...** next to the channel name in the side menu.
 1. Select **Manage Channel** from the drop-down menu.
 1. Under **Connectors** click on the **Edit** button.
 1. Locate **Incoming Webhook** in the list and click the **Add** button.
 1. Provide a name for the webhook (_Optional_ provide an avatar image for the webhook) & click the **Create** button.
-1. Copy the generated url as this will be the `webhook_url`
+1. Copy the generated URL as this will be the `webhook_url`
