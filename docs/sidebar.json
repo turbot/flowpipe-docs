@@ -195,6 +195,7 @@
             "items": [
               "reference/config-files/integration/email",
               "reference/config-files/integration/http",
+              "reference/config-files/integration/msteams",
               "reference/config-files/integration/slack"
             ]
           },

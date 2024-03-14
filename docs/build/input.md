@@ -100,7 +100,7 @@ While the default `http` integration is useful for testing pipelines, you probab
 
 The `integration` block allows you to define configuration information for communicating with an external system such as Slack or Email.  `integration` blocks are *configuration* resources - they are defined in configuration files (`.fpc`), not mod files(`.fp`).
 
-Set up a [Slack integration](/docs/reference/config-files/integration/slack#setting-up-as-slack-integration) or an [Email integration](/docs/reference/config-files/integration/email) to send messages and input requests via Slack or Email.
+Set up a [Slack](/docs/reference/config-files/integration/slack#setting-up-as-slack-integration), [Microsoft Teams](/docs/reference/config-files/integration/msteams) or an [Email integration](/docs/reference/config-files/integration/email) to send messages and input requests via Slack, Teams or Email.
 
 
 ## Set up the Notifier
