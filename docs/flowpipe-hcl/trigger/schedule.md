@@ -13,7 +13,7 @@ trigger "schedule" "my_hourly_trigger" {
 
     pipeline = pipeline.twitter_mentions_to_slack
     args = {
-        query = "(steampipe OR steampipe.io OR github.com/turbot) -tomathy -GutturalSteve -\"steampipe alley\""
+        query = "(steampipe OR powerpipe OR flowpipe)"
     }
 
 }
