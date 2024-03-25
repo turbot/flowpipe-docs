@@ -37,7 +37,7 @@ pipeline "enabled_regions" {
 | -----------| ------ | --------- | ---------------------------------------------------- |
 | `database` | String | Required  | A connection string used to connect to the database. |
 | `sql`      | String | Required  | A SQL query string.                                  |
-| `args`     | Map    | Optional  | A map of arguments to pass to the query.             |
+| `args`     | List    | Optional  | A list of arguments to pass to the query.             |
 
 This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
