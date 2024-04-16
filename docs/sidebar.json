@@ -211,5 +211,19 @@
     "id": "faq",
     "link": "faq",
     "items": []
+  },
+
+  {
+    "type": "category",
+    "id": "compare",
+    "link": "compare",
+    "items": [
+      "compare/aws-step-functions",
+      "compare/tines",
+      "compare/zapier"
+      ]
   }
+
+
+
 ]
