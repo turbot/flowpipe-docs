@@ -3,7 +3,7 @@ title: Flowpipe versus AWS Step Functions
 sidebar_label: AWS Step Functions
 ---
 
-# Workflow for DevOps: Flowpipe versus AWS Step Functions
+# Flowpipe versus AWS Step Functions
 
 **Flowpipe**: Automate cloud operations. Coordinate people and pipelines. Build workflows as code.
 
@@ -17,7 +17,7 @@ sidebar_label: AWS Step Functions
 | **Pre-built automations** | [Yes](https://hub.powerpipe.io)                | [Yes](https://aws.amazon.com/step-functions/)      |
 | **Parallel execution** | [Yes](https://flowpipe.io/docs/build/write-pipelines/iteration#for_each) | Yes                                                |
 | **Composable modules** | [Yes](https://flowpipe.io/docs/build/mod-dependencies) | Yes                                                |
-| **Terms**        | Open source                                             | Proprietary, Free tier, then pay as you go         |
+| **Terms**        | Open source                                             | Proprietary, free tier, then pay as you go         |
 
 ## When to choose Flowpipe over AWS Step Functions
 AWS Step Functions provides a managed way to coordinate components in AWS-centric distributed applications.
@@ -41,10 +41,10 @@ Deploy anywhere. Use it locally, or deploy it in CI/CD pipelines.
 
 <div className="flex justify-center">
 <iframe
-    class="youtube-video"
+    className="youtube-video"
     src="https://flowpipe.io/videos/short_demo_loop.mp4"
     frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowFullScreen
     title="Human interaction with Flowpipe"
 >

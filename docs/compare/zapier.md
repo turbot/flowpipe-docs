@@ -3,7 +3,7 @@ title: Flowpipe versus Zapier
 sidebar_label: Zapier
 ---
 
-# Workflow for DevOps: Flowpipe versus Zapier
+# Flowpipe versus Zapier
 
 **Flowpipe**: Automate cloud operations. Coordinate people and pipelines. Build workflows as code.
 
@@ -17,7 +17,7 @@ sidebar_label: Zapier
 | **Pre-built automations** | [Yes](https://hub.powerpipe.io)                | [Yes](https://zapier.com/apps)                         |
 | **Parallel execution** | [Yes](https://flowpipe.io/docs/build/write-pipelines/iteration#for_each) | Yes                                                     |
 | **Composable modules** | [Yes](https://flowpipe.io/docs/build/mod-dependencies) | [Yes](https://help.zapier.com/hc/en-us/articles/8496308527629-Build-reusable-Sub-Zaps) |
-| **Terms**        | Open source, Always-free developer tier at [pipes.turbot.com](http://pipes.turbot.com) | Proprietary, Free for 2-step Zaps, no premium apps, Paid tiers for multi-step Zaps and premium apps |
+| **Terms**        | Open source, Always-free developer tier at [pipes.turbot.com](http://pipes.turbot.com) | Proprietary, free for 2-step Zaps, paid tiers for multi-step Zaps and premium apps |
 
 ## When to choose Flowpipe over Zapier
 Zapier is typically used by non-coders who need a graphical, low-code approach for basic workflow automation.
@@ -41,10 +41,10 @@ Deploy anywhere. Use it locally, or deploy it in CI/CD pipelines.
 
 <div className="flex justify-center">
 <iframe
-    class="youtube-video"
+    className="youtube-video"
     src="https://flowpipe.io/videos/short_demo_loop.mp4"
     frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowFullScreen
     title="Human interaction with Flowpipe"
 >

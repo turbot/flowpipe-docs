@@ -4,7 +4,7 @@ sidebar_label: Tines
 ---
 
 
-# Workflow for DevOps: Flowpipe versus Tines
+# Flowpipe versus Tines
 
 **Flowpipe**: Automate cloud operations. Coordinate people and pipelines. Build workflows as code.
 
@@ -18,7 +18,7 @@ sidebar_label: Tines
 | **Pre-built automations** | [Yes](https://hub.powerpipe.io)                             | [Yes](https://www.tines.com/library/stories)                           |
 | **Parallel execution** | [Yes](https://flowpipe.io/docs/build/write-pipelines/iteration#for_each) | Yes |
 | **Composable modules** | [Yes](https://flowpipe.io/docs/build/mod-dependencies)          | No                                                                      |
-| **Terms**          | Open source                                                        | Proprietary, Free limited self-hosting, call for pricing                |
+| **Terms**          | Open source                                                        | Proprietary, free limited self-hosting, call for pricing                |
 
 ## When to choose Flowpipe over Tines
 Tines is a good choice for teams seeking a no-code, versatile automation platform for a wide range of tasks and workflows across different teams. Flowpipe is the preferred choice for DevOps engineers who automate cloud operations, coordinate people and pipelines, and build workflows as code.
@@ -40,10 +40,10 @@ Deploy anywhere. Use it locally, or deploy it in CI/CD pipelines.
 
 <div className="flex justify-center">
 <iframe
-    class="youtube-video"
+    className="youtube-video"
     src="https://flowpipe.io/videos/short_demo_loop.mp4"
     frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowFullScreen
     title="Human interaction with Flowpipe"
 >
