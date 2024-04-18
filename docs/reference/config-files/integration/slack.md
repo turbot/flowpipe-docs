@@ -65,7 +65,7 @@ integration "slack" "my_slack_app" {
 ## Setting up as Slack Integration
 
 To prompt for input via Slack you need to:
-1. [Create an app in Slack](t#create-the-slack-app).
+1. [Create an app in Slack](#create-the-slack-app).
 1. [Create a Slack `integration`](#create-the-flowpipe-integration).
 1. [Enable Interactivity in the Slack App](#enable-interactivity-in-the-slack-app).
 1. [Add the integration to a `notifier`](#setup-the-notifier).
