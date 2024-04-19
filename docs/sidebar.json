@@ -6,7 +6,6 @@
     "link": "learn",
     "items": []
   },
-
   {
     "type": "category",
     "id": "Run",
@@ -44,7 +43,6 @@
       "build/mod-dependencies"
     ]
   },
-
   {
     "type": "category",
     "id": "flowpipe-hcl",
@@ -84,7 +82,6 @@
       "flowpipe-hcl/variable"
     ]
   },
-
   {
     "type": "category",
     "id": "reference",
@@ -107,7 +104,6 @@
           "reference/cli/trigger"
         ]
       },
-
       {
         "type": "category",
         "id": "env-vars",
@@ -133,7 +129,6 @@
           "reference/env-vars/pipes_install_dir"
         ]
       },
-
       {
         "type": "category",
         "id": "config-files",
@@ -205,25 +200,22 @@
       }
     ]
   },
-
   {
     "type": "category",
     "id": "faq",
     "link": "faq",
     "items": []
   },
-
   {
     "type": "category",
     "id": "compare",
     "link": "compare",
     "items": [
       "compare/aws-step-functions",
+      "compare/n8n",
       "compare/tines",
+      "compare/torq",
       "compare/zapier"
-      ]
+    ]
   }
-
-
-
 ]
