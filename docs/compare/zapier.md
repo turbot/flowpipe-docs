@@ -19,6 +19,7 @@ sidebar_label: Zapier
 | **Deployment** | Single binary runs locally or elsewhere | SaaS |
 | **Programming style** | Workflow-as-code, using HCL | Visual builder |
 | **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | <a href="https://zapier.com/apps" target="_blank">Yes</a> |
+| **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | No |
 | **Parallel execution** | <a href="https://flowpipe.io/docs/build/write-pipelines/iteration#for_each" target="_blank">Yes</a> | Yes |
 | **Composable modules** | <a href="https://flowpipe.io/docs/build/mod-dependencies" target="_blank">Yes</a> | <a href="https://help.zapier.com/hc/en-us/articles/8496308527629-Build-reusable-Sub-Zaps" target="_blank">Yes</a> |
 | **Terms** | Open source, always-free developer tier at <a href="http://pipes.turbot.com" target="_blank">pipes.turbot.com</a> | Proprietary, free for 2-step Zaps, no premium apps, paid tiers for multi-step Zaps and premium apps |

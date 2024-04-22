@@ -19,6 +19,7 @@ sidebar_label: n8n
 | **Deployment** | Single binary runs locally or elsewhere | Self-hosted or SaaS |
 | **Programming style** | Workflow-as-code, using HCL | Visual builder, <a href="https://docs.n8n.io/code/code-node/" target="_blank">JavaScript and Python</a> for advanced uses |
 | **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | <a href="https://n8n.io/integrations/" target="_blank">Yes</a> |
+| **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | Yes |
 | **Parallel execution** | <a href="https://flowpipe.io/docs/build/write-pipelines/iteration#for_each" target="_blank">Yes</a> | Yes |
 | **Composable modules** | <a href="https://flowpipe.io/docs/build/mod-dependencies" target="_blank">Yes</a> | <a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executeworkflow/#set-up-and-use-a-sub-workflow" target="_blank">Yes</a> |
 | **Terms** | Open source | <a href="https://faircode.io/" target="_blank">Fair-code</a>, free limited self-hosting, paid SaaS tiers |
