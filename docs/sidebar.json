@@ -211,7 +211,7 @@
     "id": "compare",
     "link": "compare",
     "items": [
-      "compare/aws-step-functions",
+      "compare/aws-step",
       "compare/n8n",
       "compare/tines",
       "compare/torq",
