@@ -19,7 +19,7 @@ sidebar_label: AWS Step Functions
 | **Deployment** | Single binary runs locally or elsewhere | AWS service |
 | **Programming style** | Workflow-as-code, using HCL | Visual builder, SDKs, Amazon States Language |
 | **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | <a href="https://zapier.com/apps" target="_blank">Yes</a> |
-| **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | ? |
+| **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | Yes |
 | **Parallel execution** | <a href="https://flowpipe.io/docs/build/write-pipelines/iteration#for_each" target="_blank">Yes</a> | Yes |
 | **Composable modules** | <a href="https://flowpipe.io/docs/build/mod-dependencies" target="_blank">Yes</a> | Yes |
 | **Terms** | Open source | Proprietary, free tier, then pay as you go |
