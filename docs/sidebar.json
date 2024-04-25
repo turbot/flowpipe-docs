@@ -211,11 +211,11 @@
     "id": "compare",
     "link": "compare",
     "items": [
-      "compare/aws-step",
-      "compare/n8n",
-      "compare/tines",
-      "compare/torq",
-      "compare/zapier"
+      "compare/flowpipe-vs-aws-step-functions",
+      "compare/flowpipe-vs-n8n",
+      "compare/flowpipe-vs-tines",
+      "compare/flowpipe-vs-torq",
+      "compare/flowpipe-vs-zapier"
     ]
   }
 ]

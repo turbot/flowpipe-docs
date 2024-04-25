@@ -1,33 +1,33 @@
 ---
-title: Flowpipe versus Torq
-sidebar_label: Torq
+title: n8n alternative for DevOps to build workflows as code
+sidebar_label: n8n
 ---
 
-# Flowpipe versus Torq
+# Flowpipe versus n8n
 
 
 **Flowpipe:** Automate cloud operations. Coordinate people and pipelines. Build workflows as code.
 
 
-**Torq:** A hyperautomation platform for security operations.  
+**n8n:** Workflow automation for technical teams.
 
 
 
-
- | | **Flowpipe** | **Torq** | 
+ | | **Flowpipe** | **n8n** | 
 | --- | --- | --- |
-| **Audience** | DevOps engineers who automate operational workflows | IT professionals, security teams, and business users who automate workflows |
-| **Deployment** | Single binary runs locally or elsewhere | SaaS |
-| **Programming style** | Workflow-as-code, using HCL | Visual builder, <a href="https://learn.torq.io/docs/scripting" target="_blank">scripting</a> for advanced users. |
-| **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | <a href="https://torq.io/integrations/" target="_blank">Yes</a> |
+| **Audience** | DevOps engineers who automate operational workflows | Developers, IT professionals, and business users who automate workflows |
+| **Deployment** | Single binary runs locally or elsewhere | Self-hosted or SaaS |
+| **Programming style** | Workflow-as-code, using HCL | Visual builder, JavaScript and Python for advanced uses |
+| **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | Yes |
 | **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | Yes |
 | **Parallel execution** | <a href="https://flowpipe.io/docs/build/write-pipelines/iteration#for_each" target="_blank">Yes</a> | Yes |
 | **Composable modules** | <a href="https://flowpipe.io/docs/build/mod-dependencies" target="_blank">Yes</a> | Yes |
-| **Terms** | Open source | Proprietary, call for pricing |
+| **Terms** | Open source | <a href="https://faircode.io/" target="_blank">Fair-code</a>, free limited self-hosting, paid SaaS tiers |
 
-# When to choose Flowpipe over Torq
+# When to choose Flowpipe over n8n
 
-Torq is purpose-built for no-code security automation.  
+n8n is a workflow automation platform for both technical and non-technical users.
+
   
 Flowpipe is the preferred choice for DevOps engineers who automate cloud operations, coordinate people and pipelines, and build workflows as code.
 

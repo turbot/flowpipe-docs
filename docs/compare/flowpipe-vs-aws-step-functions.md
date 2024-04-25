@@ -1,5 +1,5 @@
 ---
-title: Flowpipe versus AWS Step Functions
+title: AWS Step Functions alternative for DevOps to build workflows as code
 sidebar_label: AWS Step Functions
 ---
 
@@ -18,11 +18,11 @@ sidebar_label: AWS Step Functions
 | **Audience** | DevOps engineers who automate operational workflows | Developers and IT professionals who build distributed applications and automate workflows |
 | **Deployment** | Single binary runs locally or elsewhere | AWS service |
 | **Programming style** | Workflow-as-code, using HCL | Visual builder, SDKs, Amazon States Language |
-| **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | <a href="https://zapier.com/apps" target="_blank">Yes</a> |
+| **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | Yes |
 | **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | Yes |
 | **Parallel execution** | <a href="https://flowpipe.io/docs/build/write-pipelines/iteration#for_each" target="_blank">Yes</a> | Yes |
 | **Composable modules** | <a href="https://flowpipe.io/docs/build/mod-dependencies" target="_blank">Yes</a> | Yes |
-| **Terms** | Open source | Proprietary, free tier, then pay as you go |
+| **Terms** | Open source | Pay as you go |
 
 # When to choose Flowpipe over AWS Step Functions
 

@@ -1,35 +1,35 @@
 ---
-title: Flowpipe versus Zapier
-sidebar_label: Zapier
+title: Torq alternative for DevOps to build workflows as code
+sidebar_label: Torq
 ---
 
-# Flowpipe versus Zapier
+# Flowpipe versus Torq
 
 
 **Flowpipe:** Automate cloud operations. Coordinate people and pipelines. Build workflows as code.
 
 
-**Zapier:** No-code workflow automation for business apps.
+**Torq:** A hyperautomation platform for security operations.  
 
 
 
- | | **Flowpipe** | **Zapier** | 
+
+ | | **Flowpipe** | **Torq** | 
 | --- | --- | --- |
-| **Audience** | DevOps engineers who automate operational workflows | Non-coders who automate business workflows |
+| **Audience** | DevOps engineers who automate operational workflows | IT professionals, security teams, and business users who automate workflows |
 | **Deployment** | Single binary runs locally or elsewhere | SaaS |
-| **Programming style** | Workflow-as-code, using HCL | Visual builder |
-| **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | <a href="https://zapier.com/apps" target="_blank">Yes</a> |
-| **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | No |
+| **Programming style** | Workflow-as-code, using HCL | Visual builder, scripting for advanced users. |
+| **Pre-built automations** | <a href="https://hub.powerpipe.io" target="_blank">Yes</a> | Yes |
+| **Error handling** | <a href="https://flowpipe.io/docs/build/write-pipelines/errors" target="_blank">Yes</a> | Yes |
 | **Parallel execution** | <a href="https://flowpipe.io/docs/build/write-pipelines/iteration#for_each" target="_blank">Yes</a> | Yes |
-| **Composable modules** | <a href="https://flowpipe.io/docs/build/mod-dependencies" target="_blank">Yes</a> | <a href="https://help.zapier.com/hc/en-us/articles/8496308527629-Build-reusable-Sub-Zaps" target="_blank">Yes</a> |
-| **Terms** | Open source, always-free developer tier at <a href="http://pipes.turbot.com" target="_blank">pipes.turbot.com</a> | Proprietary, free for 2-step Zaps, no premium apps, paid tiers for multi-step Zaps and premium apps |
+| **Composable modules** | <a href="https://flowpipe.io/docs/build/mod-dependencies" target="_blank">Yes</a> | Yes |
+| **Terms** | Open source | Proprietary, call for pricing |
 
-# When to choose Flowpipe over Zapier
+# When to choose Flowpipe over Torq
 
-Zapier is typically used by non-coders who need a graphical, low-code approach for basic workflow automation.
-
+Torq is typically used by security professionals as a purpose-built for no-code security automation.  
   
-Flowpipe is the preferred alternative for DevOps engineers who automate cloud operations, coordinate people and pipelines, and build workflows as code.
+Flowpipe is the preferred choice for DevOps engineers who automate cloud operations, coordinate people and pipelines, and build workflows as code.
 
 # About Flowpipe
 
