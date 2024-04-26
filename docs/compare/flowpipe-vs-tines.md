@@ -52,3 +52,16 @@ Flowpipe is workflow for DevOps. Use it to automate cloud operations, coordinate
 
 First <a href="https://flowpipe.io/downloads" target="_blank">download Flowpipe</a>, run through the <a href="https://flowpipe.io/docs/build" target="_blank">tutorial</a>, and check out the <a href="https://hub.flowpipe.io/?type=library" target="_blank">libraries</a> and <a href="https://hub.flowpipe.io/?type=library" target="_blank">samples</a>. Then build some pipelines that automate your DevOps workflows.
 
+
+<div className="flex justify-center">
+<iframe
+    class="youtube-video"
+    src="https://www.youtube-nocookie.com/embed/h4mWhMzaS7Y"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+    title="Human interaction with Flowpipe"
+>
+</iframe>
+</div>
+        
