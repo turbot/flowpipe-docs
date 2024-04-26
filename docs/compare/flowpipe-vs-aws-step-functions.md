@@ -1,6 +1,7 @@
 ---
 title: AWS Step Functions alternative for DevOps to build workflows as code
 sidebar_label: AWS Step Functions
+description: Compare Flowpipe to AWS Step Functions as an alternative solution to automate cloud operations. coordinate people and pipelines, and build workflows as code.
 ---
 
 # Flowpipe versus AWS Step Functions

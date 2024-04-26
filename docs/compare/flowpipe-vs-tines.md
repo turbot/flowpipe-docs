@@ -1,6 +1,7 @@
 ---
 title: Tines alternative for DevOps to build workflows as code
 sidebar_label: Tines
+description: Compare Flowpipe to Tines as an alternative solution to automate cloud operations. coordinate people and pipelines, and build workflows as code.
 ---
 
 # Flowpipe versus Tines

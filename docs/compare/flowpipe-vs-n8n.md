@@ -1,6 +1,7 @@
 ---
 title: n8n alternative for DevOps to build workflows as code
 sidebar_label: n8n
+description: Compare Flowpipe to n8n as an alternative solution to automate cloud operations. coordinate people and pipelines, and build workflows as code.
 ---
 
 # Flowpipe versus n8n
