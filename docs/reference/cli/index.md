@@ -16,13 +16,12 @@ sidebar_label: Flowpipe CLI
 | [flowpipe pipeline](/docs/reference/cli/pipeline) | List, view, and run Flowpipe pipelines
 | [flowpipe process](/docs/reference/cli/process) | List and view Flowpipe processes
 | [flowpipe server](/docs/reference/cli/server)  | Run Flowpipe server, including triggers and integrations
-| [flowpipe trigger](/docs/reference/cli/pipeline) | List and view Flowpipe triggers
+| [flowpipe trigger](/docs/reference/cli/trigger) | List and view Flowpipe triggers
+| [flowpipe variable](/docs/reference/cli/variable) | List and view Flowpipe variables
 
 
 
 <!--
-
-| [flowpipe variable](/docs/reference/cli/variable)| Flowpipe variable management
 
 | [flowpipe login](/docs/reference/cli/login)    | Log in to Flowpipe CLoud
 
