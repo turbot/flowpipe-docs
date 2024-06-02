@@ -24,7 +24,7 @@ flowpipe pipeline run pipeline_name [args]
 | `run`  | Run a pipeline from the current mod or its direct dependents or from a Flowpipe server instance.
 | `show` | Show details of a pipeline from the current mod or its direct dependents.
 
-## Arguments
+## Flags
 
 | Flag | Applies to | Description
 |-|-|-

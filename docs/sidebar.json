@@ -104,7 +104,8 @@
           "reference/cli/pipeline",
           "reference/cli/process",
           "reference/cli/server",
-          "reference/cli/trigger"
+          "reference/cli/trigger",
+          "reference/cli/variable"
         ]
       },
 
