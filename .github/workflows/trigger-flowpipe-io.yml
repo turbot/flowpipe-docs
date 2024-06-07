@@ -1,0 +1,20 @@
+name: Trigger the preview build in flowpipe.io
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches-ignore: 
+      - "main"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.G_PERSONAL_ACCESS_TOKEN }}
+          repository: turbotio/flowpipe.io
+          event-type: build-preview
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref_name": "${{ github.ref_name }}"}'
