@@ -7,7 +7,7 @@ slug: /
 
 # Learn Flowpipe
 
-Testing again flowpipe allows you to create "pipelines as code" to define workflows and other tasks that run in a sequence.
+Flowpipe allows you to create "pipelines as code" to define workflows and other tasks that run in a sequence.
 
 ## Creating your first pipeline
 
