@@ -1,0 +1,51 @@
+name: Trigger the preview build in flowpipe.io
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches-ignore: 
+      - "main"
+
+  pull_request:
+    types: [opened]
+
+env:
+  PREVIEW_LINK: flowpipe-io-git-docs
+  PREVIEW_DOMAIN: turbot.vercel.app
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.G_PERSONAL_ACCESS_TOKEN }}
+          repository: turbotio/flowpipe.io
+          event-type: build-preview
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref_name": "${{ github.ref_name }}"}'
+
+  comment-link:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: ${{ github.event_name == 'pull_request' && github.event.action == 'opened' }}
+    steps:
+
+      - name: Convert head branch special characters to hyphens
+        id: sanitize_branch
+        run: |
+          sanitized_branch=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's/[^a-zA-Z0-9]/-/g')
+          echo "Sanitized head branch: $sanitized_branch"
+          echo "::set-output name=sanitized_branch::$sanitized_branch"
+
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Preview link: [https://${{ env.PREVIEW_LINK }}-${{ steps.sanitize_branch.outputs.sanitized_branch }}-${{ env.PREVIEW_DOMAIN }}](https://${{ env.PREVIEW_LINK }}-${{ steps.sanitize_branch.outputs.sanitized_branch }}-${{ env.PREVIEW_DOMAIN }}/)'
+            })
