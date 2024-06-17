@@ -8,9 +8,10 @@ on:
       - "main"
 
   pull_request:
-    types: [opened, reopened, synchronize, closed]
+    types: [opened]
 
 env:
+  PREVIEW_LINK: flowpipe-io-git-docs
   PREVIEW_DOMAIN: turbot.vercel.app
 
 jobs:
@@ -46,5 +47,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Preview link: [https://flowpipe-io-git-${{ steps.sanitize_branch.outputs.sanitized_branch }}-${{ env.PREVIEW_DOMAIN }}](https://flowpipe-io-git-${{ steps.sanitize_branch.outputs.sanitized_branch }}-${{ env.PREVIEW_DOMAIN }}/)'
+              body: 'Preview link: [https://${{ env.PREVIEW_LINK }}-${{ steps.sanitize_branch.outputs.sanitized_branch }}-${{ env.PREVIEW_DOMAIN }}](https://${{ env.PREVIEW_LINK }}-${{ steps.sanitize_branch.outputs.sanitized_branch }}-${{ env.PREVIEW_DOMAIN }}/)'
             })
