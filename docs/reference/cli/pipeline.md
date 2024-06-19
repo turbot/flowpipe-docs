@@ -30,6 +30,7 @@ flowpipe pipeline run pipeline_name [args]
 |-|-|-
 | `--arg string=string` | `run` | Specify the value of a pipeline argument. Multiple `--arg` arguments may be passed.
 | `--detach`   | `run` | Start the pipeline and return immediately.  By default, `flowpipe pipeline run` will run the pipeline and wait for the results. You may only use `--detach` when running a pipeline from a server instance (by specifying `--host`, for example).
+| `--execution-id` | `run`| Specify pipeline execution id. Execution id will generated if not provided.
 | `--var string=string` | `run`| Specify the value of a variable.  Multiple `--var` arguments may be passed. 
 | `--var-file strings`| `run`| Specify an .fpvar file containing variable values.
 | `--verbose`   | `run` | View detailed event information, including step arguments and attributes.
