@@ -11,6 +11,8 @@ To interact with the various tools and services, Flowpipe also includes an `inte
 
 Sending notifications is a common pattern, and often users will want to route a request to more than one user, group, or channel, and via more than one delivery mechanism.  For instance, you may want to request approval via Slack AND email.  The `notifier` resource allows you to define a list of integrations to send notifications to. Like `integration`, a `notifier` is an installation-level configuration resource.
 
+Flowpipe [integrations](/docs/reference/config-files/integration/) require callback endpoints, so they only work in [server-mode](/docs/run/server).  When you run a pipeline in [client-mode](/docs/run#operating-modes), notifications for [input](/docs/flowpipe-hcl/step/input) and [message](/docs/flowpipe-hcl/step/message) steps will only appear on the command line, regardless of your `notifier` and `integration` configuration.  To send [input](/docs/flowpipe-hcl/step/input) and [message](/docs/flowpipe-hcl/step/message) requests to external services, you must run [Flowpipe server](/docs/run/server)!
+
 
 
 ## Adding an input step to your pipeline
@@ -51,7 +53,24 @@ pipeline "play_a_game" {
 This pipeline will prompt the user to select a game to play using a `select` box (there are other [input step types](/docs/flowpipe-hcl/step/input#input-types), such as `text`, `button`, and `multiselect`).
 After the user selects a game, the pipeline will send back a message with a hyperlink to the selected game.
 
-The `input` and `message` steps route messages to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [`http` integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it.
+
+## Running in Client-Mode
+
+If you run the pipeline in [client-mode](/docs/run#operating-modes), pipes will prompt you on the console and wait for your response. 
+
+![](/images/docs/build/input_console_select_game.png)
+
+
+Once you respond, the pipeline will continue.
+
+![](/images/docs/build/play_game_console.png)
+
+
+## Running in Server-Mode
+
+Inputs and messages are sent only to the console when running in client-mode, which is suitable for testing your pipelines, or for running pipelines that do not require coordination with others.  Running in server-mode, however, allows you to route messages and inputs to external systems and services, like Slack or email.
+
+When running in server-mode, the `input` and `message` steps route messages to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [`http` integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it.
 
 Integrations are only loaded in [server mode](/docs/run/server), so let's start the Flowpipe server:
 ```bash
