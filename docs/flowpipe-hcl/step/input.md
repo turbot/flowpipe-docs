@@ -5,7 +5,12 @@ sidebar_label: input
 
 # input
 
-Use the `input` step primitive to prompt for user input.  The pipeline will send the prompt to one or more [integrations](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier).  It will then pause and wait for a response.  When a response is received, the pipeline will continue and the step will return the selected `value`.
+Use the `input` step primitive to prompt for user input.  When the pipeline reaches an `input` step, it will prompt the user for input and then pause and wait for a response.  When a response is received, the pipeline will continue and the step will return the selected `value`.
+
+When you run a pipeline in [client-mode](/docs/run#operating-modes), notifications for `input` steps will only appear on the command line.  
+
+In [server-mode](/docs/run/server), notifications for `input` steps are not sent to the console.  Instead, they are sent to [integrations](/docs/reference/config-files/integration/) such as Slack or Email via a [notifier](/docs/reference/config-files/notifier), allowing you to create collaborative workflows that integrate with your preferred communication channels.
+
 
 ```hcl
 pipeline "my_step" {
@@ -85,6 +90,10 @@ This step also supports the [common step arguments](/docs/flowpipe-hcl/step#comm
 ----
 ### Button - Simple 
 
+##### Console (Client-Mode)
+![](/images/docs/flowpipe-hcl/input_button_simple_console.png)
+
+
 ##### HTTP
 ![](/images/docs/flowpipe-hcl/input_button_simple_http.png)
 
@@ -115,6 +124,9 @@ pipeline "my_pipe" {
 ----
 
 ### Button - With labels and values 
+
+##### Console (Client-Mode)
+![](/images/docs/flowpipe-hcl/input_button_simple_console.png)
 
 ##### HTTP
 ![](/images/docs/flowpipe-hcl/input_button_simple_http.png)
@@ -154,6 +166,10 @@ pipeline "my_pipe" {
 
 ### Select - basic
 
+##### Console (Client-Mode)
+![](/images/docs/flowpipe-hcl/input_select_simple_console.png)
+
+
 ##### HTTP
 ![](/images/docs/flowpipe-hcl/input_select_simple_http_open.png)
 
@@ -162,7 +178,7 @@ pipeline "my_pipe" {
 
 
 ```hcl
-pipeline "my_pipe" {
+pipeline "my_select" {
 
   step "input" "select_region" {
     notifier = notifier.default
@@ -191,6 +207,9 @@ pipeline "my_pipe" {
 
 #### Select - with labels & default selection
 
+##### Console (Client-Mode)
+![](/images/docs/flowpipe-hcl/input_select_labels_console.png)
+
 ##### HTTP
 ![](/images/docs/flowpipe-hcl/input_select_labels_http_open.png)
 
@@ -199,7 +218,7 @@ pipeline "my_pipe" {
 
 
 ```hcl
-pipeline "my_pipe" {
+pipeline "my_select_labels" {
 
   step "input" "select_region" {
     notifier = notifier.default
@@ -237,6 +256,10 @@ pipeline "my_pipe" {
 
 ### Multiselect  - basic
 
+##### Console (Client-Mode)
+![](/images/docs/flowpipe-hcl/input_multiselect_simple_console.png)
+
+
 ##### HTTP
 ![](/images/docs/flowpipe-hcl/input_multiselect_simple_http_selected.png)
 
@@ -245,7 +268,7 @@ pipeline "my_pipe" {
 
 
 ```hcl
-pipeline "my_pipe" {
+pipeline "my_multi" {
 
   step "input" "select_regions" {
     notifier = notifier.default
@@ -275,6 +298,10 @@ pipeline "my_pipe" {
 
 ### Multiselect with labels & default selection
 
+##### Console (Client-Mode)
+![](/images/docs/flowpipe-hcl/input_multiselect_labels_console_selected.png)
+
+
 ##### HTTP
 ![](/images/docs/flowpipe-hcl/input_multiselect_labels_http_selected.png)
 
@@ -283,7 +310,7 @@ pipeline "my_pipe" {
 
 
 ```hcl
-pipeline "my_pipe" {
+pipeline "my_multi_labels" {
 
   step "input" "select_regions" {
     notifier = notifier.default

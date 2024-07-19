@@ -6,7 +6,12 @@ sidebar_label: integration
 
 # Integration
 
-Use the `integration` block to configure how pipelines interact with external system, such as Slack or Email, via [input](/docs/flowpipe-hcl/step/input) and [message](/docs/flowpipe-hcl/step/message) steps. Integrations are *configuration* resources, defined in configuration files (`.fpc`), not mod files(`.fp`).  Here's why:
+Use the `integration` block to configure how pipelines interact with an external system, such as Slack or Email, via [input](/docs/flowpipe-hcl/step/input) and [message](/docs/flowpipe-hcl/step/message) steps.
+
+Like [triggers](/docs/build/triggers), integrations require callback endpoints, so they only work in [server-mode](/docs/run/server).  When you run a pipeline in [client-mode](/docs/run#operating-modes), notifications for [input](/docs/flowpipe-hcl/step/input) and [message](/docs/flowpipe-hcl/step/message) steps will only appear on the command line, regardless of your `notifier` and `integration` configuration.  To send [input](/docs/flowpipe-hcl/step/input) and [message](/docs/flowpipe-hcl/step/message) requests to your integrations, you must run [Flowpipe server](/docs/run/server)!
+
+
+Integrations are *configuration* resources, defined in configuration files (`.fpc`), not mod files(`.fp`).  Here's why:
 - The settings are installation-specific and may contain secrets.
 - The settings are usually the same for *all* mods in a given installation.
 
