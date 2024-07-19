@@ -57,7 +57,15 @@ flowpipe pipeline run learn_flowpipe
 
 ![](/images/docs/learn/get-ipv4.png)
 
-Flowpipe runs the pipeline and prints information about the currently executing steps. When the pipeline run completes, Flowpipe prints the pipeline's outputs.
+Flowpipe runs the pipeline and prints its outputs once it is complete.
+
+When troubleshooting, it's often useful to view more information about the currently executing steps.  You can use the `--verbose` flag to show this detailed information.
+
+```bash
+flowpipe pipeline run learn_flowpipe --verbose
+```
+
+![](/images/docs/learn/get-ipv4-verbose.png)
 
 ## Using mods
 
@@ -201,9 +209,6 @@ pipeline "learn_flowpipe" {
 
 Now we have a pipeline that can get the local forecast - let's send it somewhere!  The [message step](/docs/flowpipe-hcl/step/message) provides a mechanism for sending messages via multiple communication channels, such as Slack and Email. 
 
-
-The `message` step (along with the [`input` step](/docs/build/input)) routes messages to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier). You don't need to create these to get started though;  Flowpipe creates a default [`http` integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it.
-
 Add this step to the `learn_flowpipe` pipeline.
 
 ```hcl
@@ -220,8 +225,19 @@ And run the pipeline again.
 flowpipe pipeline run learn_flowpipe
 ```
 
-You should see the message printed to the console when you run the pipeline. You can send it via [Email](/docs/reference/config-files/integration/email), [Slack](/docs/reference/config-files/integration/slack) or [Microsoft Teams](/docs/reference/config-files/integration/msteams) without modifying the pipeline code.  Just create the appropriate [integrations](/docs/reference/config-files/integration), add them to the [default notifier](/docs/reference/config-files/notifier#default-notifier), and run the pipeline again!
+You should see the message printed to the console when you run the pipeline. 
 
+Console messages and inputs are useful, but Flowpipe can also route these input requests, approvals and notifications to external systems like Slack, MS Teams, and Email!
+
+Flowpipe [Integrations](/docs/reference/config-files/integration) allow you to interface with external systems.  [Notifiers](/docs/reference/config-files/notifier) allow you to route [message](/docs/flowpipe-hcl/step/message) and [input](/docs/build/input) steps to one or more integrations.  Integrations are only loaded in [server-mode](/docs/run/server).
+
+ 
+Flowpipe server creates a default [`http` integration](/docs/reference/config-files/integration/http) as well as a [default notifier](/docs/reference/config-files/notifier#default-notifier) that routes to it, but you can send it via [Email](/docs/reference/config-files/integration/email), [Slack](/docs/reference/config-files/integration/slack) or [Microsoft Teams](/docs/reference/config-files/integration/msteams) without modifying the pipeline code.  Just create the appropriate [integrations](/docs/reference/config-files/integration), add them to the [default notifier](/docs/reference/config-files/notifier#default-notifier), and run the pipeline again from a server instance!
+
+```bash
+flowpipe server &
+flowpipe pipeline run learn_flowpipe --host local
+```
 
 ![](/images/docs/learn/slack-weather-report.png)
 
