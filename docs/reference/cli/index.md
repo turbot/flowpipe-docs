@@ -44,9 +44,9 @@ sidebar_label: Flowpipe CLI
   </tr>
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--event-store</inlineCode> </td> 
+    <td nowrap="true"> <inlineCode>--data-dir</inlineCode> </td> 
     <td>  
-    Sets the event store database file. Flowpipe defaults to the `.flowpipe/flowpipe.db` file in the current mod directory. This argument allows you to specify a different file.
+    Sets the event store data directory. Flowpipe defaults to the `.flowpipe` directory in the current mod directory. This argument allows you to specify a different directory.
     </td> 
   </tr>
 
