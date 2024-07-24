@@ -5,7 +5,11 @@ sidebar_label: message
 
 # message
 
-Use the `message` step to send a message to an [integration](/docs/reference/config-files/integration) via a [notifier](/docs/reference/config-files/notifier).
+Use the `message` step to send a one-way notification message from your pipeline.
+
+When you run a pipeline in [client-mode](/docs/run#operating-modes), notifications for `message` steps will only appear on the command line.  
+
+In [server-mode](/docs/run/server), notifications for `message` steps are not sent to the console.  Instead, they are sent to [integrations](/docs/reference/config-files/integration/) such as Slack or Email via a [notifier](/docs/reference/config-files/notifier), allowing you to create collaborative workflows that integrate with your preferred communication channels.
 
 
 ```hcl

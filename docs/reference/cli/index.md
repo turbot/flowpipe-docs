@@ -44,6 +44,14 @@ sidebar_label: Flowpipe CLI
   </tr>
 
   <tr> 
+    <td nowrap="true"> <inlineCode>--data-dir</inlineCode> </td> 
+    <td>  
+    Sets the event store data directory. Flowpipe defaults to the `.flowpipe` directory in the current mod directory. This argument allows you to specify a different directory.
+    </td> 
+  </tr>
+
+
+  <tr> 
     <td nowrap="true"> <inlineCode>-h</inlineCode>, <inlineCode>--help</inlineCode> </td> 
     <td>  Help for Flowpipe. </td> 
   </tr>
