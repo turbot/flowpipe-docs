@@ -8,13 +8,12 @@ sidebar_label: flowpipe pipeline
 List, view, and run Flowpipe pipelines.
 
 ## Usage
+
 ```bash
 flowpipe pipeline list [args]
 flowpipe pipeline show pipeline_name [args]
 flowpipe pipeline run pipeline_name [args]
 ```
-
-
 
 ## Sub-Commands
 
@@ -34,7 +33,6 @@ flowpipe pipeline run pipeline_name [args]
 | `--var string=string` | `run`| Specify the value of a variable.  Multiple `--var` arguments may be passed. 
 | `--var-file strings`| `run`| Specify an .fpvar file containing variable values.
 | `--verbose`   | `run` | View detailed event information, including step arguments and attributes.
-
 
 ## Examples
 
@@ -78,7 +76,6 @@ Run a pipeline and pass parameters:
 ```bash
 flowpipe pipeline run my_pipeline --arg my_string_param="my name" --arg 'my_list_param=["Owner","Application","Environment"]'
 ```
-
 
 Run a pipeline from the local server instance (started with `flowpipe server`):
 ```bash
