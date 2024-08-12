@@ -43,13 +43,13 @@ We look forward to receiving your pull requests for:
 To contribute, send us a pull request.
 
 1. [Fork the repository](https://help.github.com/articles/fork-a-repo/).
-2. In your fork, make your change in a branch that's based on this repo's **main** branch.
+2. In your fork, make your change in a branch that's based on this repo's **develop** branch.
 3. Commit the change to your fork, using a clear and descriptive commit message.
 4. [Create a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/)
 
 Before you send us a pull request, please be sure that:
 
-1. You're working from the latest source on the **main** branch.
+1. You're working from the latest source on the **develop** branch.
 2. You check [existing open](https://github.com/turbot/flowpipe-docs/pulls) pull requests to be sure that someone else hasn't already addressed the problem.
 3. You [create an issue](https://github.com/turbot/flowpipe-docs/issues/new) before working on a contribution that will take a significant amount of your time.
 
