@@ -31,7 +31,7 @@ pipeline "simple_pipe" {
 | `event`         | Object	  | Optional	  | JSON-compatible [event](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-concepts.html#gettingstarted-concepts-event) object that contains data for a Lambda function to process
 | `source`        | String	  | Required	  | Path to the function's deployment package within the local filesystem. The path is relative to the root of the mod (where the `mod.hcl`).
 | `handler`       | String	  | Optional	  | Function entry point in your code, in the format `filename.functionname`.  If not specified default handler for the runtime is used (`index.handler` for nodejs, `lambda_function.lambda_handler` for python, etc.)
-| `runtime`       | String	  | Optional	  | Identifier of the function's runtime. Valid Values are `nodejs:18`, `python:3.10`.
+| `runtime`       | String	  | Required    | Identifier of the function's runtime. Valid Values are `nodejs:18`, `nodejs:20`, `python:3.10`.
 
 This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
