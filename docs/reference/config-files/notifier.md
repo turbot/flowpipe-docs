@@ -5,7 +5,7 @@ sidebar_label: notifier
 
 # Notifiers
 
-Notifiers allow you to create a named list of notification targets, linking `message` and `input` steps to `integrations`. Like `integration`, `notifier` blocks are installation-level configuration items, defined in `.fpc` files (typically, in `~/.flowpipe/config/flowpipe.spc`).
+Notifiers allow you to create a named list of notification targets, linking `message` and `input` steps to `integrations`. Like `integration`, `notifier` blocks are installation-level configuration items, defined in `.fpc` files (typically, in `~/.flowpipe/config/flowpipe.fpc`).
 
 Each notifier contains a list of integrations and related settings used to send and receive data to one or more integrations when an `input` step executes.
 
