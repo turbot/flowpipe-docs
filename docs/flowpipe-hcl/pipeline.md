@@ -79,6 +79,7 @@ step "http" "whos_in_space" {
 |---------------|---------|--------------------------
 | `default`     | Any     | A value to use if no argument is passed for this parameter when the query is run.
 | `description` | String  | A description of the parameter.
+| `tags`         | Map    | A map of key:value metadata for the benchmark, used to categorize, search, and filter.  The structure is up to the mod author and varies by benchmark and provider. 
 | `type`        | String   | The data type of the parameter: `string`, `number`, `bool`, `list`, `map`, `any` (default `any`). 
 
 ----

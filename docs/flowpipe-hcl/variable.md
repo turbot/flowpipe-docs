@@ -97,6 +97,7 @@ pipeline "describe_vpcs" {
 |-|-|-|-
 | `default` | Any |Optional|  A default value.  If no value is passed, the user is not prompted and the default is used. 
 | `description` | String| Optional|  A description of the variable.  This text is included when the user is prompted for a variable's value.
+| `tags`         | Map    | Optional | A map of key:value metadata for the benchmark, used to categorize, search, and filter.  The structure is up to the mod author and varies by benchmark and provider. 
 | `type` | Type | Optional | The [variable type](#variable-types).  This may be a simple type or a collection.
 
 
