@@ -8,7 +8,7 @@ sidebar_label: aws
 The `aws` connection can be used to access Amazon Web Services resources.
 
 ```hcl
-connection "aws" "my_creds" {
+connection "aws" "my_connection" {
   profile = "aws-account-01"
 }
 ```
@@ -61,6 +61,21 @@ connection "aws" "aws_profile" {
 ```
 
 ### Using AWS Connections in Container Step
+<!-- NOTE: Waiting on clarification -->
+```hcl
+pipeline "ex1" {
+  param "connection" {
+    type    = string
+    default = "default"
+  }
+
+  step "container" "aws" {
+    image = "public.ecr.aws/aws-cli/aws-cli"
+    cmd   = [ "s3", "ls" ]
+    env   = connection.aws[param.connection].env
+  }
+}
+```
 
 ```hcl
 pipeline "ex1" {
