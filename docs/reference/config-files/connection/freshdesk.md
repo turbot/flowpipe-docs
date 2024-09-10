@@ -1,5 +1,5 @@
 ---
-title:  freshdesk
+title: freshdesk
 sidebar_label: freshdesk
 ---
 
@@ -16,10 +16,10 @@ connection "freshdesk" "freshdesk_connection" {
 
 ## Arguments
 
-| Name            | Type    | Required?| Description
-|-----------------|---------|----------|-------------------
-| `api_key`       |  String | Optional | Freshdesk API key
-| `subdomain`     |  String | Optional | Freshdesk subdomain
+| Name        | Type   | Required? | Description         |
+| ----------- | ------ | --------- | ------------------- |
+| `api_key`   | String | Optional  | Freshdesk API key   |
+| `subdomain` | String | Optional  | Freshdesk subdomain |
 
 All arguments are optional, and a `freshdesk` connection with no arguments will behave the same as the [default connection](#default-connection).
 
