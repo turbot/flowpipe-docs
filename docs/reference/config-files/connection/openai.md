@@ -1,5 +1,5 @@
 ---
-title:  openai
+title: openai
 sidebar_label: openai
 ---
 
@@ -15,17 +15,17 @@ connection "openai" "my_openai" {
 
 ## Arguments
 
-| Name            | Type    | Required?| Description
-|-----------------|---------|----------|-------------------
-| `api_key`       |  String | Optional | API key
+| Name      | Type   | Required? | Description |
+| --------- | ------ | --------- | ----------- |
+| `api_key` | String | Optional  | API key     |
 
 All arguments are optional, and an `openai` connection with no arguments will behave the same as the [default connection](#default-connection).
 
 ## Attributes (Read-Only)
 
-| Attribute       | Type    | Description
-|-----------------|---------|-----------------
-| `env`           | Map     | A map of the resolved connection-related environment variables (`OPENAI_API_KEY`)
+| Attribute | Type | Description                                                                       |
+| --------- | ---- | --------------------------------------------------------------------------------- |
+| `env`     | Map  | A map of the resolved connection-related environment variables (`OPENAI_API_KEY`) |
 
 ## Default Connection
 
