@@ -1,5 +1,5 @@
 ---
-title:  alicloud
+title: alicloud
 sidebar_label: alicloud
 ---
 
@@ -16,10 +16,10 @@ connection "alicloud" "alicloud" {
 
 ## Arguments
 
-| Name             | Type    | Required?| Description
-|------------------|---------|----------|-------------------
-| `access_key`     |  String | Optional | A static access key to use to authenticate.
-| `secret_key`     |  String | Optional | A static secret key to use to authenticate.
+| Name         | Type   | Required? | Description                                 |
+| ------------ | ------ | --------- | ------------------------------------------- |
+| `access_key` | String | Optional  | A static access key to use to authenticate. |
+| `secret_key` | String | Optional  | A static secret key to use to authenticate. |
 
 All arguments are optional, and a `alicloud` connection with no arguments will behave the same as the [default connection](#default-connection).
 

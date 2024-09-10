@@ -1,5 +1,5 @@
 ---
-title:  abuseipdb
+title: abuseipdb
 sidebar_label: abuseipdb
 ---
 
@@ -15,9 +15,9 @@ connection "abuseipdb" "abuseipdb_api_key" {
 
 ## Arguments
 
-| Name            | Type    | Required?| Description
-|-----------------|---------|----------|-------------------
-| `api_key`       |  String | Optional | API Key
+| Name      | Type   | Required? | Description |
+| --------- | ------ | --------- | ----------- |
+| `api_key` | String | Optional  | API Key     |
 
 All arguments are optional, and an `abuseipdb` connection with no arguments will behave the same as the [default connection](#default-connection).
 
