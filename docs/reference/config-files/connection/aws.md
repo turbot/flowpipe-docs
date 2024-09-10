@@ -61,7 +61,7 @@ connection "aws" "aws_profile" {
 ```
 
 ### Using AWS Connections in Container Step
-<!-- NOTE: Waiting on clarification -->
+
 ```hcl
 pipeline "ex1" {
   param "connection" {
@@ -73,21 +73,6 @@ pipeline "ex1" {
     image = "public.ecr.aws/aws-cli/aws-cli"
     cmd   = [ "s3", "ls" ]
     env   = connection.aws[param.connection].env
-  }
-}
-```
-
-```hcl
-pipeline "ex1" {
-  param "cred" {
-    type    = string
-    default = "default"
-  }
-
-  step "container" "aws" {
-    image = "public.ecr.aws/aws-cli/aws-cli"
-    cmd   = [ "s3", "ls" ]
-    env   = connection.aws[param.cred].env
   }
 }
 ```
