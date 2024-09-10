@@ -17,7 +17,7 @@ connection "gcp" "gcp_def" {
 
 | Name          | Type   | Required? | Description                                                                                                                                          |
 | ------------- | ------ | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `connections` | String | Optional  | Either the path to a JSON connection file that contains Google application connections or the contents of a service account key file in JSON format. |
+| `credentials` | String | Optional  | Either the path to a JSON credential file that contains Google application credentials or the contents of a service account key file in JSON format. |
 | `ttl`         | Number | Optional  | The time, in seconds, to cache the connections. By default, the GP connection will be cached for 5 minutes.                                          |
 
 All arguments are optional, and a `gcp` connection with no arguments will behave the same as the [GCP default connection](#default-connection).
@@ -64,11 +64,9 @@ connection "gcp_inline" {
 
 ### Using GCP Connections in Container Step
 
-<!-- NOTE: Waiting on confirmation -->
-
 ```hcl
 pipeline "gcp_test" {
-    param "cred" {
+    param "connection" {
     type    = string
     default = "default"
   }
@@ -78,7 +76,7 @@ pipeline "gcp_test" {
     cmd   = ["gcloud", "compute", "instances", "list"]
     env = {
       CLOUDSDK_CORE_PROJECT      = "my-project"
-      CLOUDSDK_AUTH_ACCESS_TOKEN = connections.gcp[param.cred].access_token
+      CLOUDSDK_AUTH_ACCESS_TOKEN = connections.gcp[param.connection].access_token
     }
   }
 }
@@ -86,11 +84,9 @@ pipeline "gcp_test" {
 
 ### Using GCP Connections in HTTP Step
 
-<!-- NOTE: Waiting on confirmation -->
-
 ```hcl
 pipeline "gcp_test" {
-  param "cred" {
+  param "connection" {
     type    = string
     default = "default"
   }
@@ -100,7 +96,7 @@ pipeline "gcp_test" {
 
     request_headers = {
       Content-Type = "application/json; charset=utf-8"
-      Authorization = "Bearer ${connections.gcp[param.cred].access_token}"
+      Authorization = "Bearer ${connections.gcp[param.connection].access_token}"
     }
   }
 }
