@@ -49,11 +49,9 @@ connection "slack" "my_slack" {
 
 ### Using Slack Connections in HTTP Step
 
-<!-- NOTE: Waiting on confirmation -->
-
 ```hcl
 pipeline "gcp_test" {
-  param "cred" {
+  param "connection" {
     type    = string
     default = "default"
   }
@@ -64,7 +62,7 @@ pipeline "gcp_test" {
 
     request_headers = {
       Content-Type  = "application/json; charset=utf-8"
-      Authorization = "Bearer ${connections.slack[param.cred].token}"
+      Authorization = "Bearer ${connections.slack[param.connection].token}"
     }
 
     request_body = jsonencode({
