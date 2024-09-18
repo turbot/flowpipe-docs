@@ -143,6 +143,46 @@
         "items": [
           {
             "type": "category",
+            "id": "connection",
+            "link": "reference/config-files/connection",
+            "items": [
+              "reference/config-files/connection/abuseipdb",
+              "reference/config-files/connection/alicloud",
+              "reference/config-files/connection/aws",
+              "reference/config-files/connection/azure",
+              "reference/config-files/connection/bitbucket",
+              "reference/config-files/connection/clickup",
+              "reference/config-files/connection/datadog",
+              "reference/config-files/connection/discord",
+              "reference/config-files/connection/freshdesk",
+              "reference/config-files/connection/gcp",
+              "reference/config-files/connection/github",
+              "reference/config-files/connection/gitlab",
+              "reference/config-files/connection/ip2locationio",
+              "reference/config-files/connection/ipstack",
+              "reference/config-files/connection/jira",
+              "reference/config-files/connection/jumpcloud",
+              "reference/config-files/connection/mastodon",
+              "reference/config-files/connection/okta",
+              "reference/config-files/connection/openai",
+              "reference/config-files/connection/opsgenie",
+              "reference/config-files/connection/pagerduty",
+              "reference/config-files/connection/pipes",
+              "reference/config-files/connection/sendgrid",
+              "reference/config-files/connection/servicenow",
+              "reference/config-files/connection/slack",
+              "reference/config-files/connection/teams",
+              "reference/config-files/connection/trello",
+              "reference/config-files/connection/turbot_guardrails",
+              "reference/config-files/connection/uptimerobot",
+              "reference/config-files/connection/urlscan",
+              "reference/config-files/connection/vault",
+              "reference/config-files/connection/virustotal",
+              "reference/config-files/connection/zendesk"
+            ]
+          },
+          {
+            "type": "category",
             "id": "credential",
             "link": "reference/config-files/credential",
             "items": [
@@ -179,6 +219,14 @@
               "reference/config-files/credential/vault",
               "reference/config-files/credential/virustotal",
               "reference/config-files/credential/zendesk"
+            ]
+          },
+          {
+            "type": "category",
+            "id": "connection_import",
+            "link": "reference/config-files/connection_import",
+            "items": [
+              "reference/config-files/connection_import/steampipe"
             ]
           },
           {
