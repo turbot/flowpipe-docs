@@ -5,6 +5,8 @@ sidebar_label: mastodon
 
 # mastodon
 
+> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `mastodon` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [mastodon connection](/docs/reference/config-files/connection/mastodon) instead.***
+
 The `mastodon` credential can be used to access Mastodon resources.
 
 ```hcl
