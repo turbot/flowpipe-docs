@@ -39,7 +39,7 @@ sidebar_label: Flowpipe CLI
   <tr> 
     <td nowrap="true"> <inlineCode>--config-path</inlineCode> </td> 
     <td>  
-    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (<inlineCode>*.fpc</inlineCode>) will be loaded from each path, with decreasing precedence.  The default is <inlineCode>.:$FLOWPIPE_INSTALL_DIR/config</inlineCode> (<inlineCode>.:~/.flowpipe/config</inlineCode>).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/credential">credentials</a> centrally in the <inlineCode>~/.flowpipe/config</inlineCode> directory, but override them in the working directory / mod location if desired.
+    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (<inlineCode>*.fpc</inlineCode>) will be loaded from each path, with decreasing precedence.  The default is <inlineCode>.:$FLOWPIPE_INSTALL_DIR/config</inlineCode> (<inlineCode>.:~/.flowpipe/config</inlineCode>).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/connection">connections</a> centrally in the <inlineCode>~/.flowpipe/config</inlineCode> directory, but override them in the working directory / mod location if desired.
     </td> 
   </tr>
 

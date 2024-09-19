@@ -32,7 +32,7 @@ variable "secret_access_key" {
 
 variable "session_token" {
   type        = string
-  description = "The token that users must pass to the service API to use the temporary credentials."
+  description = "The token that users must pass to the service API to use the temporary connections."
   default     = ""
 }
 
