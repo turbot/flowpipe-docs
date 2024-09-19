@@ -93,12 +93,14 @@ pipeline "describe_vpcs" {
 ```
 
 ## Argument Reference
-| Argument | Type | Optional? | Description
+| Argument  | Type | Optional? | Description
 |-|-|-|-
 | `default` | Any |Optional|  A default value.  If no value is passed, the user is not prompted and the default is used. 
 | `description` | String| Optional|  A description of the variable.  This text is included when the user is prompted for a variable's value.
-| `tags`         | Map    | Optional | A map of key:value metadata for the benchmark, used to categorize, search, and filter.  The structure is up to the mod author and varies by benchmark and provider. 
-| `type` | Type | Optional | The [variable type](#variable-types).  This may be a simple type or a collection.
+| `enum`    | Set | Optional| A set of allowed values for the variable; no other values are allowed.
+| `tags`    | Map    | Optional | A map of key:value metadata for the benchmark, used to categorize, search, and filter.  The structure is up to the mod author and varies by benchmark and provider. 
+| `type`    | Type | Optional | The [variable type](#variable-types).  This may be a primitive type `string`, `number`, `bool`, `connection`, `connection.{type}`, `notifier`, or a collection type `list()`, `map()`, or `any` (default `any`). 
+
 
 
 ## Variable Types
@@ -106,6 +108,10 @@ Variables may be simple types:
 - `string`
 - `number`
 - `bool`
+- `connection` 
+- a typed `connection`, eg `connection.aws`, `connection.github` , etc.
+- `notifier`
+
 
 Variables may also be collection types:
 - `list(<TYPE>)`
@@ -115,3 +121,16 @@ Variables may also be collection types:
 - `tuple([<TYPE>, ...])`
 
 The keyword `any` may be used to indicate that any type is acceptable 
+
+
+## Enum
+
+Flowpipe supports an `enum` argument to provide a set of allowed values; no other values are allowed.
+
+```hcl
+variable "log_level" {
+  type    = string
+  default = "info"
+  enum    = ["emerg", "alert", "crit", "err", "warning", "notice", "info", "debug" ]
+}
+```
