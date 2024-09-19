@@ -134,7 +134,7 @@ By convention, you should set the default value of the variable to the [default 
 pipeline "ex01" {
 
   param "conn" {
-    type = connection.slack
+    type    = connection.slack
     default = connection.slack.default
   }
 
