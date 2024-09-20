@@ -15,27 +15,15 @@ You can reference variable values as `var.<NAME>`
 variable "region" {
   type        = string
   description = "The name of the Region."
-  default     = ""
+  default     = "us-east-1"
+  enum        = [ "us-east-1", "us-east-2", "us-west-1", "us-west-2" ]
 }
 
-variable "access_key_id" {
-  type        = string
-  description = "The ID for this access key."
-  default     = ""
+variable "conn" {
+  type        = connection.aws
+  description = "AWS connection to connect with"
+  default     = connection.aws.default
 }
-
-variable "secret_access_key" {
-  type        = string
-  description = "The secret key used to sign requests."
-  default     = ""
-}
-
-variable "session_token" {
-  type        = string
-  description = "The token that users must pass to the service API to use the temporary connections."
-  default     = ""
-}
-
 
 pipeline "describe_vpcs" {
   title       = "Describe VPCs"
@@ -47,16 +35,10 @@ pipeline "describe_vpcs" {
     default     = var.region
   }
 
-  param "access_key_id" {
-    type        = string
-    description = "The ID for this access key."
-    default     = var.access_key_id
-  }
-
-  param "secret_access_key" {
-    type        = string
-    description = "The secret key used to sign requests."
-    default     = var.secret_access_key
+  param "conn" {
+    type        = connection.aws
+    description = "AWS connection to connect with"
+    default     = connection.aws.default
   }
 
   param "vpc_ids" {
@@ -67,17 +49,12 @@ pipeline "describe_vpcs" {
 
   step "container" "describe_vpcs" {
     image = "amazon/aws-cli"
+    env   = merge(param.conn.env, {AWS_REGION = param.region})
 
-    cmd = concat(
-      ["ec2", "describe-vpcs"],
-      try(length(param.vpc_ids), 0) > 0 ? concat(["--vpc-ids"], param.vpc_ids) : []
+    cmd   = concat(
+     ["ec2", "describe-vpcs"],
+     try(length(param.vpc_ids), 0) > 0 ? concat(["--vpc-ids"], param.vpc_ids) : []
     )
-
-    env = {
-      AWS_REGION            = param.region
-      AWS_ACCESS_KEY_ID     = param.access_key_id
-      AWS_SECRET_ACCESS_KEY = param.secret_access_key
-    }
   }
 
   output "stdout" {
@@ -85,10 +62,6 @@ pipeline "describe_vpcs" {
     value       = jsondecode(step.container.describe_vpcs.stdout)
   }
 
-  output "stderr" {
-    description = "The standard error stream from the AWS CLI."
-    value       = step.container.describe_vpcs.stderr
-  }
 }
 ```
 
