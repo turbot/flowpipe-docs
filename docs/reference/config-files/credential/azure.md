@@ -5,6 +5,9 @@ sidebar_label: azure
 
 # azure
 
+> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `azure` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [azure connection](/docs/reference/config-files/connection/azure) instead.***
+
+
 The `azure` credential can be used to access Azure resources.
 
 ```hcl

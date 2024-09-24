@@ -5,6 +5,8 @@ sidebar_label: opsgenie
 
 # opsgenie
 
+> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `opsgenie` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [opsgenie connection](/docs/reference/config-files/connection/opsgenie) instead.***
+
 The `opsgenie` credential can be used to access OpsGenie resources.
 
 ```hcl
