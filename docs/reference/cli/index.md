@@ -128,3 +128,20 @@ sidebar_label: Flowpipe CLI
 
 ---
 
+
+## Exit Codes
+
+|  Value  |   Name                                | Description
+|---------|---------------------------------------|----------------------------------------
+|   **0** | `ExitCodeSuccessful`                  | Flowpipe ran successfully
+|   **1** | `ExitCodeExecutionPaused`             | Flowpipe ran without errors but paused waiting input
+|   **2** | `ExitCodeExecutionFailed`             | Flowpipe completed with one or more errors
+|   **3** | `ExitCodeExecutionCancelled`          | The Flowpipe command was canceelled by user request
+|  **61** | `ExitCodeModInitFailed`               | Mod init failed
+|  **62** | `ExitCodeModInstallFailed`            | Mod install failed
+| **250** | `ExitCodeInitializationFailed`        | Initialization failed
+| **251** | `ExitCodeBindPortUnavailable`         | Network port binding failed
+| **252** | `ExitCodeNoModFile`                   | The command requires a mod, but no mod file was found
+| **253** | `ExitCodeFileSystemAccessFailure`     | File system access failed
+| **254** | `ExitCodeInsufficientOrWrongInputs`   | Runtime error - insufficient or incorrect input
+| **255** | `ExitCodeUnknownErrorPanic`           | Runtime error - an unknown panic occurred
