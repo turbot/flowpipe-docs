@@ -5,7 +5,7 @@ sidebar_label: datadog
 
 # datadog
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `datadog` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [datadog connection](/docs/reference/config-files/connection/datadog) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `datadog` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [datadog connection](/docs/reference/config-files/connection/datadog) instead.***
 
 
 The `datadog` credential can be used to access Datadog resources.

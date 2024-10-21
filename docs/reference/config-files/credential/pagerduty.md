@@ -5,7 +5,7 @@ sidebar_label: pagerduty
 
 # pagerduty
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `pagerduty` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [pagerduty connection](/docs/reference/config-files/connection/pagerduty) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `pagerduty` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [pagerduty connection](/docs/reference/config-files/connection/pagerduty) instead.***
 
 The `pagerduty` credential can be used to access PagerDuty resources.
 

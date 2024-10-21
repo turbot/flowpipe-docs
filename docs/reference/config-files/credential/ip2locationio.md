@@ -6,7 +6,7 @@ sidebar_label: ip2locationio
 # ip2locationio
 
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `ip2locationio` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [ip2locationio connection](/docs/reference/config-files/connection/ip2locationio) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `ip2locationio` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [ip2locationio connection](/docs/reference/config-files/connection/ip2locationio) instead.***
 
 
 The `ip2locationio` credential can be used to access Ip2Location.io resources.

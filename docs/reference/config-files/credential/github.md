@@ -5,7 +5,7 @@ sidebar_label: github
 
 # github
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `github` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [github connection](/docs/reference/config-files/connection/github) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `github` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [github connection](/docs/reference/config-files/connection/github) instead.***
 
 The `github` credential can be used to access GitHub resources.
 

@@ -5,7 +5,7 @@ sidebar_label: sendgrid
 
 # sendgrid
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `sendgrid` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [sendgrid connection](/docs/reference/config-files/connection/sendgrid) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `sendgrid` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [sendgrid connection](/docs/reference/config-files/connection/sendgrid) instead.***
 
 The `sendgrid` credential can be used to access SendGrid resources.
 

@@ -5,7 +5,7 @@ sidebar_label: alicloud
 
 # alicloud
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `alicloud` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [alicloud connection](/docs/reference/config-files/connection/alicloud) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `alicloud` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [alicloud connection](/docs/reference/config-files/connection/alicloud) instead.***
 
 
 The `alicloud` credential can be used to access Alibaba Cloud resources.

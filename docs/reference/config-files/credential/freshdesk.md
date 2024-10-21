@@ -5,7 +5,7 @@ sidebar_label: freshdesk
 
 # freshdesk
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `freshdesk` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [freshdesk connection](/docs/reference/config-files/connection/freshdesk) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `freshdesk` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [freshdesk connection](/docs/reference/config-files/connection/freshdesk) instead.***
 
 The `freshdesk` credential can be used to access Freshdesk resources.
 

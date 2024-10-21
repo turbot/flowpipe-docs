@@ -5,7 +5,7 @@ sidebar_label: gcp
 
 # gcp
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `gcp` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [gcp connection](/docs/reference/config-files/connection/gcp) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `gcp` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [gcp connection](/docs/reference/config-files/connection/gcp) instead.***
 
 The `gcp` credential can be used to access Google Cloud Platform resources.
 

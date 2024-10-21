@@ -5,7 +5,7 @@ sidebar_label: slack
 
 # slack
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `slack` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [slack connection](/docs/reference/config-files/connection/slack) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `slack` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [slack connection](/docs/reference/config-files/connection/slack) instead.***
 
 The `slack` credential can be used to access Slack resources.
 

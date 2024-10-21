@@ -6,7 +6,7 @@ sidebar_label: jumpcloud
 # jumpcloud
 
 
-> ***As of Flowpipe 0.10.0, `credential` has been renamed to `connection`.  The `jumpcloud` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [jumpcloud connection](/docs/reference/config-files/connection/jumpcloud) instead.***
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `jumpcloud` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [jumpcloud connection](/docs/reference/config-files/connection/jumpcloud) instead.***
 
 The `jumpcloud` credential can be used to access JumpCloud resources.
 
