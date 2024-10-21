@@ -20,6 +20,8 @@ connection "duckdb" "duckdb_connection" {
 | `filename` |  String | Optional | Path to a DuckDB database file to open. The filename is relative to the [mod location](/docs/run#mod-location)
 
 
+All arguments are optional, and a `postgres` connection with no arguments will behave the same as the [default connection](#default-connection).
+
 ## Attributes (Read-Only)
 
 | Attribute           | Type   | Description
@@ -30,10 +32,10 @@ connection "duckdb" "duckdb_connection" {
 
 ## Default Connection
 
-The `duckdb` connection type includes an implicit, default connection (`connection.duckdb.default`), however there is no file defined for this connection; you must override the default connection and supply a `filename` if you wish to use the DuckDB default connection:
+The `duckdb` connection type includes an implicit, default connection (`connection.duckdb.default`), which will use the `DUCKDB_FILENAME` environment variable unless overridden.
 
 ```hcl
 connection "duckcb" "default" {
-   file = "./myfile.db"
+   file = env("DUCKDB_FILENAME")
 }
 ```

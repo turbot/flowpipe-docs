@@ -21,6 +21,8 @@ connection "sqlite" "sqlite_connection" {
 |------------|---------|----------|-------------------
 | `filename` |  String | Optional | Path to a SQLite database file to open. The filename is relative to the [mod location](/docs/run#mod-location)
 
+All arguments are optional, and a `postgres` connection with no arguments will behave the same as the [default connection](#default-connection).
+
 
 ## Attributes (Read-Only)
 
@@ -32,14 +34,13 @@ connection "sqlite" "sqlite_connection" {
 
 ## Default Connection
 
-The `sqlite` connection type includes an implicit, default connection (`connection.sqlite.default`), however there is no file defined for this connection; you must override the default connection and supply a `filename` if you wish to use the DuckDB default connection:
+The `sqlite` connection type includes an implicit, default connection (`connection.sqlite.default`), which will use the `SQLITE_FILENAME` environment variable unless overridden.
 
 ```hcl
 connection "sqlite" "default" {
-   file = "./myfile.db"
+   file = env("SQLITE_FILENAME")
 }
 ```
-
 <!--
 
 

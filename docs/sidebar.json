@@ -164,6 +164,7 @@
               "reference/config-files/connection/jira",
               "reference/config-files/connection/jumpcloud",
               "reference/config-files/connection/mastodon",
+              "reference/config-files/connection/mysql",
               "reference/config-files/connection/okta",
               "reference/config-files/connection/openai",
               "reference/config-files/connection/opsgenie",

@@ -21,22 +21,18 @@ connection "postgres" "my_connection" {
 
 | Name                | Type    | Required?| Description
 |---------------------|---------|----------|-------------------
-| `db`                |  String | Optional | Database name.  Defaults to `$PGDATABASE`.
-| `host`              |  String | Optional | Database hostname.  Defaults to `$PGHOST`.
+| `db`                |  String | Optional | Database name.  Defaults to `$PGDATABASE`, or `postgres` if unset.
+| `host`              |  String | Optional | Database hostname.  Defaults to `$PGHOST` or `localhost` if not set.
 | `password`          |  String | Optional | Database password. Defaults to `$PGPASSWORD`
-| `port`              |  Number | Optional | Database port.  Defaults to `$PGPORT`.
+| `port`              |  Number | Optional | Database port.  Defaults to `$PGPORT` or `5432` if not set.
+| `search_path`       |  String | Optional | Database search path.
+| `search_path_prefix`|  String | Optional | Database search path prefix.
 | `ssl_mode`          |  String | Optional | PostgreSQL [SSL Mode](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION), one of  `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`.  The defaults to `$PGSSLNEGOTIATION`.
-| `username`          |  String | Optional |  Database username. Defaults to `$PGUSER`.
+| `username`          |  String | Optional |  Database username. Defaults to `$PGUSER` or `postgres` if not set.
 
 
 All arguments are optional, and a `postgres` connection with no arguments will behave the same as the [default connection](#default-connection).
 
-<!--
-
-| `search_path`       |  String | Optional | Database search path.
-| `search_path_prefix`|  String | Optional | Database search path prefix.
-
--->
 
 ## Attributes (Read-Only)
 
