@@ -26,8 +26,7 @@ connection "postgres" "my_connection" {
 | `host`              |  String | Optional | Database hostname.  Defaults to `$PGHOST`.
 | `password`          |  String | Optional | Database password. Defaults to `$PGPASSWORD`
 | `port`              |  Number | Optional | Database port.  Defaults to `$PGPORT`.
-| `ssl_mode`          |  String | Optional | PostgreSQL [SSL Mode](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION), one of 
-`disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`.  The defaults to `$PGSSLNEGOTIATION`.
+| `ssl_mode`          |  String | Optional | PostgreSQL [SSL Mode](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION), one of  `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`.  The defaults to `$PGSSLNEGOTIATION`.
 | `username`          |  String | Optional |  Database username. Defaults to `$PGUSER`.
 
 

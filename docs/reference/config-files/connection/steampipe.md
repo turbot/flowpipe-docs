@@ -28,8 +28,7 @@ connection "steampipe" "steampipe_connection" {
 | `port`              |  Number | Optional | Database port.  Defaults to `9193`.
 | `search_path`       |  String | Optional | Database search path.
 | `search_path_prefix`|  String | Optional | Database search path prefix.
-| `ssl_mode`          |  String | Optional | PostgreSQL [SSL Mode](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION), one of 
-`disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`.  The default is `require`.
+| `ssl_mode`          |  String | Optional | PostgreSQL [SSL Mode](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-PROTECTION), one of `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`.  The default is `require`.
 | `username`          |  String | Optional |  Database username. Default is `steampipe`.
 
 
