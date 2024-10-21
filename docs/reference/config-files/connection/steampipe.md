@@ -11,7 +11,9 @@ The `steampipe` connection can be used to access a [Steampipe](https://steampipe
 connection "steampipe" "steampipe_connection" {
    host     = "localhost"
    port     = 9193
+   db       = "steampipe"
    username = "steampipe"
+   password = "mypassword123"
 }
 ```
 
@@ -19,7 +21,8 @@ connection "steampipe" "steampipe_connection" {
 
 | Name                | Type    | Required?| Description
 |---------------------|---------|----------|-------------------
-| `connection_string` |  String | Optional | Full PostreSQL connection string.  Defaults to `postgres://steampipe@127.0.0.1:9193/steampipe`
+| `connection_string` |  String | Optional | Full PostgreSQL connection string.  Defaults to `postgres://steampipe@127.0.0.1:9193/steampipe`
+| `db`                |  String | Optional | Database name.  Defaults to `steampipe`.
 | `host`              |  String | Optional | Database hostname.  Defaults to `127.0.0.1`.
 | `password`          |  String | Optional | Database password.
 | `port`              |  Number | Optional | Database port.  Defaults to `9193`.
@@ -32,7 +35,19 @@ connection "steampipe" "steampipe_connection" {
 
 All arguments are optional, and a `steampipe` connection with no arguments will behave the same as the [default connection](#default-connection).
 
-Typically, you either supply a `connection_string`:
+Typically, you supply the `host`, `port`, `db`, `username`, and `password`:
+
+```hcl
+connection "steampipe" "steampipe_connection" {
+   host     = "localhost"
+   port     = 9193
+   db       = "steampipe"
+   username = "steampipe"
+   password = "mypassword123"
+}
+```
+
+but you may specify a `connection_string` instead:
 
 ```hcl
 connection "steampipe" "steampipe_connection" {
@@ -40,21 +55,11 @@ connection "steampipe" "steampipe_connection" {
 }
 ```
 
-Or the `host`, `username`, `password`, etc:
-
-```hcl
-connection "steampipe" "steampipe_connection" {
-   host     = "localhost"
-   port     = 9193
-   username = "steampipe"
-   password = "mypassword123"
-}
-```
 
 In either case, the `connection_string` is returned as an attribute.  Regardless of the syntax used to define the connection, you can get its connection_string at run time:
 
 ```hcl
-pipeeline "example" {
+pipeline "example" {
    output "connection_string" {
       value = connection.steampipe.default.connection_string
    }
