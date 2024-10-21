@@ -10,6 +10,51 @@ The `sqlite` connection can be used to access a [SQLite](https://www.sqlite.org/
 
 ```hcl
 connection "sqlite" "sqlite_connection" {
+   filename = "./my_sqlite_db.db"
+}
+```
+
+
+## Arguments
+
+| Name       | Type    | Required?| Description
+|------------|---------|----------|-------------------
+| `filename` |  String | Optional | Path to a SQLite database file to open. The filename is relative to the [mod location](/docs/run#mod-location)
+
+
+## Attributes (Read-Only)
+
+| Attribute           | Type   | Description
+| --------------------| ------ |------------------------------------------------------------------------------
+| `connection_string` | String | The connection string built from the arguments to this connection, in the format `sqlite://path/to/file`
+
+
+
+## Default Connection
+
+The `sqlite` connection type includes an implicit, default connection (`connection.sqlite.default`), however there is no file defined for this connection; you must override the default connection and supply a `filename` if you wish to use the DuckDB default connection:
+
+```hcl
+connection "sqlite" "default" {
+   file = "./myfile.db"
+}
+```
+
+<!--
+
+
+---
+title:  sqlite
+sidebar_label: sqlite
+---
+
+
+# sqlite
+
+The `sqlite` connection can be used to access a [SQLite](https://www.sqlite.org/) database.
+
+```hcl
+connection "sqlite" "sqlite_connection" {
    connection_string = "sqlite://my_sqlite_db.db"
 }
 ```
@@ -56,3 +101,6 @@ connection "sqlite" "default" {
 
 }
 ```
+
+
+-->

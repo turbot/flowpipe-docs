@@ -21,7 +21,6 @@ connection "steampipe" "steampipe_connection" {
 
 | Name                | Type    | Required?| Description
 |---------------------|---------|----------|-------------------
-| `connection_string` |  String | Optional | Full PostgreSQL connection string.  Defaults to `postgres://steampipe@127.0.0.1:9193/steampipe`
 | `db`                |  String | Optional | Database name.  Defaults to `steampipe`.
 | `host`              |  String | Optional | Database hostname.  Defaults to `127.0.0.1`.
 | `password`          |  String | Optional | Database password.
@@ -34,43 +33,23 @@ connection "steampipe" "steampipe_connection" {
 
 All arguments are optional, and a `steampipe` connection with no arguments will behave the same as the [default connection](#default-connection).
 
-Typically, you supply the `host`, `port`, `db`, `username`, and `password`:
 
-```hcl
-connection "steampipe" "steampipe_connection" {
-   host     = "localhost"
-   port     = 9193
-   db       = "steampipe"
-   username = "steampipe"
-   password = "mypassword123"
-}
-```
+## Attributes (Read-Only)
 
-but you may specify a `connection_string` instead:
-
-```hcl
-connection "steampipe" "steampipe_connection" {
-  connection_string = "postgres://steampipe:mypassword123@127.0.0.1:9193/steampipe"
-}
-```
+| Attribute           | Type   | Description
+| --------------------| ------ |------------------------------------------------------------------------------
+| `connection_string` | String | The connection string built from the arguments to this connection, in the format `postgresql://[username[:password]@][host][:port][/db]`
+| `env`               | Map    | A map of the resolved [libpq environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) (`PGHOST`, `PGDATABASE`, `PGUSER`, `PGPASSWORD`, `PGPORT`, `PGSSLNEGOTIATION`)
 
 
-In either case, the `connection_string` is returned as an attribute.  Regardless of the syntax used to define the connection, you can get its connection_string at run time:
-
-```hcl
-pipeline "example" {
-   output "connection_string" {
-      value = connection.steampipe.default.connection_string
-   }
-}
-```
 
 ## Default Connection
 
 The `steampipe` connection type includes an implicit, default connection (`connection.steampipe.default`) that will be configured to use the local Steampipe instance, eg:
 
 ```hcl
-connection "steampipe" "default" {
-  connection_string = "postgres://steampipe@127.0.0.1:9193/steampipe"
-}
+   host     = "localhost"
+   port     = 9193
+   db       = "steampipe"
+   username = "steampipe"
 ```
