@@ -13,7 +13,7 @@ Flowpipe always runs in the context of a [mod](/docs/build), which is a collecti
 Flowpipe loads the mod from the current directory by default, but you can pass the [--mod-location](/docs/reference/cli) flag or set the [FLOWPIPE_MOD_LOCATION](/docs/reference/env-vars/flowpipe_mod_location) to set it to a different path.  The event store is also written to this mod location, in the `.flowpipe/store/` subdirectory.
 
 ## Configuration Files
-Flowpipe will load [configuration files](/docs/reference/config-files) (`*.fpc`) according to the configuration search path.  You can change this path with the `--config-path` argument or the [FLOWPIPE_CONFIG_PATH](/docs/reference/env-vars/flowpipe_config_path) environment variable, but it defaults to `.:$FLOWPIPE_INSTALL_DIR/config` (`.:~/.flowpipe/config`).  This allows you to manage your [workspaces](/docs/run/workspaces) and [credentials](/docs/run/credentials) centrally in the `~/.flowpipe/config` directory, but override them in the working directory / mod location if desired.
+Flowpipe will load [configuration files](/docs/reference/config-files) (`*.fpc`) according to the configuration search path.  You can change this path with the `--config-path` argument or the [FLOWPIPE_CONFIG_PATH](/docs/reference/env-vars/flowpipe_config_path) environment variable, but it defaults to `.:$FLOWPIPE_INSTALL_DIR/config` (`.:~/.flowpipe/config`).  This allows you to manage your [workspaces](/docs/run/workspaces) and [connections](/docs/run/connections) centrally in the `~/.flowpipe/config` directory, but override them in the working directory / mod location if desired.
 
 
 ## Operating Modes

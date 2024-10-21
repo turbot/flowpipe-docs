@@ -33,11 +33,11 @@ pipeline "enabled_regions" {
 
 ## Arguments
 
-| Argument   | Type   | Optional? | Description                                          |
-| -----------| ------ | --------- | ---------------------------------------------------- |
-| `database` | String | Required  | A connection string used to connect to the database. |
-| `sql`      | String | Required  | A SQL query string.                                  |
-| `args`     | List    | Optional  | A list of arguments to pass to the query.             |
+| Argument   | Type   | Optional? | Description
+| -----------| ------ | --------- | ---------------------------------------------------- 
+| `sql`      | String | Required  | A SQL query string.
+| `args`     | List    | Optional  | A list of arguments to pass to the query.
+| `database` | String | Optional  | A connection string used to connect to the database.  If not set, the default set in the [mod `database`](/docs/flowpipe-hcl/mod) will be used. The `database` may be a connection reference (`connection.steampipe.default`), a connection string (`postgres://steampipe@127.0.0.1:9193/steampipe`), or a Pipes workspace (`acme/anvils`).
 
 This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
@@ -137,44 +137,77 @@ to extract data.
 
 ## More Examples
 
+
+### Steampipe Query
+
+If no `database` is specified, then the default defined in the [mod `database`](/docs/flowpipe-hcl/mod) will be used.  If that is not set, the local Steampipe instance will be used by default.
+
+You can also specify a [Steampipe connection](/docs/reference/config-files/connection/postgres) to connect to a Steampipe database:
+
+
+```hcl
+pipeline "instances_by_region" {
+  step "query" "get_instances_by_region" {
+    database = connection.steampipe.default
+    sql      = "select region, count(*) from aws_ec2_instance group by region;"
+  }
+}
+```
+
+
 ### Postgres Query
 
-Postgres `database` follows the standard URI syntax supported by `psql` and `pgcli`:
+You can use a [Postgres connection](/docs/reference/config-files/connection/postgres) to connect to a PostgreSQL database:
+
+
+```hcl
+pipeline "enabled_regions" {
+  step "query" "get_enabled_regions" {
+    database = connection.postgres.mydb
+    sql      = "select name, account_id, opt_in_status from aws_region where opt_in_status <> 'not-opted-in'"
+  }
+}
+```
+
+Alternatively, you can pass the connection string directly, with the standard URI syntax supported by `psql` and `pgcli`:
 
 ```bash
 postgresql://[user[:password]@][host][:port][/dbname][?param1=value1&...]
 ```
 
+
 ```hcl
 pipeline "enabled_regions" {
-
   step "query" "get_enabled_regions" {
     database = "postgres://steampipe@localhost:9193/steampipe"
-    sql      = <<-EOQ
-      select
-        name,
-        account_id,
-        opt_in_status
-      from
-        aws_region
-      where
-        opt_in_status <> 'not-opted-in'
-    EOQ
-
-  }
-
-  output "enabled_regions" {
-    value = step.query.get_enabled_regions.rows
+    sql      = "select name, account_id, opt_in_status from aws_region where opt_in_status <> 'not-opted-in'"
   }
 }
 ```
 
 ### SQLite query
 
-The SQLite `database` is the path to a SQLite database file:
+You can use a [SQLite connection](/docs/reference/config-files/connection/sqlite) to connect to a SQLite database:
 
-```bash
-sqlite:path/to/file
+
+```hcl
+pipeline "sqlite_query" {
+  step "query" "step_1" {
+    database = connection.sqlite.my_db
+    sql      = "select * from my_sqlite_table;"
+  }
+}
+```
+
+Alternatively, pass the connection string directly, in the format `sqlite:path/to/file`:
+
+```hcl
+pipeline "sqlite_query" {
+  step "query" "step_1" {
+    database = "sqlite:./my_sqlite_db.db"
+    sql      = "select * from my_sqlite_table;"
+  }
+}
 ```
 
 The path is relative to the [mod location](/docs/run#mod-location), and `//` is optional after the scheme, thus the following are equivalent:
@@ -185,31 +218,29 @@ database = "sqlite://./my_sqlite_db.db"
 database = "sqlite://my_sqlite_db.db"
 ```
 
+
+### DuckDB query
+
+You can use a [DuckDB connection](/docs/reference/config-files/connection/duckdb) to connect to a DuckDB database:
+
 ```hcl
-pipeline "sqlite_query" {
+pipeline "duckdb_query" {
   step "query" "step_1" {
-    database = "sqlite:./my_sqlite_db.db"
-
-    sql = <<EOQ
-      select
-        *
-      from
-        my_sqlite_table;
-    EOQ
-  }
-
-  output "results" {
-    value = step.query.step_1.rows
+    database = connection.duckdb.my_ducks"
+    sql      = "select * from my_duckdb_table;"
   }
 }
 ```
 
-### DuckDB query
+Or pass a connection string directly in the format `duckdb:path/to/file`:
 
-The DuckDB `database` is the path to a DuckDB database file:
-
-```bash
-duckdb:path/to/file
+```hcl
+pipeline "duckdb_query" {
+  step "query" "step_1" {
+    database = "duckdb:./my_ducks.db"
+    sql      = "select * from my_duckdb_table;"
+  }
+}
 ```
 
 The path is relative to the [mod location](/docs/run#mod-location), and `//` is optional after the scheme, thus the following are equivalent:
@@ -220,24 +251,7 @@ database = "duckdb://./my_ducks.db"
 database = "duckdb://my_ducks.db"
 ```
 
-```hcl
-pipeline "duckdb_query" {
-  step "query" "step_1" {
-    database = "duckdb:./my_ducks.db"
 
-    sql = <<EOQ
-      select
-        *
-      from
-        my_duckdb_table;
-    EOQ
-  }
-
-  output "results" {
-    value = step.query.step_1.rows
-  }
-}
-```
 
 ### MySQL Query
 

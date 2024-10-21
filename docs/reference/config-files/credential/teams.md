@@ -5,6 +5,8 @@ sidebar_label: teams
 
 # teams
 
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `teams` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [teams connection](/docs/reference/config-files/connection/teams) instead.***
+
 The `teams` credential can be used to access Microsoft Teams resources.
 
 ```hcl

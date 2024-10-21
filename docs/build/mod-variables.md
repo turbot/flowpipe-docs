@@ -12,36 +12,153 @@ sidebar_label: Pass Variables
 ##  Input Variables
 
 ### Defining Input Variables
-Flowpipe mods support input variables that are similar to [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html):
-
-You declare them with a `variable` block:
+Flowpipe mods support input variables that are similar to [Terraform input variables](https://www.terraform.io/docs/language/values/variables.html). You declare them with a `variable` block:
 ```hcl
 variable "instance_id" {
   type = string
 }
+```
 
+The [type](#types) is optional, though it is generally recommended that you provide the type explicitly to provide clarity to the user and to avoid unexpected run time errors due to unforeseen type coercions.
+
+You can optionally define a `default` value and `description` for the variable.  
+
+```hcl
 variable "mandatory_tag_keys" {
   type        = list(string)
   description = "A list of mandatory tag keys to check for (case sensitive)."
   default     = ["Environment", "Owner"]
 }
+```
+
+If a variable does not define a `default`, the user will be prompted for its value when flowpipe starts.  If a variable defines a `default`, the user is not prompted and the default value is used if the variable is not explicitly set.
+
+You may also provide a `description` of the variable.  The description helps to provide information about the intent and format of the variable to the user of the mod.  The description is included when the user is prompted for a variable's value.
+
+
+
+#### Types
+
+Flowpipe supports the standard HCL `string`, `number`, and `bool` type primitives.
+
+```hcl
+variable "my_string" {
+  type = string
+}
+
+variable "counter" {
+  type = number
+}
+
+variable "force" {
+  type = bool
+}
+```
+
+
+The keyword `any` may be used to indicate that any type is acceptable.  If no type is defined, it is assumed to be `any`:
+
+```hcl
+variable "myvar" {
+  type = any
+}
+```
+
+
+Collection types (`list`, `map`, `set`, `object`) may also be used:
+
+```hcl
+variable "people" {
+  type    = list(string)
+  default = ["Kramer", "Elaine", "George"]
+}
+
+variable "employers" {
+  type    = map(string)
+
+  default = {
+    Kramer = "Kramerica Industries"
+    Elaine = "J. Peterman, Inc"
+    George = "Vandelay Industries"
+  }
+}
+```
+
+You can even create deeply nested types:
+
+```hcl
+variable "base_tag_rules" {
+  type = object({
+    add           = optional(map(string))
+    remove        = optional(list(string))
+    remove_except = optional(list(string))
+    update_keys   = optional(map(list(string)))
+    update_values = optional(map(map(list(string))))
+  })
+  description = "Base rules to apply to resources unless overridden when merged with any provided resource-specific rules."
+  default     = {
+    add           = {}
+    remove        = []
+    remove_except = []
+    update_keys   = {}
+    update_values = {}
+  }
+}
 
 ```
 
-You can optionally define:
-- `default` - A default value.  If no value is passed, the user is not prompted and the default is used.
-- `type` - The data type of the variable.  This may be a simple type or a collection.
-  - The supported type primitives are:
-    - `string`
-    - `number`
-    - `bool`
-  - Collections types may also be used:
-    - `list(<TYPE>)`
-    - `set(<TYPE>)`
-    - `map(<TYPE>)`
-    - `object({<ATTR NAME> = <TYPE>, ... })`
-  - The keyword `any` may be used to indicate that any type is acceptable 
-- `description` - A description of the variable.  This text is included when the user is prompted for a variable's value.
+In addition to the standard `string`, `number`, and `bool` primitives, Flowpipe `connection` and `notifier` config primitives may be specified. 
+
+```hcl
+variable "conn" {
+  type = connection
+}
+
+variable "approver" {
+  type = notifier
+}
+```
+
+You can even specify a variable as a specific *type* of connection:
+```hcl
+variable "aws_conn" {
+  type    = connection.aws
+  default = connection.aws.default
+}
+
+variable "github_conn" {
+  type    = connection.github
+  default = connection.github.default
+}
+```
+
+As with any type, collections may also be defined:
+
+```hcl
+variable "aws_connections" {
+  type    = list(connection.aws)
+  default = [connection.aws.default]
+}
+
+variable "approvers" {
+  type    = list(notifier)
+  default = ["default"]
+}
+```
+
+
+#### Enum
+
+Flowpipe supports an `enum` argument to provide a set of allowed values; no other values are allowed.
+
+```hcl
+variable "log_level" {
+  type    = string
+  default = "info"
+  enum    = ["emerg", "alert", "crit", "err", "warning", "notice", "info", "debug" ]
+}
+```
+
 
 ### Using Input Variables
 Variables may be referenced as `var.<NAME>`.  Variables are often used as defaults for pipeline parameters:
@@ -74,6 +191,12 @@ When running Flowpipe, you can pass variables in several ways.  You can pass ind
 ```bash
 flowpipe pipeline run list_org_workspaces --var=org="my_org"
 ```
+
+For `connection` or `notifier` variables, pass them by name:
+```bash
+flowpipe pipeline run list_org_workspaces --var conn=connection.aws.prod --var approver=notifier.admins
+```
+
 
 When passing list variables, they must be enclosed in single quotes:
 

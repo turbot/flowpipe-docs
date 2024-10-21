@@ -41,10 +41,17 @@ mod "aws" {
 ## Example - Composite Mod with Dependency
 
 ```hcl
+variable "database" {
+  type        = connection.steampipe
+  description = "Steampipe database connection string."
+  default     = connection.steampipe.default
+}
+
 mod "deactivate_expired_aws_iam_access_keys" {
   title       = "Deactivate expired AWS IAM keys"
   description = "Deactivates AWS IAM keys that have been active for a certain period of time."
-
+  database    = var.database
+  
   require {
     flowpipe {
       min_version = "0.1.0"
@@ -68,7 +75,8 @@ mod "deactivate_expired_aws_iam_access_keys" {
 | Name | Type | Required? | Description
 |-|-|-|-
 | `categories` | List(String) | Optional | A list of labels, used to categorize mods (such as on the Flowpipe Hub).
-| `color` | String |Optional |  A hexadecimal RGB value to use as the color scheme for the mod on hub.flowpipe.io.  
+| `color`      | String | Optional |  A hexadecimal RGB value to use as the color scheme for the mod on hub.flowpipe.io.  
+| `database`    | String | Optional | The database to use as the default for [query steps](/docs/flowpipe-hcl/step/query) and [query triggers](/docs/flowpipe-hcl/trigger/query). The `database` may be a connection reference (`connection.steampipe.default`), a connection string (`postgres://steampipe@127.0.0.1:9193/steampipe`), or a Pipes workspace (`acme/anvils`). If not set, the default is the local Steampipe database instance.
 | `description` |  String | Optional | A string containing a short description. 
 | `documentation` | String (Markdown)| Optional | A markdown string containing a long form description, used as documentation for the mod on hub.flowpipe.io. 
 | `icon` |  String | Optional | The URL of an icon to use for the mod on hub.flowpipe.io.

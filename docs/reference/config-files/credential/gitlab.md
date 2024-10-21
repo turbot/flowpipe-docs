@@ -5,6 +5,8 @@ sidebar_label: gitlab
 
 # gitlab
 
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `gitlab` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [gitlab connection](/docs/reference/config-files/connection/gitlab) instead.***
+
 The `gitlab` credential can be used to access GitLab resources.
 
 ```hcl
