@@ -36,8 +36,8 @@ pipeline "enabled_regions" {
 | Argument   | Type   | Optional? | Description
 | -----------| ------ | --------- | ---------------------------------------------------- 
 | `sql`      | String | Required  | A SQL query string.
-| `args`     | List    | Optional  | A list of arguments to pass to the query.
-| `database` | String | Optional  | A connection string used to connect to the database.  If not set, the default set in the [mod `database`](/docs/flowpipe-hcl/mod) will be used. The `database` may be a connection reference (`connection.steampipe.default`), a connection string (`postgres://steampipe@127.0.0.1:9193/steampipe`), or a Pipes workspace (`acme/anvils`).
+| `args`     | List    | Optional | A list of arguments to pass to the query.
+| `database` | String | Optional  | The database to query. This may be a connection reference (`connection.steampipe.default`), a connection string (`postgres://steampipe@127.0.0.1:9193/steampipe`), or a Pipes workspace (`acme/anvils`). If not set, the default set in the [mod `database`](/docs/flowpipe-hcl/mod) will be used.
 
 This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
@@ -255,7 +255,18 @@ database = "duckdb://my_ducks.db"
 
 ### MySQL Query
 
-The MySQL connection string supports the syntax of the [GO SQL driver for MySQL](https://github.com/go-sql-driver/mysql?tab=readme-ov-file#examples):
+You can use a [MySQL connection](/docs/reference/config-files/connection/mysql) to connect to a MySQL database:
+
+```hcl
+pipeline "mysql_query" {
+  step "query" "step_1" {
+    database = connection.mysql.default
+    sql      = "select host, user from user;"
+  }
+}
+```
+
+Or pass a connection string directly. The MySQL connection string supports the syntax of the [GO SQL driver for MySQL](https://github.com/go-sql-driver/mysql?tab=readme-ov-file#examples):
 
 ```bash
 mysql://[user[:password]@]network-location[:port][/dbname][?param1=value1&...]
@@ -263,21 +274,9 @@ mysql://[user[:password]@]network-location[:port][/dbname][?param1=value1&...]
 
 ```hcl
 pipeline "mysql_query" {
-
   step "query" "step_1" {
     database = "mysql://root:my_pass@tcp(localhost)/mysql"
-
-    sql = <<EOQ
-      select
-        host,
-        user
-      from
-        user;
-    EOQ
-  }
-
-  output "results" {
-    value = step.query.step_1.rows
+    sql      = "select host, user from user;"
   }
 }
 ```

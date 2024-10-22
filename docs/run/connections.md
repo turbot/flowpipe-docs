@@ -5,8 +5,7 @@ sidebar_label: Connections
 
 # Managing Connections
 
-Flowpipe **Connections** provide a mechanism for defining and sharing secrets in your Flowpipe environment.
-
+Flowpipe **Connections** provide a mechanism for defining credentials and options for interacting with external systems.
 
 ## Defining / Declaring  Connections
 `connection` is a top-level resource in a config file (.fpc). Connections are defined in configuration files (`.fpc`), NOT mod files (`.fp`).  Like `workspace`, a `connection` can be defined in any .fpc file in the config directory (`~/.flowpipe/config/*.fpc`) or in the root of the `mod-location` (usually `$PWD/*.fpc`). 

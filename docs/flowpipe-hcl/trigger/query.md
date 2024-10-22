@@ -53,9 +53,9 @@ On subsequent query trigger runs:
 
 | Argument      | Type    | Optional? | Description
 |---------------|---------|-----------|-----------------
-| `database`    | String  | Required  | A connection string used to connect to the database.
 | `sql`         | String  | Required  | A SQL query string.
 | `description` | String  | Optional  | A description of the trigger.
+| `database` | String | Optional  | The database to query. This may be a connection reference (`connection.steampipe.default`), a connection string (`postgres://steampipe@127.0.0.1:9193/steampipe`), or a Pipes workspace (`acme/anvils`). If not set, the default set in the [mod `database`](/docs/flowpipe-hcl/mod) will be used.
 | `enabled`     | Boolean | Optional  | Enable or disable the trigger. A disabled trigger will not fire, but it will retain its history and configuration. Default is `true`.
 | `param`         | Block | Optional  | A [param](#parameters) block that defines the parameters that can be passed into the trigger.
 | `primary_key` | String  | Optional  | Primary key to use for update vs insert detection. If no primary key is defined, a hash of the row will be used as the key.
