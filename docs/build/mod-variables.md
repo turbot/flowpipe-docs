@@ -31,7 +31,7 @@ variable "mandatory_tag_keys" {
 }
 ```
 
-If a variable does not define a `default`, the user will be prompted for its value when flowpipe starts.  If a variable defines a `default`, the user is not prompted and the default value is used if the variable is not explicitly set.
+If a variable does not define a `default`, the user will be prompted for its value when Flowpipe starts.  If a variable defines a `default`, the user is not prompted and the default value is used if the variable is not explicitly set.
 
 You may also provide a `description` of the variable.  The description helps to provide information about the intent and format of the variable to the user of the mod.  The description is included when the user is prompted for a variable's value.
 
