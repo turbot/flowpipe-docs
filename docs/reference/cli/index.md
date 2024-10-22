@@ -39,7 +39,7 @@ sidebar_label: Flowpipe CLI
   <tr> 
     <td nowrap="true"> <inlineCode>--config-path</inlineCode> </td> 
     <td>  
-    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (<inlineCode>*.fpc</inlineCode>) will be loaded from each path, with decreasing precedence.  The default is <inlineCode>.:$FLOWPIPE_INSTALL_DIR/config</inlineCode> (<inlineCode>.:~/.flowpipe/config</inlineCode>).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/credential">credentials</a> centrally in the <inlineCode>~/.flowpipe/config</inlineCode> directory, but override them in the working directory / mod location if desired.
+    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (<inlineCode>*.fpc</inlineCode>) will be loaded from each path, with decreasing precedence.  The default is <inlineCode>.:$FLOWPIPE_INSTALL_DIR/config</inlineCode> (<inlineCode>.:~/.flowpipe/config</inlineCode>).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/connection">connections</a> centrally in the <inlineCode>~/.flowpipe/config</inlineCode> directory, but override them in the working directory / mod location if desired.
     </td> 
   </tr>
 
@@ -128,3 +128,20 @@ sidebar_label: Flowpipe CLI
 
 ---
 
+
+## Exit Codes
+
+|  Value  |   Name                                | Description
+|---------|---------------------------------------|----------------------------------------
+|   **0** | `ExitCodeSuccessful`                  | Flowpipe ran successfully
+|   **1** | `ExitCodeExecutionPaused`             | Flowpipe ran without errors but paused waiting input
+|   **2** | `ExitCodeExecutionFailed`             | Flowpipe completed with one or more errors
+|   **3** | `ExitCodeExecutionCancelled`          | The Flowpipe command was canceelled by user request
+|  **61** | `ExitCodeModInitFailed`               | Mod init failed
+|  **62** | `ExitCodeModInstallFailed`            | Mod install failed
+| **250** | `ExitCodeInitializationFailed`        | Initialization failed
+| **251** | `ExitCodeBindPortUnavailable`         | Network port binding failed
+| **252** | `ExitCodeNoModFile`                   | The command requires a mod, but no mod file was found
+| **253** | `ExitCodeFileSystemAccessFailure`     | File system access failed
+| **254** | `ExitCodeInsufficientOrWrongInputs`   | Runtime error - insufficient or incorrect input
+| **255** | `ExitCodeUnknownErrorPanic`           | Runtime error - an unknown panic occurred

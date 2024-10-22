@@ -7,6 +7,9 @@ sidebar_label: credential_import
 # Credential Import
 
 
+> ***As of Flowpipe 1.0.0, `credential_import` has been renamed to `connection_import`. The `credential_import` resource is deprecated and will be removed in a future version of Flowpipe. Use [connection_import](/docs/reference/config-files/connection_import) instead.***
+
+
 The `credential_import` resource allows you to bulk import credentials from other systems & formats. `credential_import` is a top-level block defined in config files (`*.fpc`) like `credential` and `workspace`.
 
 ```hcl

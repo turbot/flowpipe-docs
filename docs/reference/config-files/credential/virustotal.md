@@ -5,6 +5,9 @@ sidebar_label: virustotal
 
 # virustotal
 
+
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `virustotal` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [virustotal connection](/docs/reference/config-files/connection/virustotal) instead.***
+
 The `virustotal` credential can be used to access VirusTotal resources.
 
 ```hcl

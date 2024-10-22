@@ -5,6 +5,8 @@ sidebar_label: pipes
 
 # pipes
 
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `pipes` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [pipes connection](/docs/reference/config-files/connection/pipes) instead.***
+
 The `pipes` credential can be used to access [Turbot Pipes](https://pipes.turbot.com/) resources.
 
 ```hcl

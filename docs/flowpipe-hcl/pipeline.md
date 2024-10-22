@@ -57,6 +57,7 @@ pipeline "get_astronauts" {
 ## Parameters
 
 One or more `param` blocks may optionally be used in a pipeline to define parameters that the pipeline accepts. 
+
 ```hcl
 param "url" {
   type    = string
@@ -79,8 +80,9 @@ step "http" "whos_in_space" {
 |---------------|---------|--------------------------
 | `default`     | Any     | A value to use if no argument is passed for this parameter when the query is run.
 | `description` | String  | A description of the parameter.
+| `enum`        | Set     | A set of allowed values for the param; no other values are allowed.
 | `tags`         | Map    | A map of key:value metadata for the benchmark, used to categorize, search, and filter.  The structure is up to the mod author and varies by benchmark and provider. 
-| `type`        | String   | The data type of the parameter: `string`, `number`, `bool`, `list`, `map`, `any` (default `any`). 
+| `type`        | String   | The data type of the parameter: a primitive type `string`, `number`, `bool`, `connection`, `connection.{type}`, `notifier`, or a collection type `list()`, `map()`, or `any` (default `any`). 
 
 ----
 

@@ -5,6 +5,8 @@ sidebar_label: openai
 
 # openai
 
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `openai` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [openai connection](/docs/reference/config-files/connection/openai) instead.***
+
 The `openai` credential can be used to access OpenAI resources.
 
 ```hcl

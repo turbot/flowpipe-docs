@@ -5,6 +5,8 @@ sidebar_label: trello
 
 # trello
 
+> ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `trello` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [trello connection](/docs/reference/config-files/connection/trello) instead.***
+
 The `trello` credential can be used to access Trello resources.
 
 ```hcl

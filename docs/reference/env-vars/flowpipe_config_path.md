@@ -7,7 +7,7 @@ sidebar_label: FLOWPIPE_CONFIG_PATH
 
  Sets the search path for [configuration files](/docs/reference/config-files).  `FLOWPIPE_CONFIG_PATH` accepts a colon-separated list of directories.  
  
- All configuration files (`*.fpc`) will be loaded from each path, with decreasing precedence.  The default is the mod location, followed by the `config` directory in the [FLOWPIPE_INSTALL_DIR](/docs/reference/env-vars/flowpipe_install_dir): `.:$FLOWPIPE_INSTALL_DIR/config`.  This allows you to manage your [workspaces](/docs/reference/config-files/workspace) and [credentials](/docs/reference/config-files/credential) centrally in the `~/.flowpipe/config` directory, but override them in the working directory/mod-location if desired.
+ All configuration files (`*.fpc`) will be loaded from each path, with decreasing precedence.  The default is the mod location, followed by the `config` directory in the [FLOWPIPE_INSTALL_DIR](/docs/reference/env-vars/flowpipe_install_dir): `.:$FLOWPIPE_INSTALL_DIR/config`.  This allows you to manage your [workspaces](/docs/reference/config-files/workspace) and [connections](/docs/reference/config-files/connection) centrally in the `~/.flowpipe/config` directory, but override them in the working directory/mod-location if desired.
 
 
 ## Usage
