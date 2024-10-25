@@ -5,6 +5,7 @@ sidebar_label: abuseipdb
 
 # abuseipdb
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `abuseipdb` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [abuseipdb connection](/docs/reference/config-files/connection/abuseipdb) instead.***
 
 

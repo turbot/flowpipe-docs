@@ -5,6 +5,7 @@ sidebar_label: guardrails
 
 # guardrails
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `guardrails` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [guardrails connection](/docs/reference/config-files/connection/guardrails) instead.***
 
 The `guardrails` credential can be used to access [Turbot Guardrails](https://turbot.com/guardrails) resources.

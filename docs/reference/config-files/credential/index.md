@@ -5,6 +5,7 @@ sidebar_label: credential
 
 #  Credential
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `credential` resource is deprecated and will be removed in a future version of Flowpipe. Use [connection](/docs/reference/config-files/connection) instead.***
 
 

@@ -5,6 +5,7 @@ sidebar_label: azure
 
 # azure
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `azure` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [azure connection](/docs/reference/config-files/connection/azure) instead.***
 
 

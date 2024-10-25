@@ -5,6 +5,7 @@ sidebar_label: servicenow
 
 # servicenow
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `servicenow` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [servicenow connection](/docs/reference/config-files/connection/servicenow) instead.***
 
 The `servicenow` credential can be used to access ServiceNow resources.

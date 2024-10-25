@@ -5,6 +5,7 @@ sidebar_label: urlscan
 
 # urlscan
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `urlscan` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [urlscan connection](/docs/reference/config-files/connection/urlscan) instead.***
 
 

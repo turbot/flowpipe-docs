@@ -5,6 +5,7 @@ sidebar_label: bitbucket
 
 # bitbucket
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `bitbucket` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [bitbucket connection](/docs/reference/config-files/connection/bitbucket) instead.***
 
 The `bitbucket` credential can be used to access Bitbucket resources.

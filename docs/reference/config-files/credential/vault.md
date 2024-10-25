@@ -5,6 +5,7 @@ sidebar_label: vault
 
 # vault
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `vault` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [vault connection](/docs/reference/config-files/connection/vault) instead.***
 
 

@@ -5,6 +5,7 @@ sidebar_label: ipstack
 
 # ipstack
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `ipstack` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [ipstack connection](/docs/reference/config-files/connection/ipstack) instead.***
 
 

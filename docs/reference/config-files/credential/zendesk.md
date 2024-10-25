@@ -5,6 +5,7 @@ sidebar_label: zendesk
 
 # zendesk
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `zendesk` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [zendesk connection](/docs/reference/config-files/connection/zendesk) instead.***
 
 The `zendesk` credential can be used to access Zendesk resources.

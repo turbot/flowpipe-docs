@@ -5,6 +5,7 @@ sidebar_label: jira
 
 # jira
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `jira` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [jira connection](/docs/reference/config-files/connection/jira) instead.***
 
 The `jira` credential can be used to access Jira resources.

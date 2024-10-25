@@ -5,6 +5,7 @@ sidebar_label: okta
 
 # okta
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `okta` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [okta connection](/docs/reference/config-files/connection/okta) instead.***
 
 The `okta` credential can be used to access Okta resources.

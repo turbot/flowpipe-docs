@@ -5,6 +5,7 @@ sidebar_label: uptimerobot
 
 # uptimerobot
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `uptimerobot` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [uptimerobot connection](/docs/reference/config-files/connection/uptimerobot) instead.***
 
 The `uptimerobot` credential can be used to access UptimeRobot resources.

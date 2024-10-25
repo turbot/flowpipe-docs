@@ -6,7 +6,7 @@ sidebar_label: credential_import
 
 # Credential Import
 
-
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential_import` has been renamed to `connection_import`. The `credential_import` resource is deprecated and will be removed in a future version of Flowpipe. Use [connection_import](/docs/reference/config-files/connection_import) instead.***
 
 

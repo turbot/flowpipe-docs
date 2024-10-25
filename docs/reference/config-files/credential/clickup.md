@@ -5,6 +5,7 @@ sidebar_label: clickup
 
 # clickup
 
+> [!IMPORTANT]
 > ***As of Flowpipe 1.0.0, `credential` has been renamed to `connection`.  The `clickup` credential resource is deprecated and will be removed in a future version of Flowpipe. Use the [clickup connection](/docs/reference/config-files/connection/clickup) instead.***
 
 The `clickup` credential can be used to access ClickUp resources.
