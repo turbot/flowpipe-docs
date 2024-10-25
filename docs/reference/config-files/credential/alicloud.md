@@ -13,8 +13,8 @@ The `alicloud` credential can be used to access Alibaba Cloud resources.
 
 ```hcl
 credential "alicloud" "alicloud" {
-   access_key = "LTAI4example"
-   secret_key = "6iNPXexample
+  access_key = "<YOUR_ALICLOUD_ACCESS_KEY>"
+  secret_key = "<YOUR_ALICLOUD_SECRET_KEY>"
 }
 ```
 
