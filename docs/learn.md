@@ -97,7 +97,7 @@ Tailpipe provides an interactive SQL shell (or you can query directly with DuckD
 └──────────────┘
 ```
 
-Let's see the table's schema.
+nLet's see the table's schema.
 
 
 ```bash
@@ -105,43 +105,40 @@ D select name, type from pragma_table_info('nginx_access_log') order by name;
 ```
 
 ```
-┌─────────────────────┬───────────┐
-│        name         │   type    │
-│       varchar       │  varchar  │
-├─────────────────────┼───────────┤
-│ body_bytes_sent     │ BIGINT    │
-│ http_referer        │ VARCHAR   │
-│ http_user_agent     │ VARCHAR   │
-│ http_version        │ VARCHAR   │
-│ method              │ VARCHAR   │
-│ path                │ VARCHAR   │
-│ remote_addr         │ VARCHAR   │
-│ remote_user         │ VARCHAR   │
-│ request             │ VARCHAR   │
-│ status              │ BIGINT    │
-│ time_iso_8601       │ VARCHAR   │
-│ time_local          │ VARCHAR   │
-│ timestamp           │ TIMESTAMP │
-│ tp_akas             │ VARCHAR[] │
-│ tp_date             │ DATE      │
-│ tp_destination_ip   │ VARCHAR   │
-│ tp_domains          │ VARCHAR[] │
-│ tp_emails           │ VARCHAR[] │
-│ tp_id               │ VARCHAR   │
-│ tp_index            │ VARCHAR   │
-│ tp_ingest_timestamp │ TIMESTAMP │
-│ tp_ips              │ VARCHAR[] │
-│ tp_partition        │ VARCHAR   │
-│ tp_source_ip        │ VARCHAR   │
-│ tp_source_location  │ VARCHAR   │
-│ tp_source_name      │ VARCHAR   │
-│ tp_source_type      │ VARCHAR   │
-│ tp_tags             │ VARCHAR[] │
-│ tp_timestamp        │ TIMESTAMP │
-│ tp_usernames        │ VARCHAR[] │
-├─────────────────────┴───────────┤
-│ 30 rows               2 columns │
-└─────────────────────────────────┘
++---------------------+-----------+
+|        name         |   type    |
++---------------------+-----------+
+| body_bytes_sent     | BIGINT    |
+| http_referer        | VARCHAR   |
+| http_user_agent     | VARCHAR   |
+| http_version        | VARCHAR   |
+| method              | VARCHAR   |
+| path                | VARCHAR   |
+| remote_addr         | VARCHAR   |
+| remote_user         | VARCHAR   |
+| request             | VARCHAR   |
+| status              | BIGINT    |
+| time_iso_8601       | VARCHAR   |
+| time_local          | VARCHAR   |
+| timestamp           | TIMESTAMP |
+| tp_akas             | VARCHAR[] |
+| tp_date             | DATE      |
+| tp_destination_ip   | VARCHAR   |
+| tp_domains          | VARCHAR[] |
+| tp_emails           | VARCHAR[] |
+| tp_id               | VARCHAR   |
+| tp_index            | VARCHAR   |
+| tp_ingest_timestamp | TIMESTAMP |
+| tp_ips              | VARCHAR[] |
+| tp_partition        | VARCHAR   |
+| tp_source_ip        | VARCHAR   |
+| tp_source_location  | VARCHAR   |
+| tp_source_name      | VARCHAR   |
+| tp_source_type      | VARCHAR   |
+| tp_tags             | VARCHAR[] |
+| tp_timestamp        | TIMESTAMP |
+| tp_usernames        | VARCHAR[] |
++---------------------+-----------+
 ```
 
 Some of the columns correspond to the fields in a raw nginx log: `http_user_agent`, `remote_addr`, etc.
@@ -350,13 +347,12 @@ D SELECT
 ```
 
 ```
-┌────────────┬──────────┬──────────┐
-│  tp_date   │  server  │ requests │
-│    date    │ varchar  │  int64   │
-├────────────┼──────────┼──────────┤
-│ 2024-11-01 │ dev1.log │     1000 │
-│ 2024-11-01 │ dev2.log │     5423 │
-└────────────┴──────────┴──────────┘
++------------+----------+----------+
+|  tp_date   |  server  | requests |
++------------+----------+----------+
+| 2024-11-01 | dev1.log | 1000     |
+| 2024-11-01 | dev2.log | 5423     |
++------------+----------+----------+
 ```
 
 This flexibility means you can:
@@ -378,10 +374,6 @@ SELECT
     n.remote_addr as ip,
     i.description,
     count(*) as requests,
-    count(distinct n.server_name) as servers_accessed,
-    round(avg(n.bytes_sent)) as avg_bytes,
-    string_agg(distinct n.method, ', ') as methods_used,
-    count(CASE WHEN n.status >= 400 THEN 1 END) as errors
 FROM nginx_access_log n
 LEFT JOIN ip_info i ON n.remote_addr = i.ip_address
 WHERE i.description IS NOT NULL
@@ -396,7 +388,8 @@ The query joins nginx data with a table of IP addresses to enrich them with desc
 We've demonstrated basic log collection and analysis with Tailpipe. Here's what to explore next:
 
 - [Discover more plugins on the Hub →](https://hub.steampipe.io/plugins)
+
 - [Learn about data compaction and optimization →](https://tailpipe.io/docs/managing/compaction)
-- [Share data with your team using remotes →](https://tailpipe.io/docs/sharing/remotes)
+
 - [Create schemas for filtered views →](https://tailpipe.io/docs/schemas)
-- [Join #tailpipe on Slack →](https://turbot.com/community/join)
+
