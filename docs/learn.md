@@ -11,7 +11,6 @@ Tailpipe is a high-performance data collection and querying tool that makes it e
 
 - Collect logs from various sources and store them efficiently in parquet files
 - Query your data using familiar SQL syntax through DuckDB
-- Share collected data with your team using remote object storage
 - Create filtered views of your data using schemas
 - Join log data with other data sources for enriched analysis
 
@@ -25,21 +24,27 @@ tailpipe plugin install nginx
 
 ## Configure Data Collection
 
-Tailpipe uses HCL configuration files to define what data to collect. Create a file named `nginx.tpc` with the following content:
+Tailpipe uses HCL configuration files to define what data to collect. Create a file named `nginx.tpc` with the following content.
 
 ```hcl
-partition "nginx_access_log" "web_servers" {
+partition "nginx_access_log" "dev" {
     plugin = "nginx"
-    source "nginx_access_log_file" {
-        log_path = "/var/log/nginx/access.log"
+    source "file_system"  {
+        paths = ["/path/to/dev1.log", "/path/to/dev2.log"]
+        extensions = [".log"]    
     }
 }
 ```
 
-This configuration tells Tailpipe to collect NGINX access logs from the specified log file. The configuration defines:
-- A partition named "web_servers" for the "nginx_access_log" table
+This configuration tells Tailpipe to collect NGINX access logs from two log files. The configuration defines:
+
+- A table named `nginx_access_log`. This is the table your SQL queries will target.
+
+- A partition named `dev`. This is a logical segment within the table, we'll start with just one partition.
+
 - The source type "nginx_access_log_file" which reads NGINX formatted logs
-- The path to the log file to collect from
+
+- The paths to the partition's log files.
 
 
 ## Collect Data
@@ -48,130 +53,287 @@ Now let's collect the logs:
 
 ```bash
 tailpipe plugin install nginx
-
-```bash
-tailpipe collect nginx_access_log.web_servers
 ```
 
-This command will:
-1. Read the NGINX access logs from the specified file
-2. Parse and standardize the log entries
-3. Store the data in parquet files organized by date
-4. Update the local database with table definitions
+```bash
+tailpipe collect nginx_access_log.dev
+```
+
+```bash
+Collection complete
+artifacts discovered: 1, artifacts downloaded: 1, artifacts extracted: 1, rows enriched: 13748, rows converted: 13748, errors: 0
+Execution 1731389149496 complete
+Timing (may overlap):
+ - discover:   90.949µs
+ - download:   109.872µs (active: 7.902µs)
+ - extract:    367.273936ms (active: 367.251937ms)
+ - enrich:     367.155607ms (active: 129.880729ms)
+ - convert:    5.368437944s (active: 3.06050278s)
+ - total time: 5.403065682s
+ ```
+
+ This command:
+
+1. Read the NGINX access logs from the specified files
+
+2. Parsed and standardized the log entries
+
+3. Stored the data in parquet files organized by date
+
+4. Updated the local database with SQL views over the parquet files
+
 
 ## Query Your Data
 
-Tailpipe provides an interactive SQL shell for analyzing your collected data. Let's look at some examples of what you can do.
+Tailpipe provides an interactive SQL shell (or you can query directly with DuckDB). Let's count the log entries we just collected.
 
-### Analyze Traffic by Server
+./tailpipe query "select count(*) as lines from nginx_access_log"
 
-This query shows a summary of traffic for each server for a specific date:
+```bash
+┌──────────────┐
+│ lines        │
+│────────────  │
+│  23748       │
+└──────────────┘
+```
+
+Let's see the table's schema.
+
+
+```bash
+D select name, type from pragma_table_info('nginx_access_log') order by name;
+```
+
+```
+┌─────────────────────┬───────────┐
+│        name         │   type    │
+│       varchar       │  varchar  │
+├─────────────────────┼───────────┤
+│ body_bytes_sent     │ BIGINT    │
+│ http_referer        │ VARCHAR   │
+│ http_user_agent     │ VARCHAR   │
+│ http_version        │ VARCHAR   │
+│ method              │ VARCHAR   │
+│ path                │ VARCHAR   │
+│ remote_addr         │ VARCHAR   │
+│ remote_user         │ VARCHAR   │
+│ request             │ VARCHAR   │
+│ status              │ BIGINT    │
+│ time_iso_8601       │ VARCHAR   │
+│ time_local          │ VARCHAR   │
+│ timestamp           │ TIMESTAMP │
+│ tp_akas             │ VARCHAR[] │
+│ tp_date             │ DATE      │
+│ tp_destination_ip   │ VARCHAR   │
+│ tp_domains          │ VARCHAR[] │
+│ tp_emails           │ VARCHAR[] │
+│ tp_id               │ VARCHAR   │
+│ tp_index            │ VARCHAR   │
+│ tp_ingest_timestamp │ TIMESTAMP │
+│ tp_ips              │ VARCHAR[] │
+│ tp_partition        │ VARCHAR   │
+│ tp_source_ip        │ VARCHAR   │
+│ tp_source_location  │ VARCHAR   │
+│ tp_source_name      │ VARCHAR   │
+│ tp_source_type      │ VARCHAR   │
+│ tp_tags             │ VARCHAR[] │
+│ tp_timestamp        │ TIMESTAMP │
+│ tp_usernames        │ VARCHAR[] │
+├─────────────────────┴───────────┤
+│ 30 rows               2 columns │
+└─────────────────────────────────┘
+```
+
+Some of the columns correspond to the fields in a raw nginx log: `http_user_agent`, `remote_addr`, etc.
+
+Others map the raw fields to [Tailpipe common fields]().
+
+```
+type CommonFields struct {
+	TpID              string    `json:"tp_id"`
+	TpSourceType      string    `json:"tp_source_type"`
+	TpSourceName      string    `json:"tp_source_name"`
+	TpSourceLocation  *string   `json:"tp_source_location"`
+	TpIngestTimestamp time.Time `json:"tp_ingest_timestamp"`
+
+	// Standardized
+	TpTimestamp     time.Time `json:"tp_timestamp"`
+	TpSourceIP      *string   `json:"tp_source_ip"`
+	TpDestinationIP *string   `json:"tp_destination_ip"`
+
+	// Hive fields
+	TpPartition string `json:"tp_partition"`
+	TpIndex     string `json:"tp_index"`
+	TpDate      string `json:"tp_date"`
+
+	// Searchable
+	TpAkas      []string `json:"tp_akas,omitempty"`
+	TpIps       []string `json:"tp_ips,omitempty"`
+	TpTags      []string `json:"tp_tags,omitempty"`
+	TpDomains   []string `json:"tp_domains,omitempty"`
+	TpEmails    []string `json:"tp_emails,omitempty"`
+	TpUsernames []string `json:"tp_usernames,omitempty"`
+}
+```
+
+Still others synthesize columns from raw fields, like `http_version` and `method`. We see all these ingredients in each row created by the nginx plugin.
+
+```
+D select * from nginx_access_log limit 1;
+```
+
+```
+            request = GET /login HTTP/1.1
+       http_referer = -
+  tp_destination_ip =
+     tp_source_type = file_system
+        remote_user = -
+tp_ingest_timestamp = 2024-11-12 10:22:01.430331
+      time_iso_8601 = 2024-11-01T00:00:00Z
+       http_version = 1.1
+           tp_index = dev1.log
+            tp_tags = [method:GET]
+       tp_partition = dev
+            tp_akas = [/login]
+             method = GET
+          timestamp = 2024-11-01 00:00:00
+          tp_emails =
+        remote_addr = 192.29.251.248
+               path = /login
+             status = 200
+    body_bytes_sent = 12471
+            tp_date = 2024-11-01
+       tp_usernames =
+              tp_id = cspioiann1tkcge0uslg
+    http_user_agent = Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36
+     tp_source_name =
+       tp_source_ip = 192.29.251.248
+         tp_domains =
+             tp_ips = [192.29.251.248]
+         time_local = 01/Nov/2024:00:00:00 +0000
+ tp_source_location = /home/jon/tpsrc/tailpipe-plugin-nginx/test/dev1.log
+```
+
+### Analyze HTTP methods
+
+Let's look at the distribution of HTTP methods in the log.
 
 ```sql
-SELECT
-    tp_index as server,
-    count(*) as requests,
-    count(distinct remote_addr) as unique_ips,
-    round(avg(bytes_sent)) as avg_bytes,
-    count(CASE WHEN status = 200 THEN 1 END) as success_count,
-    count(CASE WHEN status >= 500 THEN 1 END) as error_count,
-    round(avg(CASE WHEN method = 'GET' THEN bytes_sent END)) as avg_get_bytes
-FROM nginx_access_log
-WHERE tp_date = '2024-11-01'
-GROUP BY tp_index
-ORDER BY requests DESC;
+select 
+  substr(method, 0, 10) as method, 
+  count(*) as count 
+from 
+  nginx_access_log 
+group by method 
+  order by count desc;
 ```
 
 ```
-┌──────────────────────────────────────────────────────────────────────────────────────┐
-│ server      requests    unique_ips  avg_bytes   success_c…  error_cou…  avg_get_b…   │
-│────────────────────────────────────────────────────────────────────────────────────  │
-│ web-01.ex…  349         346         7036        267         7           7158        │
-│ web-02.ex…  327         327         6792        246         11          6815        │
-│ web-03.ex…  324         322         7001        254         8           6855        │
-└──────────────────────────────────────────────────────────────────────────────────────┘
++-----------+-------+
+|  method   | count |
++-----------+-------+
+| GET       | 23473 |
+| POST      | 195   |
+| PUT       | 25    |
+| DELETE    | 23    |
+|           | 14    |
+| HEAD      | 14    |
+| PRI       | 2     |
+| \x16\x03\ | 1     |
+| \x16\x03\ | 1     |
++-----------+-------+
 ```
 
-This shows us:
-- Number of requests per server
-- Count of unique IP addresses
-- Average response size
-- Success and error counts
-- Average size of GET requests
-
-### Time-Oriented Query
-
-Let's look at some recent log entries:
+There are some anomalies, let's explore them.
 
 ```sql
-SELECT
-    tp_date,
-    tp_index as server,
-    remote_addr as ip,
-    method,
-    uri,
+select
+    substr(method, 0, 10) as method,
+    tp_timestamp,
+    tp_source_ip,
+    path,
     status,
-    bytes_sent
-FROM nginx_access_log
-WHERE tp_date = '2024-11-01'
-LIMIT 10;
+    http_user_agent
+  from
+    nginx_access_log
+  where
+    method not in ('GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'PATCH')
+    and method is not null
+    and method != ''
+  order by
+    tp_timestamp desc;
 ```
 
 ```
-+--------------------------------------------------------------------------------------+
-¦ tp_date      server           ip             method  uri             status  bytes_sent¦
-¦------------------------------------------------------------------------------------  ¦
-¦ 2024-11-01   web-01.example  220.50.48.32   GET     /profile/user  200     5704     ¦
-¦ 2024-11-01   web-01.example  10.166.12.45   GET     /blog/post/1   200     2341     ¦
-¦ 2024-11-01   web-01.example  203.0.113.10   GET     /dashboard     200     11229    ¦
-¦ 2024-11-01   web-01.example  45.211.16.72   PUT     /favicon.ico   301     2770     ¦
-¦ 2024-11-01   web-01.example  66.171.35.91   POST    /static/main   503     5928     ¦
-¦ 2024-11-01   web-01.example  64.152.79.83   GET     /logout        200     3436     ¦
-¦ 2024-11-01   web-01.example  156.25.84.12   GET     /static/main   200     12490    ¦
-¦ 2024-11-01   web-01.example  78.131.22.45   GET     /static/main   200     8342     ¦
-¦ 2024-11-01   web-01.example  203.0.113.10   POST    /api/v1/user   200     3123     ¦
-¦ 2024-11-01   web-01.example  10.74.127.93   POST    /              200     7210     ¦
-+--------------------------------------------------------------------------------------+
++-----------+---------------------+----------------+----------------------------------------------------------------------------+--------+-----------------+
+|  method   |    tp_timestamp     |  tp_source_ip  |                                    path                                    | status | http_user_agent |
++-----------+---------------------+----------------+----------------------------------------------------------------------------+--------+-----------------+
+| PRI       | 2024-11-02 21:06:37 | 167.94.138.50  | *                                                                          | 400    | -               |
+| \x16\x03\ | 2024-11-02 08:29:14 | 198.44.237.38  | W\xD2\x9B\x7F\xD0\xDC\xD2\xED\xD3\x11\x9A\xF1\xE6\xDA\xF5\x8C\xF5\x13#\x14 | 400    | -               |
+| \x16\x03\ | 2024-11-02 04:25:25 | 198.235.24.174 | \x1E\xF6                                                                   | 400    | -               |
+| PRI       | 2024-11-02 01:18:28 | 167.94.145.109 | *                                                                          | 400    | -               |
++-----------+---------------------+----------------+----------------------------------------------------------------------------+--------+-----------------+
 ```
 
-Because we specified `tp_date = '2024-11-01'`, Tailpipe only needs to read the parquet files in the corresponding date directories. Similarly, if you wanted to analyze traffic for a specific server, you could add `tp_index = 'web-01.example.com'` to your WHERE clause, and Tailpipe would only read files from that server's directory.
+These results suggest automated probes looking for potential vulnerabilities, particularly around HTTP/2 prefaces or raw SSL/TLS connections on HTTP ports.
 
 
 ## Understanding Data Storage
 
-Tailpipe uses a hive-partitioned storage structure that organizes data for efficient querying. Let's look at how data is stored:
+Tailpipe uses a hive-partitioned storage structure that organizes data for efficient querying. Let's look at how data is stored for the configuration we've explored so far.
 
 ```
-+-- default
-    +-- nginx_access_log
-    ¦   +-- tp_partition=nginx_access_log
-    ¦       +-- tp_index=web-01.example.com
-    ¦       ¦   +-- tp_date=2024-11-01
-    ¦       ¦       +-- file_a7d40b4a-0398-46c6-8869-dc5dd87015a0.parquet
-    ¦       +-- tp_index=web-02.example.com
-    ¦       ¦   +-- tp_date=2024-11-01
-    ¦       ¦       +-- file_696946fa-f636-4b54-a8ec-82f64704ff50.parquet
-    ¦       +-- tp_index=web-03.example.com
-    ¦           +-- tp_date=2024-11-01
-    ¦               +-- file_a061d992-eb86-46a5-bc8f-d1a4b2fcce25.parquet
-    +-- pipes_audit_log
-    ¦   +-- tp_partition=pipes_audit_log
-    ¦       +-- tp_index=turbot-ops
-    ¦           +-- tp_date=2024-11-05
-    ¦               +-- file_ebab33de-2dcc-437c-8722-e371316f0b22.parquet
-    +-- tailpipe.db
+├── nginx_access_log
+│  └── tp_partition=dev
+│      ├── tp_index=dev1.log
+│      │  ├── tp_date=2024-11-01
+│      │  │  ├── file_487ad4ad-b6cd-4333-babd-a81984b2e895.parquet
+│      │  │  └── file_ee578641-0436-4fc5-8609-fbfbb184a139.parquet
+│      │  └── tp_date=2024-11-02
+│      │      ├── file_064c25c8-20cc-4e46-9c72-1e4058f3f507.parquet
+│      │      ├── file_34ae2e7c-e9c2-41c6-baea-61b825b518da.parquet
+│      │      ├── file_40e70129-37e2-406b-a188-f171e8ff5d9a.parquet
+│      └── tp_index=dev2.log
+│          ├── tp_date=2024-11-01
+│          │  ├── file_08eb2b06-10c7-421d-bf80-accf6af49f4c.parquet
+│          │  ├── file_1750ac16-23f1-40f8-bbf1-fe4fa7652d1d.parquet
+│          └── tp_date=2024-11-02
+│              ├── file_1f0af7e0-c60b-4ccb-9369-a8996777e06e.parquet
+│              ├── file_2ac1c10f-efbf-4ba6-aaa3-12f95b9e33dc.parquet
 ```
 
 The structure has several key components:
-- **Partition**: Groups data by source (e.g., `nginx_access_log`)
-- **Index**: Sub-divides data by a meaningful key (e.g., server name for NGINX logs)
-- **Date**: Further partitions data by date
-- Each partition contains parquet files with the actual log data
 
-This hierarchical structure enables efficient querying through partition pruning. When you query with conditions on `tp_partition`, `tp_index`, or `tp_date`, Tailpipe (and DuckDB) can skip reading irrelevant parquet files entirely.
+- **Partition**: Segments the data by a top-level key. Here we've defined a `dev` partition with logs for two servers, `dev1` and `dev2`. 
+
+- **Index**: Sub-divides data by a secondary key. Here we index on the servers `dev1` and `dev2`.
+
+- **Date**: Further partitions data by date. 
+
+This hierarchical structure enables efficient querying by means of partition pruning. When you query with conditions on `tp_partition`, `tp_index`, or `tp_date`, Tailpipe can skip reading irrelevant parquet files entirely.
+
+If you want to analyze logs from production servers as well as dev servers, just define another partition!
+
+```hcl
+partition "nginx_access_log" "dev" {
+    plugin = "nginx"
+    source "file_system"  {
+        paths = ["/path/to/dev1.log", "/path/to/dev2.log"]
+        extensions = [".log"]    
+    }
+}
+
+partition "nginx_access_log" "prod" {
+    plugin = "nginx"
+    source "file_system"  {
+        paths = ["/path/to/prod1.log", "/path/to/prod2.log"]
+        extensions = [".log"]    
+    }
+}
+```
 
 
-### Using DuckDB Directly
+### Querying with DuckDB 
 
 Since Tailpipe stores data in standard parquet files using a hive partitioning scheme, you can query the data directly with DuckDB:
 
@@ -187,10 +349,24 @@ D SELECT
   GROUP BY tp_date, tp_index;
 ```
 
+```
+┌────────────┬──────────┬──────────┐
+│  tp_date   │  server  │ requests │
+│    date    │ varchar  │  int64   │
+├────────────┼──────────┼──────────┤
+│ 2024-11-01 │ dev1.log │     1000 │
+│ 2024-11-01 │ dev2.log │     5423 │
+└────────────┴──────────┴──────────┘
+```
+
 This flexibility means you can:
+
 - Use your favorite DuckDB client to analyze the data
+
 - Write scripts that process the data directly
+
 - Import the data into other tools that support parquet files
+
 - Build automated reporting systems around the collected data
 
 ## Join with External Data
@@ -212,21 +388,8 @@ WHERE i.description IS NOT NULL
 GROUP BY n.remote_addr, i.description
 ORDER BY requests DESC;
 ```
+The query joins nginx data with a table of IP addresses to enrich them with descriptions.
 
-```
-┌──────────────────────────────────────────────────────────────────────────────────────┐
-│ ip          descripti…  requests    servers_a…  avg_bytes   methods_u…  errors       │
-│────────────────────────────────────────────────────────────────────────────────────  │
-│ 203.0.113…  Test Netw…  1           1           1860        GET         0           │
-└──────────────────────────────────────────────────────────────────────────────────────┘
-```
-
-This enriched query shows:
-- IP addresses and their descriptions
-- How many servers each IP accessed
-- Average response sizes
-- HTTP methods used
-- Error counts
 
 ## What's Next?
 
