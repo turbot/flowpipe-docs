@@ -74,13 +74,13 @@ Timing (may overlap):
 
  This command:
 
-1. Read the NGINX access logs from the specified files
+- Read the NGINX access logs from the specified files
 
-2. Parsed and standardized the log entries
+- Parsed and standardized the log entries
 
-3. Stored the data in parquet files organized by date
+- Stored the data in parquet files organized by date
 
-4. Updated the local database with SQL views over the parquet files
+- Updated the local database with SQL views over the parquet files
 
 
 ## Query Your Data
