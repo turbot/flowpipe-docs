@@ -2,21 +2,18 @@
   {
     "type": "category",
     "id": "learn",
-    "label": "Learn Flowpipe",
     "link": "learn",
     "items": []
   },
 
   {
     "type": "category",
-    "id": "Run",
-    "label": "Run Flowpipe",
+    "id": "run",
     "link": "run",
     "items": [
-      "run/pipelines",
-      "run/server",
-      "run/connections",
-      "run/workspaces"
+      "run/collect",
+      "run/query",
+      "run/connections"
     ]
   },
   {
