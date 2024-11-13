@@ -1,14 +1,14 @@
 ---
-title: flowpipe help
-sidebar_label: flowpipe help
+title: tailpipe help
+sidebar_label: tailpipe help
 ---
 
-# flowpipe help
+# tailpipe help
 Display help and usage information for any command in the application.
 
 ## Usage
 ```bash
-flowpipe help [command] [flags]
+tailpipe help [command] [flags]
 ```
 
 ## Examples

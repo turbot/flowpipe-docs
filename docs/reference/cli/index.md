@@ -1,24 +1,17 @@
 ---
-title: Flowpipe CLI
-sidebar_label: Flowpipe CLI
+title: Tailpipe CLI
+sidebar_label: Tailpipe CLI
 ---
 
-# Flowpipe CLI
+# Tailpipe CLI
 
 ## Sub-Commands
 
 | Command | Description
 |-|-
-| [flowpipe help](/docs/reference/cli/help)      | Help about any command
-| [flowpipe integration](/docs/reference/cli/integration)   | List and view integrations
-| [flowpipe mod](/docs/reference/cli/mod)        | Flowpipe mod management
-| [flowpipe notifier](/docs/reference/cli/notifier)   | List and view notifiers
-| [flowpipe pipeline](/docs/reference/cli/pipeline) | List, view, and run Flowpipe pipelines
-| [flowpipe process](/docs/reference/cli/process) | List and view Flowpipe processes
-| [flowpipe server](/docs/reference/cli/server)  | Run Flowpipe server, including triggers and integrations
-| [flowpipe trigger](/docs/reference/cli/trigger) | List and view Flowpipe triggers
-| [flowpipe variable](/docs/reference/cli/variable) | List and view Flowpipe variables
-
+| [tailpipe help](/docs/reference/cli/help)         | Help about any command
+| [tailpipe collect](/docs/reference/cli/collect)   | Collect from log sources
+| [tailpipe query](/docs/reference/cli/query)       | Query log sources
 
 
 <!--

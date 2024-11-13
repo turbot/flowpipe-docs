@@ -11,77 +11,12 @@
     "id": "run",
     "link": "run",
     "items": [
+      "run/plugins",
       "run/collect",
       "run/query",
       "run/connections"
     ]
   },
-  {
-    "type": "category",
-    "id": "working-with-mods",
-    "label": "Build Mods",
-    "link": "build",
-    "items": [
-      {
-        "type": "category",
-        "id": "build/write-pipelines",
-        "label": "Learn Flowpipe",
-        "link": "build/write-pipelines",
-        "items": [
-          "build/write-pipelines/control-flow",
-          "build/write-pipelines/inputs-outputs",
-          "build/write-pipelines/conditionals",
-          "build/write-pipelines/iteration",
-          "build/write-pipelines/errors"
-        ]
-      },
-      "build/triggers",
-      "build/input",
-      "build/mod-variables",
-      "build/mod-dependencies"
-    ]
-  },
-
-  {
-    "type": "category",
-    "id": "flowpipe-hcl",
-    "link": "flowpipe-hcl",
-    "items": [
-      "flowpipe-hcl/functions",
-      "flowpipe-hcl/locals",
-      "flowpipe-hcl/mod",
-      "flowpipe-hcl/pipeline",
-      {
-        "type": "category",
-        "id": "steps",
-        "link": "flowpipe-hcl/step",
-        "items": [
-          "flowpipe-hcl/step/container",
-          "flowpipe-hcl/step/email",
-          "flowpipe-hcl/step/function",
-          "flowpipe-hcl/step/http",
-          "flowpipe-hcl/step/input",
-          "flowpipe-hcl/step/message",
-          "flowpipe-hcl/step/pipeline",
-          "flowpipe-hcl/step/query",
-          "flowpipe-hcl/step/sleep",
-          "flowpipe-hcl/step/transform"
-        ]
-      },
-      {
-        "type": "category",
-        "id": "triggers",
-        "link": "flowpipe-hcl/trigger",
-        "items": [
-          "flowpipe-hcl/trigger/http",
-          "flowpipe-hcl/trigger/query",
-          "flowpipe-hcl/trigger/schedule"
-        ]
-      },
-      "flowpipe-hcl/variable"
-    ]
-  },
-
   {
     "type": "category",
     "id": "reference",
@@ -94,44 +29,17 @@
         "label": "Command Line Arguments",
         "link": "reference/cli",
         "items": [
-          "reference/cli/help",
-          "reference/cli/integration",
-          "reference/cli/notifier",
-          "reference/cli/mod",
-          "reference/cli/pipeline",
-          "reference/cli/process",
-          "reference/cli/server",
-          "reference/cli/trigger",
-          "reference/cli/variable"
+          "reference/cli/help"
         ]
       },
-
       {
         "type": "category",
         "id": "env-vars",
         "label": "Environment Variables",
         "link": "reference/env-vars",
         "items": [
-          "reference/env-vars/flowpipe_base_url",
-          "reference/env-vars/flowpipe_config_path",
-          "reference/env-vars/flowpipe_host",
-          "reference/env-vars/flowpipe_install_dir",
-          "reference/env-vars/flowpipe_listen",
-          "reference/env-vars/flowpipe_log_level",
-          "reference/env-vars/flowpipe_max_concurrency_container",
-          "reference/env-vars/flowpipe_max_concurrency_function",
-          "reference/env-vars/flowpipe_max_concurrency_http",
-          "reference/env-vars/flowpipe_max_concurrency_query",
-          "reference/env-vars/flowpipe_memory_max_mb",
-          "reference/env-vars/flowpipe_mod_location",
-          "reference/env-vars/flowpipe_port",
-          "reference/env-vars/flowpipe_telemetry",
-          "reference/env-vars/flowpipe_update_check",
-          "reference/env-vars/flowpipe_workspace",
-          "reference/env-vars/pipes_install_dir"
         ]
       },
-
       {
         "type": "category",
         "id": "config-files",
@@ -143,44 +51,6 @@
             "id": "connection",
             "link": "reference/config-files/connection",
             "items": [
-              "reference/config-files/connection/abuseipdb",
-              "reference/config-files/connection/alicloud",
-              "reference/config-files/connection/aws",
-              "reference/config-files/connection/azure",
-              "reference/config-files/connection/bitbucket",
-              "reference/config-files/connection/clickup",
-              "reference/config-files/connection/datadog",
-              "reference/config-files/connection/discord",
-              "reference/config-files/connection/duckdb",
-              "reference/config-files/connection/freshdesk",
-              "reference/config-files/connection/gcp",
-              "reference/config-files/connection/github",
-              "reference/config-files/connection/gitlab",
-              "reference/config-files/connection/ip2locationio",
-              "reference/config-files/connection/ipstack",
-              "reference/config-files/connection/jira",
-              "reference/config-files/connection/jumpcloud",
-              "reference/config-files/connection/mastodon",
-              "reference/config-files/connection/mysql",
-              "reference/config-files/connection/okta",
-              "reference/config-files/connection/openai",
-              "reference/config-files/connection/opsgenie",
-              "reference/config-files/connection/pagerduty",
-              "reference/config-files/connection/pipes",
-              "reference/config-files/connection/postgres",
-              "reference/config-files/connection/sendgrid",
-              "reference/config-files/connection/servicenow",
-              "reference/config-files/connection/slack",
-              "reference/config-files/connection/sqlite",
-              "reference/config-files/connection/steampipe",
-              "reference/config-files/connection/teams",
-              "reference/config-files/connection/trello",
-              "reference/config-files/connection/turbot_guardrails",
-              "reference/config-files/connection/uptimerobot",
-              "reference/config-files/connection/urlscan",
-              "reference/config-files/connection/vault",
-              "reference/config-files/connection/virustotal",
-              "reference/config-files/connection/zendesk"
             ]
           },
           {
@@ -188,39 +58,6 @@
             "id": "credential",
             "link": "reference/config-files/credential",
             "items": [
-              "reference/config-files/credential/abuseipdb",
-              "reference/config-files/credential/alicloud",
-              "reference/config-files/credential/aws",
-              "reference/config-files/credential/azure",
-              "reference/config-files/credential/bitbucket",
-              "reference/config-files/credential/clickup",
-              "reference/config-files/credential/datadog",
-              "reference/config-files/credential/discord",
-              "reference/config-files/credential/freshdesk",
-              "reference/config-files/credential/gcp",
-              "reference/config-files/credential/github",
-              "reference/config-files/credential/gitlab",
-              "reference/config-files/credential/ip2locationio",
-              "reference/config-files/credential/ipstack",
-              "reference/config-files/credential/jira",
-              "reference/config-files/credential/jumpcloud",
-              "reference/config-files/credential/mastodon",
-              "reference/config-files/credential/okta",
-              "reference/config-files/credential/openai",
-              "reference/config-files/credential/opsgenie",
-              "reference/config-files/credential/pagerduty",
-              "reference/config-files/credential/pipes",
-              "reference/config-files/credential/sendgrid",
-              "reference/config-files/credential/servicenow",
-              "reference/config-files/credential/slack",
-              "reference/config-files/credential/teams",
-              "reference/config-files/credential/trello",
-              "reference/config-files/credential/turbot_guardrails",
-              "reference/config-files/credential/uptimerobot",
-              "reference/config-files/credential/urlscan",
-              "reference/config-files/credential/vault",
-              "reference/config-files/credential/virustotal",
-              "reference/config-files/credential/zendesk"
             ]
           },
           {
@@ -238,20 +75,7 @@
             "items": [
               "reference/config-files/credential_import/steampipe"
             ]
-          },
-          {
-            "type": "category",
-            "id": "integration",
-            "link": "reference/config-files/integration",
-            "items": [
-              "reference/config-files/integration/email",
-              "reference/config-files/integration/http",
-              "reference/config-files/integration/msteams",
-              "reference/config-files/integration/slack"
-            ]
-          },
-          "reference/config-files/notifier",
-          "reference/config-files/workspace"
+          }
         ]
       }
     ]
