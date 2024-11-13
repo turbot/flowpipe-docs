@@ -14,9 +14,9 @@ Tailpipe is a high-performance data collection and querying tool that makes it e
 - Create filtered views of your data using schemas
 - Join log data with other data sources for enriched analysis
 
-## Install the NGINX Plugin
+## Install the nginx Plugin
 
-This tutorial uses the NGINX plugin to demonstrate collecting and analyzing web server access logs. First, [download and install Tailpipe](/downloads), and then install the plugin:
+This tutorial uses the nginx plugin to demonstrate collecting and analyzing web server access logs. First, [download and install Tailpipe](/downloads), and then install the plugin:
 
 ```bash
 tailpipe plugin install nginx
@@ -36,24 +36,19 @@ partition "nginx_access_log" "dev" {
 }
 ```
 
-This configuration tells Tailpipe to collect NGINX access logs from two log files. The configuration defines:
+This configuration tells Tailpipe to collect nginx access logs from two log files. The configuration defines:
 
 - A table named `nginx_access_log`. This is the table your SQL queries will target.
 
 - A partition named `dev`. This is a logical segment within the table, we'll start with just one partition.
 
-- The source type "nginx_access_log_file" which reads NGINX formatted logs
+- The source type `nginx_access_log_file` which reads nginx logs
 
 - The paths to the partition's log files.
-
 
 ## Collect Data
 
 Now let's collect the logs:
-
-```bash
-tailpipe plugin install nginx
-```
 
 ```bash
 tailpipe collect nginx_access_log.dev
@@ -74,7 +69,7 @@ Timing (may overlap):
 
  This command:
 
-- Read the NGINX access logs from the specified files
+- Read the nginx access logs from the specified files
 
 - Parsed and standardized the log entries
 
@@ -97,7 +92,7 @@ Tailpipe provides an interactive SQL shell (or you can query directly with DuckD
 └──────────────┘
 ```
 
-nLet's see the table's schema.
+Let's see the table's schema.
 
 
 ```bash
@@ -143,35 +138,7 @@ D select name, type from pragma_table_info('nginx_access_log') order by name;
 
 Some of the columns correspond to the fields in a raw nginx log: `http_user_agent`, `remote_addr`, etc.
 
-Others map the raw fields to [Tailpipe common fields]().
-
-```
-type CommonFields struct {
-	TpID              string    `json:"tp_id"`
-	TpSourceType      string    `json:"tp_source_type"`
-	TpSourceName      string    `json:"tp_source_name"`
-	TpSourceLocation  *string   `json:"tp_source_location"`
-	TpIngestTimestamp time.Time `json:"tp_ingest_timestamp"`
-
-	// Standardized
-	TpTimestamp     time.Time `json:"tp_timestamp"`
-	TpSourceIP      *string   `json:"tp_source_ip"`
-	TpDestinationIP *string   `json:"tp_destination_ip"`
-
-	// Hive fields
-	TpPartition string `json:"tp_partition"`
-	TpIndex     string `json:"tp_index"`
-	TpDate      string `json:"tp_date"`
-
-	// Searchable
-	TpAkas      []string `json:"tp_akas,omitempty"`
-	TpIps       []string `json:"tp_ips,omitempty"`
-	TpTags      []string `json:"tp_tags,omitempty"`
-	TpDomains   []string `json:"tp_domains,omitempty"`
-	TpEmails    []string `json:"tp_emails,omitempty"`
-	TpUsernames []string `json:"tp_usernames,omitempty"`
-}
-```
+Others map the raw fields to [Tailpipe common fields]() like `TpTimestamp` and `TpIps`.
 
 Still others synthesize columns from raw fields, like `http_version` and `method`. We see all these ingredients in each row created by the nginx plugin.
 
@@ -274,7 +241,6 @@ select
 
 These results suggest automated probes looking for potential vulnerabilities, particularly around HTTP/2 prefaces or raw SSL/TLS connections on HTTP ports.
 
-
 ## Understanding Data Storage
 
 Tailpipe uses a hive-partitioned storage structure that organizes data for efficient querying. Let's look at how data is stored for the configuration we've explored so far.
@@ -289,7 +255,6 @@ Tailpipe uses a hive-partitioned storage structure that organizes data for effic
 │      │  └── tp_date=2024-11-02
 │      │      ├── file_064c25c8-20cc-4e46-9c72-1e4058f3f507.parquet
 │      │      ├── file_34ae2e7c-e9c2-41c6-baea-61b825b518da.parquet
-│      │      ├── file_40e70129-37e2-406b-a188-f171e8ff5d9a.parquet
 │      └── tp_index=dev2.log
 │          ├── tp_date=2024-11-01
 │          │  ├── file_08eb2b06-10c7-421d-bf80-accf6af49f4c.parquet
@@ -329,65 +294,56 @@ partition "nginx_access_log" "prod" {
 }
 ```
 
+### Query across server logs
 
-### Querying with DuckDB 
-
-Since Tailpipe stores data in standard parquet files using a hive partitioning scheme, you can query the data directly with DuckDB:
+Now that we've collected from both server logs, we can query across them.
 
 ```sql
-$ cd ~/.tailpipe/data/default/tailpipe.db
-$ duckdb tailpipe.db
-D SELECT 
-    tp_date,
-    tp_index as server,
-    count(*) as requests
-  FROM nginx_access_log 
-  WHERE tp_date = '2024-11-01'
-  GROUP BY tp_date, tp_index;
+tailpipe query "SELECT tp_date, tp_index as server, count(*) as requests
+    FROM nginx_access_log
+    WHERE tp_date = '2024-11-01'
+    GROUP BY tp_date, tp_index;"
 ```
 
 ```
-+------------+----------+----------+
-|  tp_date   |  server  | requests |
-+------------+----------+----------+
-| 2024-11-01 | dev1.log | 1000     |
-| 2024-11-01 | dev2.log | 5423     |
-+------------+----------+----------+
+┌──────────────────────────────────────┐
+│ tp_date      server      requests    │
+│______________________________________│
+│  2024-11-01  dev1.log    1000        │
+│  2024-11-01  dev2.log    5423        │
+└──────────────────────────────────────┘
 ```
 
-This flexibility means you can:
+> [!NOTE]
+> Tailpipe stores data in a DuckDB database that you can query directly.
 
-- Use your favorite DuckDB client to analyze the data
+## Join Across the Tailpipe Ecosystem and Beyond
 
-- Write scripts that process the data directly
+Tailpipe's common fields enable joins across tables created by different Tailpipe plugins.
 
-- Import the data into other tools that support parquet files
+You can also populate the Tailpipe database with other tables and join those with Tailpipe tables.
 
-- Build automated reporting systems around the collected data
-
-## Join with External Data
-
-One of Tailpipe's powerful features is the ability to join log data with other tables. Here's an example joining with an IP information table to get more context about the traffic:
+Here's an example that joins the `nginx_access_log` table with an IP information table to enrich the IP addresses found in the logs.
 
 ```sql
 SELECT
     n.remote_addr as ip,
     i.description,
     count(*) as requests,
-FROM nginx_access_log n
-LEFT JOIN ip_info i ON n.remote_addr = i.ip_address
+FROM nginx_access_log n  -- tailpipe table
+LEFT JOIN ip_info i      -- non-tailpipe table
+ON n.remote_addr = i.ip_address
 WHERE i.description IS NOT NULL
 GROUP BY n.remote_addr, i.description
 ORDER BY requests DESC;
 ```
 The query joins nginx data with a table of IP addresses to enrich them with descriptions.
 
-
 ## What's Next?
 
 We've demonstrated basic log collection and analysis with Tailpipe. Here's what to explore next:
 
-- [Discover more plugins on the Hub →](https://hub.steampipe.io/plugins)
+- [Discover more plugins on the Hub →](https://hub.tailpipe.io/plugins)
 
 - [Learn about data compaction and optimization →](https://tailpipe.io/docs/managing/compaction)
 
