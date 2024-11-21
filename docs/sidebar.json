@@ -3,9 +3,28 @@
     "type": "category",
     "id": "learn",
     "link": "learn",
+    "items": [
+      {
+        "type": "category",
+        "id": "sql",
+        "label": "It's Just SQL!",
+        "link": "sql/tailpipe-sql",
+        "items": []
+      }      
+    ]
+  },
+  {
+    "type": "category",
+    "id": "collect",
+    "link": "collect",
     "items": []
   },
-
+  {
+    "type": "category",
+    "id": "query",
+    "link": "query",
+    "items": []
+  },
   {
     "type": "category",
     "id": "run",
@@ -15,6 +34,14 @@
       "run/collect",
       "run/query",
       "run/connections"
+    ]
+  },
+  {
+    "type": "category",
+    "id": "build",
+    "link": "build",
+    "items": [
+      "build/write-mods"
     ]
   },
   {
