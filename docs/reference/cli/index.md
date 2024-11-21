@@ -11,16 +11,11 @@ sidebar_label: Tailpipe CLI
 |-|-
 | [tailpipe help](/docs/reference/cli/help)         | Help about any command
 | [tailpipe collect](/docs/reference/cli/collect)   | Collect from log sources
+| [tailpipe connect](/docs/reference/cli/connect)   | Return a connection string for a database
+| [tailpipe plugin](/docs/reference/cli/plugin)     | Tailpipe plugin management
 | [tailpipe query](/docs/reference/cli/query)       | Query log sources
 
 
-<!--
-
-| [flowpipe login](/docs/reference/cli/login)    | Log in to Flowpipe CLoud
-
-| [flowpipe completion](/docs/reference/cli/completion)| Generate the autocompletion script for the specified shell
-
--->
 ## Global Flags
 
 <table>

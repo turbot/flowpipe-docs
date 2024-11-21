@@ -1,9 +1,9 @@
 ---
-title:  Flowpipe Reference
+title:  Tailpipe Reference
 sidebar_label: Reference
 ---
 
-# Flowpipe Reference
+# Tailpipe Reference
 
 When all else fails, read the manual...
 

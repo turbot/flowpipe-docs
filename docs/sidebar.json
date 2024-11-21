@@ -10,7 +10,7 @@
         "label": "It's Just SQL!",
         "link": "sql/tailpipe-sql",
         "items": []
-      }      
+      }
     ]
   },
   {
@@ -33,7 +33,8 @@
       "run/plugins",
       "run/collect",
       "run/query",
-      "run/connections"
+      "run/connections",
+      "run/workspaces"
     ]
   },
   {
@@ -41,11 +42,21 @@
     "id": "build",
     "link": "build",
     "items": [
-      "build/write-mods"
+      "build/create-mod",
+      "build/write-detections",
+      "build/write-dashboards",
+      "build/mod-variables",
+      "build/mod-dependencies"
     ]
   },
   {
     "type": "category",
+    "id": "tailpipe-hcl",
+    "link": "tailpipe-hcl",
+    "items": []
+  },
+  {
+"type": "category",
     "id": "reference",
     "label": "Reference",
     "link": "reference",
@@ -56,7 +67,11 @@
         "label": "Command Line Arguments",
         "link": "reference/cli",
         "items": [
-          "reference/cli/help"
+          "reference/cli/help",
+          "reference/cli/connect",
+          "reference/cli/collect",
+          "reference/cli/plugin",
+          "reference/cli/query"
         ]
       },
       {
@@ -64,8 +79,7 @@
         "id": "env-vars",
         "label": "Environment Variables",
         "link": "reference/env-vars",
-        "items": [
-        ]
+        "items": []
       },
       {
         "type": "category",
@@ -77,15 +91,13 @@
             "type": "category",
             "id": "connection",
             "link": "reference/config-files/connection",
-            "items": [
-            ]
+            "items": []
           },
           {
             "type": "category",
             "id": "credential",
             "link": "reference/config-files/credential",
-            "items": [
-            ]
+            "items": []
           },
           {
             "type": "category",
@@ -107,7 +119,6 @@
       }
     ]
   },
-
   {
     "type": "category",
     "id": "faq",

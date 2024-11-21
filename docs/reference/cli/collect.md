@@ -1,11 +1,11 @@
 ---
-title: flowpipe integration
-sidebar_label: flowpipe integration
+title: tailpipe collect
+sidebar_label: tailpipe collect
 ---
 
-# flowpipe integration
+# tailpipe collect
 
-List and show Flowpipe [integrations](/docs/reference/config-files/integration).
+Run a [collection](/docs/reference/config-files/integration).
 
 
 ## Usage
