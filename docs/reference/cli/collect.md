@@ -10,7 +10,7 @@ Run a [collection](/docs/reference/config-files/integration).
 
 ## Usage
 ```bash
-flowpipe integration [command] [flags]
+tailpipe integration [command] [flags]
 ```
 
 ## Sub-Commands
@@ -26,17 +26,17 @@ flowpipe integration [command] [flags]
 List integrations:
 
 ```bash
-flowpipe integration list
+tailpipe integration list
 ```
 
 View integration details:
 
 ```bash
-flowpipe integration show slack.default
+tailpipe integration show slack.default
 ```
 
 List integrations in JSON format:
 
 ```bash
-flowpipe integration list --output json
+tailpipe integration list --output json
 ```

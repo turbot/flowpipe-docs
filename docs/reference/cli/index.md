@@ -27,26 +27,26 @@ sidebar_label: Tailpipe CLI
   <tr> 
     <td nowrap="true"> <inlineCode>--config-path</inlineCode> </td> 
     <td>  
-    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (<inlineCode>*.fpc</inlineCode>) will be loaded from each path, with decreasing precedence.  The default is <inlineCode>.:$FLOWPIPE_INSTALL_DIR/config</inlineCode> (<inlineCode>.:~/.flowpipe/config</inlineCode>).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/connection">connections</a> centrally in the <inlineCode>~/.flowpipe/config</inlineCode> directory, but override them in the working directory / mod location if desired.
+    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (<inlineCode>*.fpc</inlineCode>) will be loaded from each path, with decreasing precedence.  The default is <inlineCode>.:$TAILPIPE_INSTALL_DIR/config</inlineCode> (<inlineCode>.:~/.tailpipe/config</inlineCode>).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/connection">connections</a> centrally in the <inlineCode>~/.tailpipe/config</inlineCode> directory, but override them in the working directory / mod location if desired.
     </td> 
   </tr>
 
   <tr> 
     <td nowrap="true"> <inlineCode>--data-dir</inlineCode> </td> 
     <td>  
-    Sets the event store data directory. Flowpipe defaults to the `.flowpipe` directory in the current mod directory. This argument allows you to specify a different directory.
+    Sets the event store data directory. Tailpipe defaults to the `.tailpipe` directory in the current mod directory. This argument allows you to specify a different directory.
     </td> 
   </tr>
 
 
   <tr> 
     <td nowrap="true"> <inlineCode>-h</inlineCode>, <inlineCode>--help</inlineCode> </td> 
-    <td>  Help for Flowpipe. </td> 
+    <td>  Help for Tailpipe. </td> 
   </tr>
                   
   <tr> 
     <td nowrap="true"> <inlineCode>--host</inlineCode> </td> 
-    <td> Run the command against a local or remote server instance.  You may specify the full host and port (e.g. <inlineCode>--host https://flowpipe.my-org.com:7103</inlineCode>), or use the keyword <inlineCode>local</inlineCode> to connect to the local server instance as a shortcut for <inlineCode>https://localhost:7103</inlineCode> (e.g. <inlineCode>--host local</inlineCode>) </td> 
+    <td> Run the command against a local or remote server instance.  You may specify the full host and port (e.g. <inlineCode>--host https://tailpipe.my-org.com:7103</inlineCode>), or use the keyword <inlineCode>local</inlineCode> to connect to the local server instance as a shortcut for <inlineCode>https://localhost:7103</inlineCode> (e.g. <inlineCode>--host local</inlineCode>) </td> 
   </tr>
 
   <tr> 
@@ -76,7 +76,7 @@ sidebar_label: Tailpipe CLI
 
   <tr> 
     <td nowrap="true"> <inlineCode>--mod-location</inlineCode>  </td> 
-    <td> Sets the Flowpipe workspace working directory.  If not specified, the workspace directory will be set to the current working directory.  See <a href="/docs/reference/env-vars/flowpipe_mod_location">FLOWPIPE_MOD_LOCATION</a> for details. </td>
+    <td> Sets the Tailpipe workspace working directory.  If not specified, the workspace directory will be set to the current working directory.  See <a href="/docs/reference/env-vars/tailpipe_mod_location">TAILPIPE_MOD_LOCATION</a> for details. </td>
   </tr>
 
    <tr> 
@@ -86,12 +86,12 @@ sidebar_label: Tailpipe CLI
 
   <tr> 
     <td nowrap="true"> <inlineCode>-v</inlineCode>, <inlineCode>--version</inlineCode>  </td> 
-    <td>  Display Flowpipe version. </td> 
+    <td>  Display Tailpipe version. </td> 
   </tr>
 
   <tr> 
     <td nowrap="true"> <inlineCode>--workspace	</inlineCode>  </td> 
-    <td>  Sets the Flowpipe workspace profile. If not specified, the default workspace will be used if it exists. See <a href="/docs/reference/env-vars/flowpipe_workspace">FLOWPIPE_WORKSPACE</a> for details. </td> 
+    <td>  Sets the Tailpipe workspace profile. If not specified, the default workspace will be used if it exists. See <a href="/docs/reference/env-vars/tailpipe_workspace">TAILPIPE_WORKSPACE</a> for details. </td> 
   </tr>
 
 </table>
@@ -121,10 +121,10 @@ sidebar_label: Tailpipe CLI
 
 |  Value  |   Name                                | Description
 |---------|---------------------------------------|----------------------------------------
-|   **0** | `ExitCodeSuccessful`                  | Flowpipe ran successfully
-|   **1** | `ExitCodeExecutionPaused`             | Flowpipe ran without errors but paused waiting input
-|   **2** | `ExitCodeExecutionFailed`             | Flowpipe completed with one or more errors
-|   **3** | `ExitCodeExecutionCancelled`          | The Flowpipe command was canceelled by user request
+|   **0** | `ExitCodeSuccessful`                  | Tailpipe ran successfully
+|   **1** | `ExitCodeExecutionPaused`             | Tailpipe ran without errors but paused waiting input
+|   **2** | `ExitCodeExecutionFailed`             | Tailpipe completed with one or more errors
+|   **3** | `ExitCodeExecutionCancelled`          | The Tailpipe command was canceelled by user request
 |  **61** | `ExitCodeModInitFailed`               | Mod init failed
 |  **62** | `ExitCodeModInstallFailed`            | Mod install failed
 | **250** | `ExitCodeInitializationFailed`        | Initialization failed

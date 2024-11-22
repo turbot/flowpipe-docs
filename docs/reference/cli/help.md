@@ -14,13 +14,13 @@ tailpipe help [command] [flags]
 ## Examples
 Show help:
 ```bash
-flowpipe help 
+tailpipe help 
 ```
 Show help for the `mod` sub-command:
 ```bash
-flowpipe help mod
+tailpipe help mod
 ```
 Show help for the `mod install` sub-command:
 ```bash
-flowpipe help mod install
+tailpipe help mod install
 ```

@@ -1,16 +1,16 @@
 ---
-title:  steampipe
-sidebar_label: steampipe
+title:  tailpipe
+sidebar_label: tailpipe
 ---
 
 
-# steampipe
+# tailpipe
 
-The `steampipe` connection import resource allows you to bulk import connections from Steampipe connections.  This allows you to import the plugin connections from your Steampipe installation into Flowpipe.
+The `tailpipe` connection import resource allows you to bulk import connections from Tailpipe connections.  This allows you to import the plugin connections from your Tailpipe installation into Tailpipe.
 
 ```hcl
-connection_import "steampipe" {
-  source      = "~/.steampipe/config/*.spc"
+connection_import "tailpipe" {
+  source      = "~/.tailpipe/config/*.spc"
   connections = ["*"]
 } 
 ```
@@ -19,36 +19,36 @@ connection_import "steampipe" {
 
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
-| `source`        |  String | Optional | Path to the config file(s) with the connections to import.  Defaults to `~/.steampipe/config/*.spc`.
+| `source`        |  String | Optional | Path to the config file(s) with the connections to import.  Defaults to `~/.tailpipe/config/*.spc`.
 | `connections`   |  List&ltString&gt | Optional | A list of connection names to import.  You may use the `*` globbing wildcard in these entries.  The default is `["*"]` (all connections).
 | `prefix`        | String  | Optional | A string to prepend to the connection name to create the connection name. 
 
 ## Examples
 
-### Import ALL Steampipe connections
+### Import ALL Tailpipe connections
 ```hcl
-connection_import "steampipe" {} 
+connection_import "tailpipe" {} 
 ```
 or
 ```hcl
-connection_import "steampipe" {
-  source      = "~/.steampipe/config/*.spc"
+connection_import "tailpipe" {
+  source      = "~/.tailpipe/config/*.spc"
   connections = ["*"]
 } 
 ```
 
-### Import ALL Steampipe connections and prefix them
+### Import ALL Tailpipe connections and prefix them
 ```hcl
-connection_import "steampipe" {
+connection_import "tailpipe" {
   prefix = "sp_"
 } 
 ```
 
-### Import specific Steampipe connections only
+### Import specific Tailpipe connections only
 
 ```hcl
-connection_import "steampipe" {
-  source      = "~/.steampipe/config/aws.spc"
+connection_import "tailpipe" {
+  source      = "~/.tailpipe/config/aws.spc"
   connections = ["aws_prod*", "aws_all"]
 } 
 ```

@@ -15,18 +15,6 @@
   },
   {
     "type": "category",
-    "id": "collect",
-    "link": "collect",
-    "items": []
-  },
-  {
-    "type": "category",
-    "id": "query",
-    "link": "query",
-    "items": []
-  },
-  {
-    "type": "category",
     "id": "run",
     "link": "run",
     "items": [
@@ -86,36 +74,14 @@
         "id": "config-files",
         "label": "Configuration Files",
         "link": "reference/config-files",
-        "items": [
-          {
-            "type": "category",
-            "id": "connection",
-            "link": "reference/config-files/connection",
-            "items": []
-          },
-          {
-            "type": "category",
-            "id": "credential",
-            "link": "reference/config-files/credential",
-            "items": []
-          },
-          {
-            "type": "category",
-            "id": "connection_import",
-            "link": "reference/config-files/connection_import",
-            "items": [
-              "reference/config-files/connection_import/steampipe"
-            ]
-          },
-          {
-            "type": "category",
-            "id": "credential_import",
-            "link": "reference/config-files/credential_import",
-            "items": [
-              "reference/config-files/credential_import/steampipe"
-            ]
-          }
-        ]
+        "items": []
+      },
+      {
+        "type": "category",
+        "id": "developers",
+        "label": "Developers",
+        "link": "reference/developers",
+        "items": []
       }
     ]
   },
