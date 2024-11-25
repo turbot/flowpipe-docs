@@ -1,4 +1,4 @@
-name: Trigger the preview build in flowpipe.io
+name: Trigger the preview build in tailpipe.io
 
 on:
   workflow_dispatch:
@@ -16,6 +16,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.G_PERSONAL_ACCESS_TOKEN }}
-          repository: turbotio/flowpipe.io
+          repository: turbotio/tailpipe.io
           event-type: build-preview
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref_name": "${{ github.ref_name }}"}'

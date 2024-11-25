@@ -48,7 +48,7 @@ yarn-error.log*
 /public/changelog/feed.xml
 /public/images/docs
 /public/images/reference_examples
-/steampipe-docs-local
+/tailpipe-docs-local
 /tmp
 content/docs
 

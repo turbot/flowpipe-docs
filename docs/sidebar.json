@@ -15,36 +15,22 @@
   },
   {
     "type": "category",
+    "id": "collect",
+    "link": "collect",
+    "items": []
+  },
+  {
+    "type": "category",
     "id": "run",
     "link": "run",
     "items": [
       "run/plugins",
-      "run/collect",
-      "run/query",
       "run/connections",
       "run/workspaces"
     ]
   },
   {
     "type": "category",
-    "id": "build",
-    "link": "build",
-    "items": [
-      "build/create-mod",
-      "build/write-detections",
-      "build/write-dashboards",
-      "build/mod-variables",
-      "build/mod-dependencies"
-    ]
-  },
-  {
-    "type": "category",
-    "id": "tailpipe-hcl",
-    "link": "tailpipe-hcl",
-    "items": []
-  },
-  {
-"type": "category",
     "id": "reference",
     "label": "Reference",
     "link": "reference",
