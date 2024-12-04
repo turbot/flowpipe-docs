@@ -8,8 +8,12 @@
         "type": "category",
         "id": "sql",
         "label": "It's Just SQL!",
-        "link": "sql/tailpipe-sql",
-        "items": []
+        "link": "sql",
+        "items": [
+          "sql/querying-json",
+          "sql/querying-ips",
+          "sql/tips"
+        ]
       }
     ]
   },
@@ -68,7 +72,16 @@
         "label": "Developers",
         "link": "reference/developers",
         "items": []
-      }
+      },
+      "reference/glossary"
+    ]
+  },
+  {
+    "type": "category",
+    "id": "develop",
+    "link": "develop",
+    "items": [
+      "develop/plugin-tables"
     ]
   },
   {
