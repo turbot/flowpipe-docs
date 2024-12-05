@@ -5,7 +5,7 @@ sidebar_label: Learn Tailpipe
 slug: /
 ---
 
-[Graza version](#learn-tailpipe-graza) | [Jon version](#learn-tailpipe-jon) 
+[Graza version](#learn-tailpipe-graza) | [Jon version](#learn-tailpipe-jon)
 
 # Learn Tailpipe Graza
 
