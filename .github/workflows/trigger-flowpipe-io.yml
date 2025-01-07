@@ -17,5 +17,5 @@ jobs:
         with:
           token: ${{ secrets.G_PERSONAL_ACCESS_TOKEN }}
           repository: turbotio/flowpipe.io
-          event-type: build-preview
+          event-type: build-preview-test
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "ref_name": "${{ github.ref_name }}"}'
