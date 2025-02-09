@@ -91,14 +91,14 @@ This step also supports the [common step arguments](/docs/flowpipe-hcl/step#comm
 ### Button - Simple 
 
 ##### Console (Client-Mode)
-![](/images/docs/flowpipe-hcl/input_button_simple_console.png)
+![](/flowpipe-hcl/input_button_simple_console.png)
 
 
 ##### HTTP
-![](/images/docs/flowpipe-hcl/input_button_simple_http.png)
+![](/flowpipe-hcl/input_button_simple_http.png)
 
 ##### Slack
-![](/images/docs/flowpipe-hcl/input_button_simple_slack.png)
+![](/flowpipe-hcl/input_button_simple_slack.png)
 
 
 ```hcl
@@ -126,13 +126,13 @@ pipeline "my_pipe" {
 ### Button - With labels and values 
 
 ##### Console (Client-Mode)
-![](/images/docs/flowpipe-hcl/input_button_simple_console.png)
+![](/flowpipe-hcl/input_button_simple_console.png)
 
 ##### HTTP
-![](/images/docs/flowpipe-hcl/input_button_simple_http.png)
+![](/flowpipe-hcl/input_button_simple_http.png)
 
 ##### Slack
-![](/images/docs/flowpipe-hcl/input_button_simple_slack.png)
+![](/flowpipe-hcl/input_button_simple_slack.png)
 
 
 ```hcl
@@ -167,14 +167,14 @@ pipeline "my_pipe" {
 ### Select - basic
 
 ##### Console (Client-Mode)
-![](/images/docs/flowpipe-hcl/input_select_simple_console.png)
+![](/flowpipe-hcl/input_select_simple_console.png)
 
 
 ##### HTTP
-![](/images/docs/flowpipe-hcl/input_select_simple_http_open.png)
+![](/flowpipe-hcl/input_select_simple_http_open.png)
 
 ##### Slack
-![](/images/docs/flowpipe-hcl/input_select_simple_slack_open.png)
+![](/flowpipe-hcl/input_select_simple_slack_open.png)
 
 
 ```hcl
@@ -208,13 +208,13 @@ pipeline "my_select" {
 #### Select - with labels & default selection
 
 ##### Console (Client-Mode)
-![](/images/docs/flowpipe-hcl/input_select_labels_console.png)
+![](/flowpipe-hcl/input_select_labels_console.png)
 
 ##### HTTP
-![](/images/docs/flowpipe-hcl/input_select_labels_http_open.png)
+![](/flowpipe-hcl/input_select_labels_http_open.png)
 
 ##### Slack
-![](/images/docs/flowpipe-hcl/input_select_labels_slack_open.png)
+![](/flowpipe-hcl/input_select_labels_slack_open.png)
 
 
 ```hcl
@@ -257,14 +257,14 @@ pipeline "my_select_labels" {
 ### Multiselect  - basic
 
 ##### Console (Client-Mode)
-![](/images/docs/flowpipe-hcl/input_multiselect_simple_console.png)
+![](/flowpipe-hcl/input_multiselect_simple_console.png)
 
 
 ##### HTTP
-![](/images/docs/flowpipe-hcl/input_multiselect_simple_http_selected.png)
+![](/flowpipe-hcl/input_multiselect_simple_http_selected.png)
 
 ##### Slack
-![](/images/docs/flowpipe-hcl/input_multiselect_simple_slack_selected.png)
+![](/flowpipe-hcl/input_multiselect_simple_slack_selected.png)
 
 
 ```hcl
@@ -299,14 +299,14 @@ pipeline "my_multi" {
 ### Multiselect with labels & default selection
 
 ##### Console (Client-Mode)
-![](/images/docs/flowpipe-hcl/input_multiselect_labels_console_selected.png)
+![](/flowpipe-hcl/input_multiselect_labels_console_selected.png)
 
 
 ##### HTTP
-![](/images/docs/flowpipe-hcl/input_multiselect_labels_http_selected.png)
+![](/flowpipe-hcl/input_multiselect_labels_http_selected.png)
 
 ##### Slack
-![](/images/docs/flowpipe-hcl/input_multiselect_labels_slack_selected.png)
+![](/flowpipe-hcl/input_multiselect_labels_slack_selected.png)
 
 
 ```hcl
