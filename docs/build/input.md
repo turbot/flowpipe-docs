@@ -58,12 +58,12 @@ After the user selects a game, the pipeline will send back a message with a hype
 
 If you run the pipeline in [client-mode](/docs/run#operating-modes), pipes will prompt you on the console and wait for your response. 
 
-![](/images/docs/build/input_console_select_game.png)
+![](/build/input_console_select_game.png)
 
 
 Once you respond, the pipeline will continue.
 
-![](/images/docs/build/play_game_console.png)
+![](/build/play_game_console.png)
 
 
 ## Running in Server-Mode
@@ -94,7 +94,7 @@ $ flowpipe pipeline run play_a_game  --host local
 
 Open the URL in your browser.  The form appears.  
 
-![](/images/docs/build/input_http_select_game.png)
+![](/build/input_http_select_game.png)
 
 
 Select a game and then click the **Submit** button. Return to the terminal where you are running the pipeline.  You will see that the pipeline is now finished and the message appears in the output:
@@ -142,4 +142,4 @@ notifier "default" {
 The pipeline that we created earlier already routes the input request to the default notifier.  By adding integrations to the default notifier we can route the input request to Slack and/or email without modifying the pipeline!
 
 
-![](/images/docs/build/input_slack_select_game.png)
+![](/build/input_slack_select_game.png)

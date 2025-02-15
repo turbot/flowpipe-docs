@@ -55,7 +55,7 @@ Let's run it!
 flowpipe pipeline run learn_flowpipe
 ```
 
-![](/images/docs/learn/get-ipv4.png)
+![](/learn/get-ipv4.png)
 
 Flowpipe runs the pipeline and prints its outputs once it is complete.
 
@@ -65,7 +65,7 @@ When troubleshooting, it's often useful to view more information about the curre
 flowpipe pipeline run learn_flowpipe --verbose
 ```
 
-![](/images/docs/learn/get-ipv4-verbose.png)
+![](/learn/get-ipv4-verbose.png)
 
 ## Using mods
 
@@ -102,7 +102,7 @@ You can run pipelines from the dependency mod on the command line:
 flowpipe pipeline run reallyfreegeoip.pipeline.get_ip_geolocation --arg ip_address=35.236.238.30
 ```
 
-![](/images/docs/learn/reallyfreegeoip.png)
+![](/learn/reallyfreegeoip.png)
 
 ## Composing with pipelines
 
@@ -201,7 +201,7 @@ pipeline "learn_flowpipe" {
 }
 ```
 
-![](/images/docs/learn/weather-report.png)
+![](/learn/weather-report.png)
 
 
 
@@ -239,5 +239,5 @@ flowpipe server &
 flowpipe pipeline run learn_flowpipe --host local
 ```
 
-![](/images/docs/learn/slack-weather-report.png)
+![](/learn/slack-weather-report.png)
 

@@ -53,3 +53,7 @@ yarn-error.log*
 content/docs
 
 .vscode
+images/**/*.todo
+images/**/*.keep
+images/**/*.sav
+images/**/*.json

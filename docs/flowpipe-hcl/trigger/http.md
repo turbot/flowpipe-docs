@@ -87,7 +87,7 @@ trigger "http" "my_webhook" {
 
 Flowpipe creates an endpoint on the flowpipe server for each `http` trigger. The HTTP webhook does not support any authentication mechanism, but it does have a URL with randomness to make it unguessable.  The webhook URL path is: `/api/latest/hook/{trigger HCL label}/{random string}`, eg `/api/latest/hook/my_webhook/21ifp8truzi8y2r29jdl0qi7qt`
 
-The webhook URL will remain consistent across restarts. The {random string} is generated using the trigger name (the block label of the `trigger` ) and a global salt value.  
+The webhook URL will remain consistent across restarts. The &lcub;random string&rcub; is generated using the trigger name (the block label of the `trigger` ) and a global salt value.  
   - Because the URL contains the trigger name, changing the trigger name will generate a new URL.  
   - The salt value is stored in `~/.flowpipe/internal/salt`
   - If the file is missing or empty, flowpipe will randomly generate a new salt and write it there.  If you want to change *all* of your webhook URLs, remove the salt value.

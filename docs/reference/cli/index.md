@@ -31,20 +31,23 @@ sidebar_label: Flowpipe CLI
 ## Global Flags
 
 <table>
+<thead>
   <tr> 
     <th> Flag </th> 
     <th> Description </th> 
   </tr>
+</thead>
 
+<tbody>
   <tr> 
-    <td nowrap="true"> <inlineCode>--config-path</inlineCode> </td> 
+    <td nowrap="true"> `--config-path` </td> 
     <td>  
-    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (<inlineCode>*.fpc</inlineCode>) will be loaded from each path, with decreasing precedence.  The default is <inlineCode>.:$FLOWPIPE_INSTALL_DIR/config</inlineCode> (<inlineCode>.:~/.flowpipe/config</inlineCode>).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/connection">connections</a> centrally in the <inlineCode>~/.flowpipe/config</inlineCode> directory, but override them in the working directory / mod location if desired.
+    Sets the search path for <a href = "/docs/reference/config-files">configuration files</a>. This argument accepts a colon-separated list of directories.  All configuration files (`*.fpc`) will be loaded from each path, with decreasing precedence.  The default is `.:$FLOWPIPE_INSTALL_DIR/config` (`.:~/.flowpipe/config`).  This allows you to manage your <a href="/docs/reference/config-files/workspace"> workspaces </a> and <a href="/docs/reference/config-files/connection">connections</a> centrally in the `~/.flowpipe/config` directory, but override them in the working directory / mod location if desired.
     </td> 
   </tr>
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--data-dir</inlineCode> </td> 
+    <td nowrap="true"> `--data-dir` </td> 
     <td>  
     Sets the event store data directory. Flowpipe defaults to the `.flowpipe` directory in the current mod directory. This argument allows you to specify a different directory.
     </td> 
@@ -52,59 +55,60 @@ sidebar_label: Flowpipe CLI
 
 
   <tr> 
-    <td nowrap="true"> <inlineCode>-h</inlineCode>, <inlineCode>--help</inlineCode> </td> 
+    <td nowrap="true"> `-h`, `--help` </td> 
     <td>  Help for Flowpipe. </td> 
   </tr>
                   
   <tr> 
-    <td nowrap="true"> <inlineCode>--host</inlineCode> </td> 
-    <td> Run the command against a local or remote server instance.  You may specify the full host and port (e.g. <inlineCode>--host https://flowpipe.my-org.com:7103</inlineCode>), or use the keyword <inlineCode>local</inlineCode> to connect to the local server instance as a shortcut for <inlineCode>https://localhost:7103</inlineCode> (e.g. <inlineCode>--host local</inlineCode>) </td> 
+    <td nowrap="true"> `--host` </td> 
+    <td> Run the command against a local or remote server instance.  You may specify the full host and port (e.g. `--host https://flowpipe.my-org.com:7103`), or use the keyword `local` to connect to the local server instance as a shortcut for `https://localhost:7103` (e.g. `--host local`) </td> 
   </tr>
 
   <tr> 
-    <td nowrap="true">  <inlineCode>--input</inlineCode> </td>
-    <td> Enable interactive prompts (default <inlineCode>true</inlineCode>). </td>
+    <td nowrap="true">  `--input` </td>
+    <td> Enable interactive prompts (default `true`). </td>
   </tr>
 
 
   <tr> 
-    <td nowrap="true">  <inlineCode>--max-concurrency-container int</inlineCode> </td>
-    <td>Set the maximum number of <inlineCode>container</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>25</inlineCode>). </td>
+    <td nowrap="true">  `--max-concurrency-container int` </td>
+    <td>Set the maximum number of `container` step instances that can execute concurrently across all pipeline instances (default `25`). </td>
   </tr>
   <tr> 
-    <td nowrap="true">  <inlineCode>--max-concurrency-function int</inlineCode> </td>
-    <td> Set the maximum number of <inlineCode>function</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>50</inlineCode>). </td>
+    <td nowrap="true">  `--max-concurrency-function int` </td>
+    <td> Set the maximum number of `function` step instances that can execute concurrently across all pipeline instances (default `50`). </td>
   </tr>
   <tr> 
-    <td nowrap="true">  <inlineCode>--max-concurrency-http int</inlineCode> </td>
-    <td> Set the maximum number of <inlineCode>http</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>500</inlineCode>). </td>
+    <td nowrap="true">  `--max-concurrency-http int` </td>
+    <td> Set the maximum number of `http` step instances that can execute concurrently across all pipeline instances (default `500`). </td>
   </tr>
   <tr> 
-    <td nowrap="true">  <inlineCode>--max-concurrency-query int</inlineCode> </td>
-    <td> Set the maximum number of <inlineCode>query</inlineCode> step instances that can execute concurrently across all pipeline instances (default <inlineCode>50</inlineCode>). </td>
+    <td nowrap="true">  `--max-concurrency-query int` </td>
+    <td> Set the maximum number of `query` step instances that can execute concurrently across all pipeline instances (default `50`). </td>
   </tr>
 
 
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--mod-location</inlineCode>  </td> 
+    <td nowrap="true"> `--mod-location`  </td> 
     <td> Sets the Flowpipe workspace working directory.  If not specified, the workspace directory will be set to the current working directory.  See <a href="/docs/reference/env-vars/flowpipe_mod_location">FLOWPIPE_MOD_LOCATION</a> for details. </td>
   </tr>
 
    <tr> 
-    <td nowrap="true">  <inlineCode>--output</inlineCode> </td> 
-    <td>  Select a console output format: <inlineCode>pretty</inlineCode>, <inlineCode>plain</inlineCode>, <inlineCode>yaml</inlineCode> or <inlineCode>json</inlineCode> (default <inlineCode>pretty</inlineCode>). </td>
+    <td nowrap="true">  `--output` </td> 
+    <td>  Select a console output format: `pretty`, `plain`, `yaml` or `json` (default `pretty`). </td>
   </tr>
 
   <tr> 
-    <td nowrap="true"> <inlineCode>-v</inlineCode>, <inlineCode>--version</inlineCode>  </td> 
+    <td nowrap="true"> `-v`, `--version`  </td> 
     <td>  Display Flowpipe version. </td> 
   </tr>
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--workspace	</inlineCode>  </td> 
+    <td nowrap="true"> `--workspace	`  </td> 
     <td>  Sets the Flowpipe workspace profile. If not specified, the default workspace will be used if it exists. See <a href="/docs/reference/env-vars/flowpipe_workspace">FLOWPIPE_WORKSPACE</a> for details. </td> 
   </tr>
+</tbody>
 
 </table>
 
@@ -113,12 +117,12 @@ sidebar_label: Flowpipe CLI
 <!--
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--pipes-host</inlineCode>  </td> 
+    <td nowrap="true"> `--pipes-host`  </td> 
     <td>  Sets the host used when connecting to Turbot Pipesworkspaces.  See <a href="/docs/reference/env-vars/pipes_host">PIPES_HOST</a> for details. </td>
   </tr>
 
   <tr> 
-    <td nowrap="true"> <inlineCode>--pipes-token</inlineCode>  </td> 
+    <td nowrap="true"> `--pipes-token`  </td> 
     <td>  Sets the authentication token used when connecting to Turbot Pipes workspaces.  See <a href="/docs/reference/env-vars/pipes_token">PIPES_TOKEN</a> for details. </td>
   </tr>
 
