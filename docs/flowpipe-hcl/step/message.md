@@ -31,11 +31,11 @@ pipeline "send_message" {
 |-----------------|-----------|-------------|-----------------
 | `text`        | String       | Required    | The message text to send to the integration.
 | `notifier`      | Notifier Reference | Required    | The [notifier](/docs/reference/config-files/notifier) to send the request to send the message.
-| `cc`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to `email` integrations.
-| `bcc`           | List&ltString&gt | Optional    | The email addresses to send to. This only applies to notifiers that uses `email` integrations.
+| `cc`            | List&lt;String&gt; | Optional    | The email addresses to send to. This only applies to `email` integrations.
+| `bcc`           | List&lt;String&gt; | Optional    | The email addresses to send to. This only applies to notifiers that uses `email` integrations.
 | `channel`       | String    | Optional    | The channel to send the request to.  This only applies to  `slack` integrations.
 | `subject`       | String    | Optional     | The email subject.  This only applies to notifiers that uses `email` integrations.
-| `to`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to  `email` integrations.
+| `to`            | List&lt;String&gt; | Optional    | The email addresses to send to. This only applies to  `email` integrations.
 
 
 This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).

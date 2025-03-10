@@ -24,7 +24,7 @@ credential_import "steampipe" {
 | Name            | Type    | Required?| Description
 |-----------------|---------|----------|-------------------
 | `source`        |  String | Optional | Path to the config file(s) with the connections to import.  Defaults to `~/.steampipe/config/*.spc`.
-| `connections`   |  List&ltString&gt | Optional | A list of connection names to import.  You may use the `*` globbing wildcard in these entries.  The default is `["*"]` (all connections).
+| `connections`   |  List&lt;String&gt; | Optional | A list of connection names to import.  You may use the `*` globbing wildcard in these entries.  The default is `["*"]` (all connections).
 | `prefix`        | String  | Optional | A string to prepend to the connection name to create the credential name. 
 
 ## Examples

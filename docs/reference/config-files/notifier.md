@@ -64,13 +64,13 @@ notifier "hr" {
 | Argument        | Type      | Optional?   | Description
 |-----------------|-----------|-------------|-----------------
 | `integration`   | Integration Reference | Required    | The [integration](/docs/reference/config-files/integration) to send the request to.
-| `cc`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to `email` integrations.
-| `bcc`           | List&ltString&gt | Optional    | The email addresses to send to. This only applies to `email` integrations.
+| `cc`            | List&lt;String&gt; | Optional    | The email addresses to send to. This only applies to `email` integrations.
+| `bcc`           | List&lt;String&gt; | Optional    | The email addresses to send to. This only applies to `email` integrations.
 | `channel`       | String    | Optional    | The channel to send the request to. This only applies to `slack` integrations.
 | `description`   | String    | Optional    | A description of the notifier.
 | `subject`       | String | Optional     | The email subject. This only applies to `email` integrations.
 | `title`         | String    | Optional    | Display title for the notifier.
-| `to`            | List&ltString&gt | Optional    | The email addresses to send to. This only applies to `email` integrations.
+| `to`            | List&lt;String&gt; | Optional    | The email addresses to send to. This only applies to `email` integrations.
 
 ### Overriding arguments
 

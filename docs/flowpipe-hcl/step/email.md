@@ -39,10 +39,10 @@ pipeline "another_pipe" {
 
 | Argument        | Type        | Optional?  | Description
 |-----------------|-------------|------------|-----------------
-| `to`            | List&ltString&gt| Required   | A list of recipient email addresses to which 
-| `bcc`           | List&ltString&gt| Optional   | A list of recipient email addresses to which to send the message via bcc.
+| `to`            | List&lt;String&gt;| Required   | A list of recipient email addresses to which 
+| `bcc`           | List&lt;String&gt;| Optional   | A list of recipient email addresses to which to send the message via bcc.
 | `body`          | String      | Optional   | The message body.
-| `cc`            | List&ltString&gt| Optional   | A list of recipient email addresses to which to send the message via cc.
+| `cc`            | List&lt;String&gt;| Optional   | A list of recipient email addresses to which to send the message via cc.
 | `content_type`  | String      | Optional   | The content type of the email body, e.g. `text/plain`, `text/html` to send the message.
 | `from`          | String      | Optional   | The email address of the sender.
 | `host`          | String      | Optional   | The DNS name of the SMTP host to send the mail through.
