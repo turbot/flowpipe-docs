@@ -37,7 +37,7 @@ pipeline "enabled_regions" {
 | -----------| ------ | --------- | ---------------------------------------------------- 
 | `sql`      | String | Required  | A SQL query string.
 | `args`     | List    | Optional | A list of arguments to pass to the query.
-| `database` | String | Optional  | The database to query. This may be a connection reference (`connection.steampipe.default`), a connection string (`postgres://steampipe@127.0.0.1:9193/steampipe`), or a Pipes workspace (`acme/anvils`). If not set, the default set in the [mod `database`](/docs/flowpipe-hcl/mod) will be used.
+| `database` | String | Optional  | The database to query. This may be a connection reference (`connection.steampipe.default`), a connection string (`postgres://steampipe@localhost:9193/steampipe`), or a Pipes workspace (`acme/anvils`). If not set, the default set in the [mod `database`](/docs/flowpipe-hcl/mod) will be used.
 
 This step also supports the [common step arguments](/docs/flowpipe-hcl/step#common-step-arguments) and [attributes](/docs/flowpipe-hcl/step#common-step-attributes-read-only).
 
